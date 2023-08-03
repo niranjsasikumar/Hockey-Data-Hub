@@ -1,6 +1,9 @@
 import mysql from "mysql";
 
-const db = mysql.createConnection({
+const currentSeason = 20232024;
+const currentSeasonYear = 2023;
+
+const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: process.argv[2],
@@ -8,18 +11,18 @@ const db = mysql.createConnection({
   database: "nhl_data_hub"
 });
 
-const currentSeason = 20232024;
-const currentSeasonYear = 2023;
-
+// Fetch data from the given NHL API endpoint URL
 async function fetchData(url) {
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
 
-async function insertTeamsData() {
+// Fetch data of current teams from NHL API and update the data in "teams" table in database
+async function updateTeamsData() {
   console.log("Start inserting into \"teams\" table");
-  
+
+  connection.query("DELETE FROM teams");
   const data = await fetchData("https://statsapi.web.nhl.com/api/v1/teams");
 
   const statement = `INSERT INTO teams (ID, Name, LocationName, TeamName, Abbreviation, LightLogoURL, DarkLogoURL, VenueName, VenueCity, FirstYearOfPlay, Conference, Division)
@@ -41,11 +44,11 @@ async function insertTeamsData() {
       team.division?.name
     ];
 
-    db.query(statement, values);
+    connection.query(statement, values);
   }
 
   console.log("Finished inserting into \"teams\" table\n");
 }
 
-await insertTeamsData();
-db.end();
+await updateTeamsData();
+connection.end();
