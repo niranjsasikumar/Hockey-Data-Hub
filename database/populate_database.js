@@ -148,5 +148,59 @@ async function insertPlayoffSeriesData(seasons) {
   console.log("Finished inserting into / updating \"playoff_series\" table");
 }
 
-await insertPlayoffSeriesData(seasons);
+// Returns a formatted string given a record object
+function getRecordString(record) {
+  return record.wins + "-" + record.losses + ("ties" in record ? "-" + record.ties : "") + ("ot" in record ? "-" + record.ot : "");
+}
+
+// Fetch standings data for the given seasons from NHL API and insert or update the data in "standings" table
+async function insertStandingsData(seasons) {
+  console.log("Start inserting into / updating \"standings\" table");
+
+  for (const season of seasons) {
+    const standingsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/standings?expand=standings.record&season=" + season)).records;
+
+    for (const division of standingsData) {
+      for (const team of division.teamRecords) {
+        const statement = `INSERT INTO standings (ID, TeamID, Team, Season, LogoURL, Conference, Division, ClinchIndicator, \`Rank\`, Points, GamesPlayed, Wins, Losses, Ties, OvertimeLosses, GoalsFor, GoalsAgainst, Difference, HomeRecord, AwayRecord, Last10, Streak)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ON DUPLICATE KEY UPDATE TeamID=VALUES(TeamID), Team=VALUES(Team), Season=VALUES(Season), LogoURL=VALUES(LogoURL), Conference=VALUES(Conference), Division=VALUES(Division), ClinchIndicator=VALUES(ClinchIndicator), \`Rank\`=VALUES(\`Rank\`), Points=VALUES(Points), GamesPlayed=VALUES(GamesPlayed), Wins=VALUES(Wins), Losses=VALUES(Losses), Ties=VALUES(Ties), OvertimeLosses=VALUES(OvertimeLosses), GoalsFor=VALUES(GoalsFor), GoalsAgainst=VALUES(GoalsAgainst), Difference=VALUES(Difference), HomeRecord=VALUES(HomeRecord), AwayRecord=VALUES(AwayRecord), Last10=VALUES(Last10), Streak=VALUES(Streak)`;
+
+        const teamId = team.team.id;
+        const leagueRecord = team.leagueRecord;
+
+        const values = [
+          parseInt(season.toString() + teamId.toString()),
+          teamId,
+          team.team.name,
+          season,
+          "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + teamId + ".svg",
+          "conference" in division ? division.conference.name : "",
+          "division" in division ? division.division.name : "",
+          "clinchIndicator" in team ? team.clinchIndicator : "",
+          parseInt(team.divisionRank) ? parseInt(team.divisionRank) : team.leagueRank,
+          team.points,
+          team.gamesPlayed,
+          leagueRecord.wins,
+          leagueRecord.losses,
+          "ties" in leagueRecord ? leagueRecord.ties : 0,
+          "ot" in leagueRecord ? leagueRecord.ot : 0,
+          team.goalsScored,
+          team.goalsAgainst,
+          team.goalsScored - team.goalsAgainst,
+          getRecordString(team.records.overallRecords[0]),
+          getRecordString(team.records.overallRecords[1]),
+          getRecordString(team.records.overallRecords[3]),
+          team.streak.streakCode
+        ];
+
+        connection.query(statement, values);
+      }
+    }
+  }
+
+  console.log("Finished inserting into / updating \"standings\" table");
+}
+
+await insertStandingsData(seasons);
 connection.end();
