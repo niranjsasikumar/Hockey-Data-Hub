@@ -108,5 +108,45 @@ async function insertSeasonData(seasons) {
   console.log("Finished inserting into / updating \"seasons\" table");
 }
 
-await insertSeasonData(seasons);
+// Fetch playoff series data for the given seasons from NHL API and insert or update the data in "playoff_series" table
+async function insertPlayoffSeriesData(seasons) {
+  console.log("Start inserting into / updating \"playoff_series\" table");
+
+  for (const season of seasons) {
+    // Only consider playoff series from the 1942-43 season onwards due to missing or inconsistent data for prior seasons
+    if (season >= 19421943) {
+      const playoffsData = await fetchData("https://statsapi.web.nhl.com/api/v1/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season);
+      if (!("rounds" in playoffsData)) continue;
+
+      for (const round of playoffsData.rounds) {
+        for (const series of round.series) {
+          const statement = `INSERT INTO playoff_series (ID, Season, RoundID, Round, SeriesID, Team1ID, Team1Name, Team1LogoURL, Team2ID, Team2Name, Team2LogoURL, SeriesStatus)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON DUPLICATE KEY UPDATE Season=VALUES(Season), RoundID=VALUES(RoundID), Round=VALUES(Round), SeriesID=VALUES(SeriesID), Team1ID=VALUES(Team1ID), Team1Name=VALUES(Team1Name), Team1LogoURL=VALUES(Team1LogoURL), Team2ID=VALUES(Team2ID), Team2Name=VALUES(Team2Name), Team2LogoURL=VALUES(Team2LogoURL), SeriesStatus=VALUES(SeriesStatus)`;
+
+          const values = [
+            parseInt(season.toString() + round.number.toString() + series.seriesNumber.toString()),
+            season,
+            round.number,
+            round.names.name,
+            series.seriesNumber,
+            series.matchupTeams[0].team.id,
+            series.matchupTeams[0].team.name,
+            "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + series.matchupTeams[0].team.id + ".svg",
+            series.matchupTeams[1].team.id,
+            series.matchupTeams[1].team.name,
+            "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + series.matchupTeams[1].team.id + ".svg",
+            series.currentGame.seriesSummary.seriesStatus
+          ];
+
+          connection.query(statement, values);
+        }
+      }
+    }
+  }
+
+  console.log("Finished inserting into / updating \"playoff_series\" table");
+}
+
+await insertPlayoffSeriesData(seasons);
 connection.end();
