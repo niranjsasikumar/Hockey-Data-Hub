@@ -4,11 +4,14 @@ const currentSeason = 20232024;
 const currentSeasonYear = 2023;
 
 const seasons = [];
-
 for (let year = 1917; year < currentSeasonYear; year++) {
+  if (year === 2004) continue; // Season not played due to labour lockout
   const season = parseInt(year.toString() + (year+1).toString());
   seasons.push(season);
 }
+
+// Seasons to consider for playoffs data, the seasons that are not included are due to missing or inconsistent data
+const playoffsDataSeasons = seasons.filter((season) => (season >= 19421943 && season <= 19721973) || season >= 19811982);
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -18,7 +21,7 @@ const connection = mysql.createConnection({
   database: "nhl_data_hub"
 });
 
-// Fetch data from the given NHL API endpoint URL
+// Fetch data from the given URL
 async function fetchData(url) {
   const response = await fetch(url);
   const data = await response.json();
@@ -54,7 +57,7 @@ async function updateTeamsData() {
     connection.query(statement, values);
   }
 
-  console.log("Finished overwriting \"teams\" table\n");
+  console.log("Finished overwriting \"teams\" table");
 }
 
 // Fetch data for the given seasons from NHL API and insert or update the data in "seasons" table
@@ -77,8 +80,7 @@ async function insertSeasonData(seasons) {
       }
     }
 
-    // Only add playoff rounds from the 1942-43 season onwards due to missing or inconsistent data for prior seasons
-    if (season.seasonId >= 19421943) {
+    if (playoffsDataSeasons.includes(season)) {
       const playoffsData = await fetchData("https://statsapi.web.nhl.com/api/v1/tournaments/playoffs?season=" + season.seasonId);
       if ("rounds" in playoffsData) playoffsData.rounds.forEach((round) => playoffRounds.push(round.names?.name));
     }
@@ -113,8 +115,7 @@ async function insertPlayoffSeriesData(seasons) {
   console.log("Start inserting into / updating \"playoff_series\" table");
 
   for (const season of seasons) {
-    // Only consider playoff series from the 1942-43 season onwards due to missing or inconsistent data for prior seasons
-    if (season >= 19421943) {
+    if (playoffsDataSeasons.includes(season)) {
       const playoffsData = await fetchData("https://statsapi.web.nhl.com/api/v1/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season);
       if (!("rounds" in playoffsData)) continue;
 
@@ -148,7 +149,7 @@ async function insertPlayoffSeriesData(seasons) {
   console.log("Finished inserting into / updating \"playoff_series\" table");
 }
 
-// Returns a formatted string given a record object
+// Returns a formatted string given a record object from standings data
 function getRecordString(record) {
   return record.wins + "-" + record.losses + ("ties" in record ? "-" + record.ties : "") + ("ot" in record ? "-" + record.ot : "");
 }
@@ -281,5 +282,122 @@ async function insertPlayerData(seasons) {
   console.log("Finished inserting into / updating \"skaters\" and \"goalies\" tables");
 }
 
+// Fetch game data for the given seasons from NHL API and insert or update the data in "games" table
+async function insertGameData(seasons) {
+  console.log("Start inserting into / updating \"games\" table");
+
+  for (const season of seasons) {
+    const monthlyData = [];
+    const additionalExpand = playoffsDataSeasons.includes(season) ? ",series.round" : "";
+    let startYear = parseInt(season.toString().slice(0, 4));
+    let startMonth = 8;
+    let startDay = "-01";
+    let endYear = startYear;
+    let endMonth = startMonth + 1;
+    let endDay = "-01";
+
+    // Fetch data in chunks instead of for whole season to prevent 504 timeout error
+    while (startMonth !== 8 || endDay !== "-31") {
+      monthlyData.push(
+        (await fetchData(
+          "https://statsapi.web.nhl.com/api/v1/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series" +
+          additionalExpand +
+          "&startDate=" + startYear + "-" + (startMonth < 10 ? 0 : "") + startMonth + startDay +
+          "&endDate=" + endYear + "-" + (endMonth < 10 ? 0 : "") + endMonth + endDay
+        )).dates
+      );
+
+      if (startMonth === 8) startDay = "-02";
+
+      if (startMonth === 12) {
+        startMonth = 1;
+        startYear++;
+      } else {
+        startMonth++;
+      }
+
+      if (endMonth === 12) {
+        endMonth = 1;
+        endYear++;
+      } else if (endMonth === 7) {
+        endDay = "-31";
+      } else {
+        endMonth++;
+      }
+    }
+
+    for (const month of monthlyData) {
+      for (const date of month) {
+        for (const game of date.games) {
+          if (!playoffsDataSeasons.includes(season) && game.gameType === "P") continue;
+          if (game.linescore?.currentPeriodOrdinal === undefined) continue;
+
+          let awayId = game.teams?.away?.team?.id;
+          let awayGoalScorers = "";
+          let homeGoalScorers = "";
+
+          for (const goal of game.scoringPlays) {
+            for (const player of goal.players) {
+              if (player.playerType === "Scorer") {
+                const playerName = player.player?.fullName;
+                if (goal.team?.id === awayId) {
+                  awayGoalScorers += awayGoalScorers === "" ? playerName : " | " + playerName;
+                } else {
+                  homeGoalScorers += homeGoalScorers === "" ? playerName : " | " + playerName;
+                }
+                break;
+              }
+            }
+
+            const goalInfo = " (" + goal.about?.ordinalNum + ", " + goal.about?.periodTime + ")";
+            goal.team?.id === awayId ? awayGoalScorers += goalInfo : homeGoalScorers += goalInfo;
+          }
+
+          if (awayGoalScorers === "") awayGoalScorers = game.teams?.away?.score > 0 ? "Goal scorer information not available" : "No goals";
+          if (homeGoalScorers === "") homeGoalScorers = game.teams?.home?.score > 0 ? "Goal scorer information not available" : "No goals";
+
+          const statement = `INSERT INTO games (ID, Season, Type, DateTime, LastPeriod, GameStatus, VenueName, PlayoffRound, PlayoffSeriesID, PlayoffGameNumber, AwayID, AwayName, AwayAbbreviation, AwayLogoURL, AwayGoals, AwayGoalScorers, HomeID, HomeName, HomeAbbreviation, HomeLogoURL, HomeGoals, HomeGoalScorers)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON DUPLICATE KEY UPDATE Season=VALUES(Season), Type=VALUES(Type), DateTime=VALUES(DateTime), LastPeriod=VALUES(LastPeriod), GameStatus=VALUES(GameStatus), VenueName=VALUES(VenueName), PlayoffRound=VALUES(PlayoffRound), PlayoffSeriesID=VALUES(PlayoffSeriesID), PlayoffGameNumber=VALUES(PlayoffGameNumber), AwayID=VALUES(AwayID), AwayName=VALUES(AwayName), AwayAbbreviation=VALUES(AwayAbbreviation), AwayLogoURL=VALUES(AwayLogoURL), AwayGoals=VALUES(AwayGoals), AwayGoalScorers=VALUES(AwayGoalScorers), HomeID=VALUES(HomeID), HomeName=VALUES(HomeName), HomeAbbreviation=VALUES(HomeAbbreviation), HomeLogoURL=VALUES(HomeLogoURL), HomeGoals=VALUES(HomeGoals), HomeGoalScorers=VALUES(HomeGoalScorers)`;
+
+          const values = [
+            game.gamePk,
+            season,
+            game.gameType,
+            game.gameDate.slice(0, 19).replace("T", " "),
+            game.linescore?.currentPeriodOrdinal,
+            game.linescore?.currentPeriodOrdinal === "3rd" ? "Final" : "Final/" + game.linescore?.currentPeriodOrdinal,
+            game.venue?.name,
+            game.seriesSummary?.series?.round?.names?.name,
+            "seriesSummary" in game ? parseInt(season.toString() + game.seriesSummary?.series?.round?.number.toString() + game.seriesSummary?.series?.seriesNumber.toString()) : null,
+            game.seriesSummary?.gameLabel,
+            awayId,
+            game.teams?.away?.team?.name,
+            game.teams?.away?.team?.abbreviation,
+            "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + awayId + ".svg",
+            game.teams?.away?.score,
+            awayGoalScorers,
+            game.teams?.home?.team?.id,
+            game.teams?.home?.team?.name,
+            game.teams?.home?.team?.abbreviation,
+            "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + game.teams?.home?.team?.id + ".svg",
+            game.teams?.home?.score,
+            homeGoalScorers,
+          ];
+
+          connection.query(statement, values);
+        }
+      }
+    }
+  }
+
+  console.log("Finished inserting into / updating \"games\" table");
+}
+
+await updateTeamsData();
+await insertSeasonData(seasons);
+await insertPlayoffSeriesData(seasons);
+await insertStandingsData(seasons);
 await insertPlayerData(seasons);
+await insertGameData(seasons);
 connection.end();
