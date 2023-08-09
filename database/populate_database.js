@@ -1,4 +1,6 @@
 import mysql from "mysql";
+import dotenv from "dotenv";
+dotenv.config();
 
 const currentSeason = 20232024;
 const currentSeasonYear = 2023;
@@ -14,11 +16,10 @@ for (let year = 1917; year < currentSeasonYear; year++) {
 const playoffsDataSeasons = seasons.filter((season) => (season >= 19421943 && season <= 19721973) || season >= 19811982);
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: process.argv[2],
-  password: process.argv[3],
-  database: "nhl_data_hub"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
 });
 
 // Fetch data from the given URL
