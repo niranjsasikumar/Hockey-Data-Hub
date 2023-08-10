@@ -29,6 +29,24 @@ async function fetchData(url) {
   return data;
 }
 
+// Insert a row into the specified table, the column names are given as an array of strings and the values to insert in each column are also given as an array
+function insertIntoTable(table, columns, values) {
+  try {
+    if (columns.length !== values.length)
+      throw new Error("Length of columns and values arguments not equal");
+    if (columns.length === 0)
+      throw new Error("Columns and values arguments must have length of at least 1");
+  } catch(error) {
+    console.error(error);
+  }
+
+  let insert = "INSERT INTO " + table + " (" + (columns.map(column => "\`" + column + "\`")).toString() + ")";
+  let vals = " VALUES (" + (values.map(value => "?")).toString() + ")";
+  let update = " ON DUPLICATE KEY UPDATE " + (columns.slice(1).map(column => "\`" + column + "\`=VALUES(\`" + column + "\`)")).toString();
+
+  connection.query(insert + vals + update, values);
+}
+
 // Fetch data of current teams from NHL API and overwrite the data in "teams" table
 async function updateTeamsData() {
   console.log("Start overwriting \"teams\" table");
@@ -36,8 +54,7 @@ async function updateTeamsData() {
   connection.query("DELETE FROM teams");
   const teamsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/teams")).teams;
 
-  const statement = `INSERT INTO teams (ID, Name, LocationName, TeamName, Abbreviation, LightLogoURL, DarkLogoURL, VenueName, VenueCity, FirstYearOfPlay, Conference, Division)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const columns = ["ID", "Name", "LocationName", "TeamName", "Abbreviation", "LightLogoURL", "DarkLogoURL", "VenueName", "VenueCity", "FirstYearOfPlay", "Conference", "Division"];
 
   for (const team of teamsData) {
     const values = [
@@ -55,7 +72,7 @@ async function updateTeamsData() {
       team.division?.name
     ];
 
-    connection.query(statement, values);
+    insertIntoTable("teams", columns, values);
   }
 
   console.log("Finished overwriting \"teams\" table");
@@ -66,6 +83,8 @@ async function insertSeasonData(seasons) {
   console.log("Start inserting into / updating \"seasons\" table");
 
   const seasonsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/seasons?season=" + seasons)).seasons;
+
+  const columns = ["ID", "RegularSeasonStartDate", "RegularSeasonEndDate", "SeasonEndDate", "NumberOfGames", "TiesInUse", "ConferencesInUse", "DivisionsInUse", "WildCardInUse", "Conferences", "Divisions", "PlayoffRounds"];
 
   for (const season of seasonsData) {
     const standingsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/standings?season=" + season.seasonId)).records;
@@ -86,10 +105,6 @@ async function insertSeasonData(seasons) {
       if ("rounds" in playoffsData) playoffsData.rounds.forEach((round) => playoffRounds.push(round.names?.name));
     }
 
-    const statement = `INSERT INTO seasons (ID, RegularSeasonStartDate, RegularSeasonEndDate, SeasonEndDate, NumberOfGames, TiesInUse, ConferencesInUse, DivisionsInUse, WildCardInUse, Conferences, Divisions, PlayoffRounds)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ON DUPLICATE KEY UPDATE RegularSeasonStartDate=VALUES(RegularSeasonStartDate), RegularSeasonEndDate=VALUES(RegularSeasonEndDate), SeasonEndDate=VALUES(SeasonEndDate), NumberOfGames=VALUES(NumberOfGames), TiesInUse=VALUES(TiesInUse), ConferencesInUse=VALUES(ConferencesInUse), DivisionsInUse=VALUES(DivisionsInUse), WildCardInUse=VALUES(WildCardInUse), Conferences=VALUES(Conferences), Divisions=VALUES(Divisions), PlayoffRounds=VALUES(PlayoffRounds)`;
-
     const values = [
       season.seasonId,
       season.regularSeasonStartDate,
@@ -105,7 +120,7 @@ async function insertSeasonData(seasons) {
       playoffRounds.toString()
     ];
 
-    connection.query(statement, values);
+    insertIntoTable("seasons", columns, values);
   }
 
   console.log("Finished inserting into / updating \"seasons\" table");
@@ -115,6 +130,8 @@ async function insertSeasonData(seasons) {
 async function insertPlayoffSeriesData(seasons) {
   console.log("Start inserting into / updating \"playoff_series\" table");
 
+  const columns = ["ID", "Season", "RoundID", "Round", "SeriesID", "Team1ID", "Team1Name", "Team1LogoURL", "Team2ID", "Team2Name", "Team2LogoURL", "SeriesStatus"];
+
   for (const season of seasons) {
     if (playoffsDataSeasons.includes(season)) {
       const playoffsData = await fetchData("https://statsapi.web.nhl.com/api/v1/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season);
@@ -122,10 +139,6 @@ async function insertPlayoffSeriesData(seasons) {
 
       for (const round of playoffsData.rounds) {
         for (const series of round.series) {
-          const statement = `INSERT INTO playoff_series (ID, Season, RoundID, Round, SeriesID, Team1ID, Team1Name, Team1LogoURL, Team2ID, Team2Name, Team2LogoURL, SeriesStatus)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-          ON DUPLICATE KEY UPDATE Season=VALUES(Season), RoundID=VALUES(RoundID), Round=VALUES(Round), SeriesID=VALUES(SeriesID), Team1ID=VALUES(Team1ID), Team1Name=VALUES(Team1Name), Team1LogoURL=VALUES(Team1LogoURL), Team2ID=VALUES(Team2ID), Team2Name=VALUES(Team2Name), Team2LogoURL=VALUES(Team2LogoURL), SeriesStatus=VALUES(SeriesStatus)`;
-
           const values = [
             parseInt(season.toString() + round.number.toString() + series.seriesNumber.toString()),
             season,
@@ -141,7 +154,7 @@ async function insertPlayoffSeriesData(seasons) {
             series.currentGame?.seriesSummary?.seriesStatus
           ];
 
-          connection.query(statement, values);
+          insertIntoTable("playoff_series", columns, values);
         }
       }
     }
@@ -159,15 +172,13 @@ function getRecordString(record) {
 async function insertStandingsData(seasons) {
   console.log("Start inserting into / updating \"standings\" table");
 
+  const columns = ["ID", "TeamID", "Team", "Season", "LogoURL", "Conference", "Division", "ClinchIndicator", "Rank", "Points", "GamesPlayed", "Wins", "Losses", "Ties", "OvertimeLosses", "GoalsFor", "GoalsAgainst", "Difference", "HomeRecord", "AwayRecord", "Last10", "Streak"];
+
   for (const season of seasons) {
     const standingsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/standings?expand=standings.record&season=" + season)).records;
 
     for (const division of standingsData) {
       for (const team of division.teamRecords) {
-        const statement = `INSERT INTO standings (ID, TeamID, Team, Season, LogoURL, Conference, Division, ClinchIndicator, \`Rank\`, Points, GamesPlayed, Wins, Losses, Ties, OvertimeLosses, GoalsFor, GoalsAgainst, Difference, HomeRecord, AwayRecord, Last10, Streak)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ON DUPLICATE KEY UPDATE TeamID=VALUES(TeamID), Team=VALUES(Team), Season=VALUES(Season), LogoURL=VALUES(LogoURL), Conference=VALUES(Conference), Division=VALUES(Division), ClinchIndicator=VALUES(ClinchIndicator), \`Rank\`=VALUES(\`Rank\`), Points=VALUES(Points), GamesPlayed=VALUES(GamesPlayed), Wins=VALUES(Wins), Losses=VALUES(Losses), Ties=VALUES(Ties), OvertimeLosses=VALUES(OvertimeLosses), GoalsFor=VALUES(GoalsFor), GoalsAgainst=VALUES(GoalsAgainst), Difference=VALUES(Difference), HomeRecord=VALUES(HomeRecord), AwayRecord=VALUES(AwayRecord), Last10=VALUES(Last10), Streak=VALUES(Streak)`;
-
         const values = [
           parseInt(season.toString() + team.team?.id.toString()),
           team.team?.id,
@@ -193,7 +204,7 @@ async function insertStandingsData(seasons) {
           team.streak?.streakCode
         ];
 
-        connection.query(statement, values);
+        insertIntoTable("standings", columns, values);
       }
     }
   }
@@ -217,7 +228,8 @@ async function insertPlayerData(seasons) {
 
         playerStats.length === 0 ? hasStats = false : playerStats = playerStats[0].stat;
 
-        let statement = "";
+        let table;
+        let columns;
         let values = [
           parseInt(season.toString() + team.id.toString() + player.person?.id.toString()),
           player.person?.id,
@@ -239,9 +251,8 @@ async function insertPlayerData(seasons) {
         ];
 
         if (player.position?.type === "Goalie") {
-          statement = `INSERT INTO goalies (ID, PlayerID, Player, TeamID, Team, Season, ImageURL, TeamLogoURL, Number, Captain, AlternateCaptain, Catches, Nationality, DateOfBirth, Height, Weight, GamesPlayed, ShotsAgainst, GoalsAgainst, Saves, SavePercentage, GoalsAgainstAverage, Shutouts)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-          ON DUPLICATE KEY UPDATE PlayerID=VALUES(PlayerID), Player=VALUES(Player), TeamID=VALUES(TeamID), Team=VALUES(Team), Season=VALUES(Season), ImageURL=VALUES(ImageURL), TeamLogoURL=VALUES(TeamLogoURL), Number=VALUES(Number), Captain=VALUES(Captain), AlternateCaptain=VALUES(AlternateCaptain), Catches=VALUES(Catches), Nationality=VALUES(Nationality), DateOfBirth=VALUES(DateOfBirth), Height=VALUES(Height), Weight=VALUES(Weight), GamesPlayed=VALUES(GamesPlayed), ShotsAgainst=VALUES(ShotsAgainst), GoalsAgainst=VALUES(GoalsAgainst), Saves=VALUES(Saves), SavePercentage=VALUES(SavePercentage), GoalsAgainstAverage=VALUES(GoalsAgainstAverage), Shutouts=VALUES(Shutouts)`;
+          table = "goalies";
+          columns = ["ID", "PlayerID", "Player", "TeamID", "Team", "Season", "ImageURL", "TeamLogoURL", "Number", "Captain", "AlternateCaptain", "Catches", "Nationality", "DateOfBirth", "Height", "Weight", "GamesPlayed", "ShotsAgainst", "GoalsAgainst", "Saves", "SavePercentage", "GoalsAgainstAverage", "Shutouts"];
 
           if (hasStats) {
             values.push(playerStats.shotsAgainst);
@@ -254,9 +265,8 @@ async function insertPlayerData(seasons) {
             for (let i = 0; i < 6; i++) values.push(null);
           }
         } else {
-          statement = `INSERT INTO skaters (ID, PlayerID, Player, TeamID, Team, Season, ImageURL, TeamLogoURL, Number, Position, PositionType, Captain, AlternateCaptain, Shoots, Nationality, DateOfBirth, Height, Weight, GamesPlayed, Goals, Assists, Points, PointsPerGamesPlayed, PowerPlayGoals, PowerPlayPoints, Shots, ShootingPercentage, FaceoffPercentage)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-          ON DUPLICATE KEY UPDATE PlayerID=VALUES(PlayerID), Player=VALUES(Player), TeamID=VALUES(TeamID), Team=VALUES(Team), Season=VALUES(Season), ImageURL=VALUES(ImageURL), TeamLogoURL=VALUES(TeamLogoURL), Number=VALUES(Number), Position=VALUES(Position), PositionType=VALUES(PositionType), Captain=VALUES(Captain), AlternateCaptain=VALUES(AlternateCaptain), Shoots=VALUES(Shoots), Nationality=VALUES(Nationality), DateOfBirth=VALUES(DateOfBirth), Height=VALUES(Height), Weight=VALUES(Weight), GamesPlayed=VALUES(GamesPlayed), Goals=VALUES(Goals), Assists=VALUES(Assists), Points=VALUES(Points), PointsPerGamesPlayed=VALUES(PointsPerGamesPlayed), PowerPlayGoals=VALUES(PowerPlayGoals), PowerPlayPoints=VALUES(PowerPlayPoints), Shots=VALUES(Shots), ShootingPercentage=VALUES(ShootingPercentage), FaceoffPercentage=VALUES(FaceoffPercentage)`;
+          table = "skaters";
+          columns = ["ID", "PlayerID", "Player", "TeamID", "Team", "Season", "ImageURL", "TeamLogoURL", "Number", "Position", "PositionType", "Captain", "AlternateCaptain", "Shoots", "Nationality", "DateOfBirth", "Height", "Weight", "GamesPlayed", "Goals", "Assists", "Points", "PointsPerGamesPlayed", "PowerPlayGoals", "PowerPlayPoints", "Shots", "ShootingPercentage", "FaceoffPercentage"];
 
           values.splice(9, 0, player.position?.abbreviation, player.position?.type);
           
@@ -275,7 +285,7 @@ async function insertPlayerData(seasons) {
           }
         }
 
-        connection.query(statement, values);
+        insertIntoTable(table, columns, values);
       }
     }
   }
@@ -286,6 +296,8 @@ async function insertPlayerData(seasons) {
 // Fetch game data for the given seasons from NHL API and insert or update the data in "games" table
 async function insertGameData(seasons) {
   console.log("Start inserting into / updating \"games\" table");
+
+  const columns = ["ID", "Season", "Type", "DateTime", "LastPeriod", "GameStatus", "VenueName", "PlayoffRound", "PlayoffSeriesID", "PlayoffGameNumber", "AwayID", "AwayName", "AwayAbbreviation", "AwayLogoURL", "AwayGoals", "AwayGoalScorers", "HomeID", "HomeName", "HomeAbbreviation", "HomeLogoURL", "HomeGoals", "HomeGoalScorers"];
 
   for (const season of seasons) {
     const monthlyData = [];
@@ -357,10 +369,6 @@ async function insertGameData(seasons) {
           if (awayGoalScorers === "") awayGoalScorers = game.teams?.away?.score > 0 ? "Goal scorer information not available" : "No goals";
           if (homeGoalScorers === "") homeGoalScorers = game.teams?.home?.score > 0 ? "Goal scorer information not available" : "No goals";
 
-          const statement = `INSERT INTO games (ID, Season, Type, DateTime, LastPeriod, GameStatus, VenueName, PlayoffRound, PlayoffSeriesID, PlayoffGameNumber, AwayID, AwayName, AwayAbbreviation, AwayLogoURL, AwayGoals, AwayGoalScorers, HomeID, HomeName, HomeAbbreviation, HomeLogoURL, HomeGoals, HomeGoalScorers)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-          ON DUPLICATE KEY UPDATE Season=VALUES(Season), Type=VALUES(Type), DateTime=VALUES(DateTime), LastPeriod=VALUES(LastPeriod), GameStatus=VALUES(GameStatus), VenueName=VALUES(VenueName), PlayoffRound=VALUES(PlayoffRound), PlayoffSeriesID=VALUES(PlayoffSeriesID), PlayoffGameNumber=VALUES(PlayoffGameNumber), AwayID=VALUES(AwayID), AwayName=VALUES(AwayName), AwayAbbreviation=VALUES(AwayAbbreviation), AwayLogoURL=VALUES(AwayLogoURL), AwayGoals=VALUES(AwayGoals), AwayGoalScorers=VALUES(AwayGoalScorers), HomeID=VALUES(HomeID), HomeName=VALUES(HomeName), HomeAbbreviation=VALUES(HomeAbbreviation), HomeLogoURL=VALUES(HomeLogoURL), HomeGoals=VALUES(HomeGoals), HomeGoalScorers=VALUES(HomeGoalScorers)`;
-
           const values = [
             game.gamePk,
             season,
@@ -386,7 +394,7 @@ async function insertGameData(seasons) {
             homeGoalScorers,
           ];
 
-          connection.query(statement, values);
+          insertIntoTable("games", columns, values);
         }
       }
     }
