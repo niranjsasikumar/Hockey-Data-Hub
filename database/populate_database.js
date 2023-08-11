@@ -2,6 +2,7 @@ import mysql from "mysql";
 import dotenv from "dotenv";
 dotenv.config();
 
+const API_BASE_URL = "https://statsapi.web.nhl.com/api/v1";
 const currentSeason = 20232024;
 const currentSeasonYear = 2023;
 
@@ -23,8 +24,8 @@ const connection = mysql.createConnection({
 });
 
 // Fetch data from the given URL
-async function fetchData(url) {
-  const response = await fetch(url);
+async function fetchDataFromAPI(endpoint) {
+  const response = await fetch(API_BASE_URL + endpoint);
   const data = await response.json();
   return data;
 }
@@ -52,7 +53,7 @@ async function updateTeamsData() {
   console.log("Start overwriting \"teams\" table");
 
   connection.query("DELETE FROM teams");
-  const teamsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/teams")).teams;
+  const teamsData = (await fetchDataFromAPI("/teams")).teams;
 
   const columns = ["ID", "Name", "LocationName", "TeamName", "Abbreviation", "LightLogoURL", "DarkLogoURL", "VenueName", "VenueCity", "FirstYearOfPlay", "Conference", "Division"];
 
@@ -82,12 +83,12 @@ async function updateTeamsData() {
 async function insertSeasonData(seasons) {
   console.log("Start inserting into / updating \"seasons\" table");
 
-  const seasonsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/seasons?season=" + seasons)).seasons;
+  const seasonsData = (await fetchDataFromAPI("/seasons?season=" + seasons)).seasons;
 
   const columns = ["ID", "RegularSeasonStartDate", "RegularSeasonEndDate", "SeasonEndDate", "NumberOfGames", "TiesInUse", "ConferencesInUse", "DivisionsInUse", "WildCardInUse", "Conferences", "Divisions", "PlayoffRounds"];
 
   for (const season of seasonsData) {
-    const standingsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/standings?season=" + season.seasonId)).records;
+    const standingsData = (await fetchDataFromAPI("/standings?season=" + season.seasonId)).records;
 
     const conferences = new Set();
     const divisions = [];
@@ -101,7 +102,7 @@ async function insertSeasonData(seasons) {
     }
 
     if (playoffsDataSeasons.includes(season)) {
-      const playoffsData = await fetchData("https://statsapi.web.nhl.com/api/v1/tournaments/playoffs?season=" + season.seasonId);
+      const playoffsData = await fetchDataFromAPI("/tournaments/playoffs?season=" + season.seasonId);
       if ("rounds" in playoffsData) playoffsData.rounds.forEach((round) => playoffRounds.push(round.names?.name));
     }
 
@@ -134,7 +135,7 @@ async function insertPlayoffSeriesData(seasons) {
 
   for (const season of seasons) {
     if (playoffsDataSeasons.includes(season)) {
-      const playoffsData = await fetchData("https://statsapi.web.nhl.com/api/v1/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season);
+      const playoffsData = await fetchDataFromAPI("/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season);
       if (!("rounds" in playoffsData)) continue;
 
       for (const round of playoffsData.rounds) {
@@ -175,7 +176,7 @@ async function insertStandingsData(seasons) {
   const columns = ["ID", "TeamID", "Team", "Season", "LogoURL", "Conference", "Division", "ClinchIndicator", "Rank", "Points", "GamesPlayed", "Wins", "Losses", "Ties", "OvertimeLosses", "GoalsFor", "GoalsAgainst", "Difference", "HomeRecord", "AwayRecord", "Last10", "Streak"];
 
   for (const season of seasons) {
-    const standingsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/standings?expand=standings.record&season=" + season)).records;
+    const standingsData = (await fetchDataFromAPI("/standings?expand=standings.record&season=" + season)).records;
 
     for (const division of standingsData) {
       for (const team of division.teamRecords) {
@@ -217,13 +218,13 @@ async function insertPlayerData(seasons) {
   console.log("Start inserting into / updating \"skaters\" and \"goalies\" tables");
 
   for (const season of seasons) {
-    const teamsData = (await fetchData("https://statsapi.web.nhl.com/api/v1/teams?expand=team.roster,roster.person&season=" + season)).teams;
+    const teamsData = (await fetchDataFromAPI("/teams?expand=team.roster,roster.person&season=" + season)).teams;
 
     for (const team of teamsData) {
       if (!("roster" in team)) continue;
 
       for (const player of team.roster?.roster) {
-        let playerStats = (await fetchData("https://statsapi.web.nhl.com/api/v1/people/" + player.person?.id + "/stats?stats=statsSingleSeason&season=" + season)).stats[0].splits;
+        let playerStats = (await fetchDataFromAPI("/people/" + player.person?.id + "/stats?stats=statsSingleSeason&season=" + season)).stats[0].splits;
         let hasStats = true;
 
         playerStats.length === 0 ? hasStats = false : playerStats = playerStats[0].stat;
@@ -312,8 +313,8 @@ async function insertGameData(seasons) {
     // Fetch data in chunks instead of for whole season to prevent 504 timeout error
     while (startMonth !== 8 || endDay !== "-31") {
       monthlyData.push(
-        (await fetchData(
-          "https://statsapi.web.nhl.com/api/v1/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series" +
+        (await fetchDataFromAPI(
+          "/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series" +
           additionalExpand +
           "&startDate=" + startYear + "-" + (startMonth < 10 ? 0 : "") + startMonth + startDay +
           "&endDate=" + endYear + "-" + (endMonth < 10 ? 0 : "") + endMonth + endDay
