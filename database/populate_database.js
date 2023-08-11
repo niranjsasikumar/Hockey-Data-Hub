@@ -48,7 +48,7 @@ for (const table of tableColumns) {
 }
 
 // Fetch data from the given URL
-async function fetchDataFromAPI(endpoint) {
+async function fetchDataFromApi(endpoint) {
   const response = await fetch(API_BASE_URL + endpoint);
   const data = await response.json();
   return data;
@@ -72,12 +72,16 @@ function insertIntoTable(table, columns, values) {
   connection.query(insert + vals + update, values);
 }
 
+function getLogoUrl(season, teamId) {
+  return "https://www-league.nhlstatic.com/images/logos/teams-" + season + "-light/" + teamId + ".svg";
+}
+
 // Fetch data of current teams from NHL API and overwrite the data in "teams" table
 async function updateTeamsData() {
   console.log("Start overwriting \"teams\" table");
 
   connection.query("DELETE FROM teams");
-  const teamsData = (await fetchDataFromAPI("/teams")).teams;
+  const teamsData = (await fetchDataFromApi("/teams")).teams;
 
   for (const team of teamsData) {
     const values = [
@@ -86,8 +90,7 @@ async function updateTeamsData() {
       team.locationName,
       team.teamName,
       team.abbreviation,
-      "https://www-league.nhlstatic.com/images/logos/teams-" + currentSeason +"-light/" + team.id + ".svg",
-      "https://www-league.nhlstatic.com/images/logos/teams-" + currentSeason +"-dark/" + team.id + ".svg",
+      getLogoUrl(currentSeason, team.id),
       team.venue?.name,
       team.venue?.city,
       team.firstYearOfPlay,
@@ -106,10 +109,10 @@ async function updateTeamsData() {
 async function insertSeasonData(seasons) {
   console.log("Start inserting into / updating \"seasons\" table");
 
-  const seasonsData = (await fetchDataFromAPI("/seasons?season=" + seasons)).seasons;
+  const seasonsData = (await fetchDataFromApi("/seasons?season=" + seasons)).seasons;
 
   for (const season of seasonsData) {
-    const standingsData = (await fetchDataFromAPI("/standings?season=" + season.seasonId)).records;
+    const standingsData = (await fetchDataFromApi("/standings?season=" + season.seasonId)).records;
 
     const conferences = new Set();
     const divisions = [];
@@ -123,7 +126,7 @@ async function insertSeasonData(seasons) {
     }
 
     if (playoffsDataSeasons.includes(season)) {
-      const playoffsData = await fetchDataFromAPI("/tournaments/playoffs?season=" + season.seasonId);
+      const playoffsData = await fetchDataFromApi("/tournaments/playoffs?season=" + season.seasonId);
       if ("rounds" in playoffsData) playoffsData.rounds.forEach((round) => playoffRounds.push(round.names?.name));
     }
 
@@ -154,7 +157,7 @@ async function insertPlayoffSeriesData(seasons) {
 
   for (const season of seasons) {
     if (playoffsDataSeasons.includes(season)) {
-      const playoffsData = await fetchDataFromAPI("/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season);
+      const playoffsData = await fetchDataFromApi("/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season);
       if (!("rounds" in playoffsData)) continue;
 
       for (const round of playoffsData.rounds) {
@@ -167,10 +170,10 @@ async function insertPlayoffSeriesData(seasons) {
             series.seriesNumber,
             series.matchupTeams[0].team?.id,
             series.matchupTeams[0].team?.name,
-            "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + series.matchupTeams[0].team?.id + ".svg",
+            getLogoUrl(season, series.matchupTeams[0].team?.id),
             series.matchupTeams[1].team?.id,
             series.matchupTeams[1].team?.name,
-            "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + series.matchupTeams[1].team?.id + ".svg",
+            getLogoUrl(season, series.matchupTeams[1].team?.id),
             series.currentGame?.seriesSummary?.seriesStatus
           ];
 
@@ -193,7 +196,7 @@ async function insertStandingsData(seasons) {
   console.log("Start inserting into / updating \"standings\" table");
 
   for (const season of seasons) {
-    const standingsData = (await fetchDataFromAPI("/standings?expand=standings.record&season=" + season)).records;
+    const standingsData = (await fetchDataFromApi("/standings?expand=standings.record&season=" + season)).records;
 
     for (const division of standingsData) {
       for (const team of division.teamRecords) {
@@ -202,7 +205,7 @@ async function insertStandingsData(seasons) {
           team.team?.id,
           team.team?.name,
           season,
-          "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + team.team?.id + ".svg",
+          getLogoUrl(season, team.team?.id),
           division.conference?.name,
           division.division?.name,
           team.clinchIndicator,
@@ -230,18 +233,22 @@ async function insertStandingsData(seasons) {
   console.log("Finished inserting into / updating \"standings\" table");
 }
 
+function getPlayerImageUrl(playerId) {
+  return "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/" + playerId + ".jpg";
+}
+
 // Fetch player data for the given seasons from NHL API and insert or update the data in "skaters" and "goalies" tables
 async function insertPlayerData(seasons) {
   console.log("Start inserting into / updating \"skaters\" and \"goalies\" tables");
 
   for (const season of seasons) {
-    const teamsData = (await fetchDataFromAPI("/teams?expand=team.roster,roster.person&season=" + season)).teams;
+    const teamsData = (await fetchDataFromApi("/teams?expand=team.roster,roster.person&season=" + season)).teams;
 
     for (const team of teamsData) {
       if (!("roster" in team)) continue;
 
       for (const player of team.roster?.roster) {
-        let playerStats = (await fetchDataFromAPI("/people/" + player.person?.id + "/stats?stats=statsSingleSeason&season=" + season)).stats[0].splits;
+        let playerStats = (await fetchDataFromApi("/people/" + player.person?.id + "/stats?stats=statsSingleSeason&season=" + season)).stats[0].splits;
         let hasStats = true;
 
         playerStats.length === 0 ? hasStats = false : playerStats = playerStats[0].stat;
@@ -255,8 +262,8 @@ async function insertPlayerData(seasons) {
           team.id,
           team.name,
           season,
-          "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/" + player.person?.id + ".jpg",
-          "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + team.id + ".svg",
+          getPlayerImageUrl(player.person?.id),
+          getLogoUrl(season, team.id),
           player.jerseyNumber,
           player.person?.captain,
           player.person?.alternateCaptain,
@@ -328,7 +335,7 @@ async function insertGameData(seasons) {
     // Fetch data in chunks instead of for whole season to prevent 504 timeout error
     while (startMonth !== 8 || endDay !== "-31") {
       monthlyData.push(
-        (await fetchDataFromAPI(
+        (await fetchDataFromApi(
           "/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series" +
           additionalExpand +
           "&startDate=" + startYear + "-" + (startMonth < 10 ? 0 : "") + startMonth + startDay +
@@ -399,13 +406,13 @@ async function insertGameData(seasons) {
             awayId,
             game.teams?.away?.team?.name,
             game.teams?.away?.team?.abbreviation,
-            "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + awayId + ".svg",
+            getLogoUrl(season, awayId),
             game.teams?.away?.score,
             awayGoalScorers,
             game.teams?.home?.team?.id,
             game.teams?.home?.team?.name,
             game.teams?.home?.team?.abbreviation,
-            "https://www-league.nhlstatic.com/images/logos/teams-" + season +"-light/" + game.teams?.home?.team?.id + ".svg",
+            getLogoUrl(season, game.teams?.home?.team?.id),
             game.teams?.home?.score,
             homeGoalScorers,
           ];
@@ -420,9 +427,9 @@ async function insertGameData(seasons) {
 }
 
 await updateTeamsData();
-await insertSeasonData(seasons);
+/* await insertSeasonData(seasons);
 await insertPlayoffSeriesData(seasons);
 await insertStandingsData(seasons);
 await insertPlayerData(seasons);
-await insertGameData(seasons);
+await insertGameData(seasons); */
 connection.end();
