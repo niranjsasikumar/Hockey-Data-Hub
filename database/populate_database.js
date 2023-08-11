@@ -23,6 +23,30 @@ const connection = mysql.createConnection({
   database: process.env.DB_DATABASE
 });
 
+const teamsColumns = [];
+const seasonsColumns = [];
+const playoffSeriesColumns = [];
+const standingsColumns = [];
+const goaliesColumns = [];
+const skatersColumns = [];
+const gamesColumns = [];
+
+const tableColumns = [
+  ["teams", teamsColumns],
+  ["seasons", seasonsColumns],
+  ["playoff_series", playoffSeriesColumns],
+  ["standings", standingsColumns],
+  ["goalies", goaliesColumns],
+  ["skaters", skatersColumns],
+  ["games", gamesColumns]
+];
+
+for (const table of tableColumns) {
+  connection.query("SHOW COLUMNS FROM " + table[0], function(err, rows) { 
+    for(const row of rows) table[1].push(row.Field);
+  });
+}
+
 // Fetch data from the given URL
 async function fetchDataFromAPI(endpoint) {
   const response = await fetch(API_BASE_URL + endpoint);
@@ -55,8 +79,6 @@ async function updateTeamsData() {
   connection.query("DELETE FROM teams");
   const teamsData = (await fetchDataFromAPI("/teams")).teams;
 
-  const columns = ["ID", "Name", "LocationName", "TeamName", "Abbreviation", "LightLogoURL", "DarkLogoURL", "VenueName", "VenueCity", "FirstYearOfPlay", "Conference", "Division"];
-
   for (const team of teamsData) {
     const values = [
       team.id,
@@ -70,10 +92,11 @@ async function updateTeamsData() {
       team.venue?.city,
       team.firstYearOfPlay,
       team.conference?.name,
-      team.division?.name
+      team.division?.name,
+      null
     ];
 
-    insertIntoTable("teams", columns, values);
+    insertIntoTable("teams", teamsColumns, values);
   }
 
   console.log("Finished overwriting \"teams\" table");
@@ -84,8 +107,6 @@ async function insertSeasonData(seasons) {
   console.log("Start inserting into / updating \"seasons\" table");
 
   const seasonsData = (await fetchDataFromAPI("/seasons?season=" + seasons)).seasons;
-
-  const columns = ["ID", "RegularSeasonStartDate", "RegularSeasonEndDate", "SeasonEndDate", "NumberOfGames", "TiesInUse", "ConferencesInUse", "DivisionsInUse", "WildCardInUse", "Conferences", "Divisions", "PlayoffRounds"];
 
   for (const season of seasonsData) {
     const standingsData = (await fetchDataFromAPI("/standings?season=" + season.seasonId)).records;
@@ -121,7 +142,7 @@ async function insertSeasonData(seasons) {
       playoffRounds.toString()
     ];
 
-    insertIntoTable("seasons", columns, values);
+    insertIntoTable("seasons", seasonsColumns, values);
   }
 
   console.log("Finished inserting into / updating \"seasons\" table");
@@ -130,8 +151,6 @@ async function insertSeasonData(seasons) {
 // Fetch playoff series data for the given seasons from NHL API and insert or update the data in "playoff_series" table
 async function insertPlayoffSeriesData(seasons) {
   console.log("Start inserting into / updating \"playoff_series\" table");
-
-  const columns = ["ID", "Season", "RoundID", "Round", "SeriesID", "Team1ID", "Team1Name", "Team1LogoURL", "Team2ID", "Team2Name", "Team2LogoURL", "SeriesStatus"];
 
   for (const season of seasons) {
     if (playoffsDataSeasons.includes(season)) {
@@ -155,7 +174,7 @@ async function insertPlayoffSeriesData(seasons) {
             series.currentGame?.seriesSummary?.seriesStatus
           ];
 
-          insertIntoTable("playoff_series", columns, values);
+          insertIntoTable("playoff_series", playoffSeriesColumns, values);
         }
       }
     }
@@ -172,8 +191,6 @@ function getRecordString(record) {
 // Fetch standings data for the given seasons from NHL API and insert or update the data in "standings" table
 async function insertStandingsData(seasons) {
   console.log("Start inserting into / updating \"standings\" table");
-
-  const columns = ["ID", "TeamID", "Team", "Season", "LogoURL", "Conference", "Division", "ClinchIndicator", "Rank", "Points", "GamesPlayed", "Wins", "Losses", "Ties", "OvertimeLosses", "GoalsFor", "GoalsAgainst", "Difference", "HomeRecord", "AwayRecord", "Last10", "Streak"];
 
   for (const season of seasons) {
     const standingsData = (await fetchDataFromAPI("/standings?expand=standings.record&season=" + season)).records;
@@ -205,7 +222,7 @@ async function insertStandingsData(seasons) {
           team.streak?.streakCode
         ];
 
-        insertIntoTable("standings", columns, values);
+        insertIntoTable("standings", standingsColumns, values);
       }
     }
   }
@@ -253,7 +270,7 @@ async function insertPlayerData(seasons) {
 
         if (player.position?.type === "Goalie") {
           table = "goalies";
-          columns = ["ID", "PlayerID", "Player", "TeamID", "Team", "Season", "ImageURL", "TeamLogoURL", "Number", "Captain", "AlternateCaptain", "Catches", "Nationality", "DateOfBirth", "Height", "Weight", "GamesPlayed", "ShotsAgainst", "GoalsAgainst", "Saves", "SavePercentage", "GoalsAgainstAverage", "Shutouts"];
+          columns = goaliesColumns;
 
           if (hasStats) {
             values.push(playerStats.shotsAgainst);
@@ -267,7 +284,7 @@ async function insertPlayerData(seasons) {
           }
         } else {
           table = "skaters";
-          columns = ["ID", "PlayerID", "Player", "TeamID", "Team", "Season", "ImageURL", "TeamLogoURL", "Number", "Position", "PositionType", "Captain", "AlternateCaptain", "Shoots", "Nationality", "DateOfBirth", "Height", "Weight", "GamesPlayed", "Goals", "Assists", "Points", "PointsPerGamesPlayed", "PowerPlayGoals", "PowerPlayPoints", "Shots", "ShootingPercentage", "FaceoffPercentage"];
+          columns = skatersColumns;
 
           values.splice(9, 0, player.position?.abbreviation, player.position?.type);
           
@@ -297,8 +314,6 @@ async function insertPlayerData(seasons) {
 // Fetch game data for the given seasons from NHL API and insert or update the data in "games" table
 async function insertGameData(seasons) {
   console.log("Start inserting into / updating \"games\" table");
-
-  const columns = ["ID", "Season", "Type", "DateTime", "LastPeriod", "GameStatus", "VenueName", "PlayoffRound", "PlayoffSeriesID", "PlayoffGameNumber", "AwayID", "AwayName", "AwayAbbreviation", "AwayLogoURL", "AwayGoals", "AwayGoalScorers", "HomeID", "HomeName", "HomeAbbreviation", "HomeLogoURL", "HomeGoals", "HomeGoalScorers"];
 
   for (const season of seasons) {
     const monthlyData = [];
@@ -395,7 +410,7 @@ async function insertGameData(seasons) {
             homeGoalScorers,
           ];
 
-          insertIntoTable("games", columns, values);
+          insertIntoTable("games", gamesColumns, values);
         }
       }
     }
