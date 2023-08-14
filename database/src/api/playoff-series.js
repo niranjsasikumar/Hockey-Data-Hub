@@ -6,6 +6,14 @@ function hasPlayoffsData(season) {
   return PLAYOFFS_DATA_SEASONS.includes(season);
 }
 
+// Get playoffs data for the given seasons from NHL API
+async function getPlayoffsData(seasons) {
+  const playoffsDataPromises = seasons.map(
+    season => fetchDataFromApi("/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season)
+  );
+  return await Promise.all(playoffsDataPromises);
+}
+
 // Returns a row of values to insert into "playoff_series" table
 function extractPlayoffSeriesData(season, round, series) {
   return [
@@ -26,14 +34,14 @@ function extractPlayoffSeriesData(season, round, series) {
 
 // Convert playoff series data from NHL API for the given seasons to rows of values to insert into "playoff_series" table
 export async function getPlayoffSeriesValues(seasons) {
+  const validSeasons = seasons.filter(hasPlayoffsData);
+  const playoffsData = await getPlayoffsData(validSeasons);
   const playoffSeriesValues = [];
 
-  for (const season of seasons.filter(hasPlayoffsData)) {
-    const playoffsData = (await fetchDataFromApi("/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season)).rounds;
-
-    for (const round of playoffsData) {
+  for (let i = 0; i < validSeasons.length; i++) {
+    for (const round of playoffsData[i].rounds) {
       for (const series of round.series) {
-        playoffSeriesValues.push(extractPlayoffSeriesData(season, round, series));
+        playoffSeriesValues.push(extractPlayoffSeriesData(validSeasons[i], round, series));
       }
     }
   }

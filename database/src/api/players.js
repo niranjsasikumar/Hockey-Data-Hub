@@ -1,5 +1,22 @@
 import { getLogoUrl, fetchDataFromApi } from "./api.js";
 
+// Get team data for the given seasons from NHL API
+async function getTeamData(seasons) {
+  const teamDataPromises = seasons.map(
+    season => fetchDataFromApi("/teams?expand=team.roster,roster.person&season=" + season)
+  );
+  return await Promise.all(teamDataPromises);
+}
+
+// Get player stats for the given team and season from NHL API
+async function getPlayerStatsData(teamRoster, season) {
+  const playerStatsDataPromises = teamRoster.map(
+    player => fetchDataFromApi("/people/" + player.person?.id + "/stats?stats=statsSingleSeason&season=" + season)
+  );
+  return await Promise.all(playerStatsDataPromises);
+}
+
+// Get the URL of a player's headshot image
 function getPlayerImageUrl(playerId) {
   return "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/" + playerId + ".jpg";
 }
@@ -70,24 +87,27 @@ function extractSkaterData(season, team, player, hasStats, playerStats) {
 
 // Convert player data from NHL API for the given seasons to rows of values to insert into "skaters" and "goalies" tables
 export async function getPlayerValues(seasons) {
+  const teamData = await getTeamData(seasons);
   const skaterValues = [];
   const goalieValues = [];
 
-  for (const season of seasons) {
-    const teamsData = (await fetchDataFromApi("/teams?expand=team.roster,roster.person&season=" + season)).teams;
-
-    for (const team of teamsData) {
+  for (let i = 0; i < seasons.length; i++) {
+    for (const team of teamData[i].teams) {
       if (!("roster" in team)) continue;
 
-      for (const player of team.roster?.roster) {
-        let playerStats = (await fetchDataFromApi("/people/" + player.person?.id + "/stats?stats=statsSingleSeason&season=" + season)).stats[0].splits;
+      const roster = team.roster?.roster;
+      const playerStatsData = await getPlayerStatsData(roster, seasons[i]);
+
+      for (let j = 0; j < roster.length; j++) {
+        const player = roster[j];
+        let playerStats = playerStatsData[j].stats[0].splits;
         let hasStats = true;
         playerStats.length === 0 ? hasStats = false : playerStats = playerStats[0].stat;
 
         if (player.position?.type === "Goalie") {
-          goalieValues.push(extractGoalieData(season, team, player, hasStats, playerStats));
+          goalieValues.push(extractGoalieData(seasons[i], team, player, hasStats, playerStats));
         } else {
-          skaterValues.push(extractSkaterData(season, team, player, hasStats, playerStats));
+          skaterValues.push(extractSkaterData(seasons[i], team, player, hasStats, playerStats));
         }
       }
     }

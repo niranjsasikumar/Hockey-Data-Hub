@@ -3,46 +3,43 @@ import { fetchDataFromApi, getLogoUrl } from "./api.js";
 
 // Get the games schedule for a season
 async function getSeasonSchedule(season) {
-  let scheduleData = [];
   const playoffsExpand = PLAYOFFS_DATA_SEASONS.includes(season) ? ",series.round" : "";
-  let startYear = parseInt(season.toString().slice(0, 4));
-  let startMonth = 8;
-  let startDay = "-01";
-  let endYear = startYear;
-  let endMonth = startMonth + 1;
-  let endDay = "-01";
+  const startYear = season.toString().slice(0, 4);
+  const endYear = season.toString().slice(4);
+
+  const dateRanges = [
+    [startYear + "-08-01", startYear + "-09-01"],
+    [startYear + "-09-02", startYear + "-10-01"],
+    [startYear + "-10-02", startYear + "-11-01"],
+    [startYear + "-11-02", startYear + "-12-01"],
+    [startYear + "-12-02", endYear + "-01-01"],
+    [endYear + "-01-02", endYear + "-02-01"],
+    [endYear + "-02-02", endYear + "-03-01"],
+    [endYear + "-03-02", endYear + "-04-01"],
+    [endYear + "-04-02", endYear + "-05-01"],
+    [endYear + "-05-02", endYear + "-06-01"],
+    [endYear + "-06-02", endYear + "-07-01"],
+    [endYear + "-07-02", endYear + "-07-31"],
+  ];
 
   // Fetch data in chunks instead of for whole season to prevent timeout error
-  while (startMonth !== 8 || endDay !== "-31") {
-    scheduleData = scheduleData.concat(
-      (await fetchDataFromApi(
-        "/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series" +
-        playoffsExpand +
-        "&startDate=" + startYear + "-" + (startMonth < 10 ? 0 : "") + startMonth + startDay +
-        "&endDate=" + endYear + "-" + (endMonth < 10 ? 0 : "") + endMonth + endDay
-      )).dates
-    );
+  const seasonSchedulePromises = dateRanges.map(
+    range => fetchDataFromApi(
+      "/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series"
+      + playoffsExpand + "&startDate=" + range[0] + "&endDate=" + range[1]
+    )
+  );
 
-    if (startMonth === 8) startDay = "-02";
+  const seasonSchedule = await Promise.all(seasonSchedulePromises);
+  return seasonSchedule.map(month => month.dates).flat();
+}
 
-    if (startMonth === 12) {
-      startMonth = 1;
-      startYear++;
-    } else {
-      startMonth++;
-    }
-
-    if (endMonth === 12) {
-      endMonth = 1;
-      endYear++;
-    } else if (endMonth === 7) {
-      endDay = "-31";
-    } else {
-      endMonth++;
-    }
-  }
-
-  return scheduleData;
+// Get schedule data for the given seasons from NHL API
+async function getScheduleData(seasons) {
+  const scheduleDataPromises = seasons.map(
+    season => getSeasonSchedule(season)
+  );
+  return await Promise.all(scheduleDataPromises);
 }
 
 // Get goal scorer information for the away and home sides in a game
@@ -114,16 +111,15 @@ function extractGameData(season, game) {
 
 // Convert game data from NHL API for the given seasons to rows of values to insert into "games" table
 export async function getGameValues(seasons) {
+  const scheduleData = await getScheduleData(seasons);
   const gameValues = [];
 
-  for (const season of seasons) {
-    const scheduleData = await getSeasonSchedule(season);
-
-    for (const date of scheduleData) {
+  for (let i = 0; i < seasons.length; i++) {
+    for (const date of scheduleData[i]) {
       for (const game of date.games) {
-        if (!PLAYOFFS_DATA_SEASONS.includes(season) && game.gameType === "P") continue;
+        if (!PLAYOFFS_DATA_SEASONS.includes(seasons[i]) && game.gameType === "P") continue;
         if (game.linescore?.currentPeriodOrdinal === undefined) continue;
-        gameValues.push(extractGameData(season, game));
+        gameValues.push(extractGameData(seasons[i], game));
       }
     }
   }

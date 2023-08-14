@@ -11,7 +11,7 @@ export async function updateTeamsData() {
   console.log("Start overwriting \"teams\" table");
   await clearTeamsTable();
   const teamValues = await getTeamValues();
-  insertIntoTable("teams", columns.teams, teamValues);
+  await insertIntoTable("teams", columns.teams, teamValues);
   console.log("Finished overwriting \"teams\" table");
 }
 
@@ -19,7 +19,7 @@ export async function updateTeamsData() {
 export async function insertSeasonData(seasons) {
   console.log("Start inserting into / updating \"seasons\" table");
   const seasonValues = await getSeasonValues(seasons);
-  insertIntoTable("seasons", columns.seasons, seasonValues);
+  await insertIntoTable("seasons", columns.seasons, seasonValues);
   console.log("Finished inserting into / updating \"seasons\" table");
 }
 
@@ -27,7 +27,7 @@ export async function insertSeasonData(seasons) {
 export async function insertPlayoffSeriesData(seasons) {
   console.log("Start inserting into / updating \"playoff_series\" table");
   const playoffSeriesValues = await getPlayoffSeriesValues(seasons);
-  insertIntoTable("playoff_series", columns.playoff_series, playoffSeriesValues);
+  await insertIntoTable("playoff_series", columns.playoff_series, playoffSeriesValues);
   console.log("Finished inserting into / updating \"playoff_series\" table");
 }
 
@@ -35,7 +35,7 @@ export async function insertPlayoffSeriesData(seasons) {
 export async function insertStandingsData(seasons) {
   console.log("Start inserting into / updating \"standings\" table");
   const standingsValues = await getStandingsValues(seasons);
-  insertIntoTable("standings", columns.standings, standingsValues);
+  await insertIntoTable("standings", columns.standings, standingsValues);
   console.log("Finished inserting into / updating \"standings\" table");
 }
 
@@ -43,8 +43,8 @@ export async function insertStandingsData(seasons) {
 export async function insertPlayerData(seasons) {
   console.log("Start inserting into / updating \"skaters\" and \"goalies\" tables");
   const [skaterValues, goalieValues] = await getPlayerValues(seasons);
-  insertIntoTable("skaters", columns.skaters, skaterValues);
-  insertIntoTable("goalies", columns.goalies, goalieValues);
+  await insertIntoTable("skaters", columns.skaters, skaterValues);
+  await insertIntoTable("goalies", columns.goalies, goalieValues);
   console.log("Finished inserting into / updating \"skaters\" and \"goalies\" tables");
 }
 
@@ -52,6 +52,6 @@ export async function insertPlayerData(seasons) {
 export async function insertGameData(seasons) {
   console.log("Start inserting into / updating \"games\" table");
   const gameValues = await getGameValues(seasons);
-  insertIntoTable("games", columns.games, gameValues);
+  await insertIntoTable("games", columns.games, gameValues);
   console.log("Finished inserting into / updating \"games\" table");
 }
