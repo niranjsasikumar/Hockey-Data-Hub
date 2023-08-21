@@ -44,3 +44,9 @@
     padding-bottom: 56%;
   }
 }
+
+@media only screen and (max-height: 600px) {
+  .home-card div {
+    padding-bottom: 56%;
+  }
+}
