@@ -38,3 +38,9 @@
 .home-card:hover h1, .home-card:focus h1 {
   border: 7px solid white;
 }
+
+@media only screen and (max-width: 600px) {
+  .home-card div {
+    padding-bottom: 56%;
+  }
+}
