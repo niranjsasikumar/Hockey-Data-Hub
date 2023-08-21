@@ -1,0 +1,12 @@
+.logo-button {
+  display: inline-block;
+  margin: 0;
+  margin-top: 7px;
+  margin-left: 3px;
+  padding: 2px 0;
+}
+
+.logo-button img {
+  width: 40px;
+  height: auto;
+}

@@ -1,0 +1,40 @@
+.home-card div {
+  background-color: #051A2B;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%;
+  color: white;
+  text-align: center;
+  position: relative;
+  border-radius: 20px;
+  transition: all .5s;
+  cursor: pointer;
+  box-shadow: 0 5px 5px gray;
+}
+
+.home-card:hover div, .home-card:focus div {
+  background-size: 120%;
+}
+
+.home-card h1 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: 7px solid transparent;
+  padding: 0.5em;
+  transition: all .5s;
+  font-size: 2em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.home-card:hover h1, .home-card:focus h1 {
+  border: 7px solid white;
+}
