@@ -6,7 +6,6 @@ function Footer() {
       component="footer"
       sx={{
         py: 3,
-        px: 2,
         mt: "auto",
         backgroundColor: "#2e2e2e",
         color: "white",

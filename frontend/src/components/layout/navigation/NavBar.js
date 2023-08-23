@@ -43,7 +43,7 @@ function NavBar() {
   return (
     <>
       <AppBar component="nav" position="sticky" sx={{ backgroundColor: "#2e2e2e"}}>
-        <Container disableGutters maxWidth={false} sx={{ maxWidth: "1300px", px: 1 }}>
+        <Container disableGutters maxWidth={false} sx={{ maxWidth: "1300px" }}>
           <Toolbar>
             <Box sx={{ flexGrow: 1 }}>
               <Link to="/" className="logo-button">

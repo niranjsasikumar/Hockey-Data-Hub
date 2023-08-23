@@ -37,7 +37,7 @@ const cardItems = [
 function Home() {
   return(
     <Container maxWidth={false} sx={{ maxWidth: "1300px", py: 3 }}>
-      <Grid container spacing={2} sx={{ px: 1.5 }}>
+      <Grid container spacing={2}>
         {cardItems.map((item) => (
           <Grid item key={item.text} xs={12} sm={6} md={4}>
             <LinkCard text={item.text} image={item.image} link={item.link} />
