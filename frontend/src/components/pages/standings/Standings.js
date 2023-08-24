@@ -1,13 +1,31 @@
 import React from "react";
-import { seasonConference, standingsConference } from "./sample-standings-data";
-import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { seasonConference, standingsConference, seasonDivision, standingsDivision, seasonLeague, standingsLeague, playoffs } from "./sample-standings-data";
+import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Box, Grid } from "@mui/material";
 import StandingsConference from "./StandingsConference";
 import StandingsDivision from "./StandingsDivision";
-import StandingsLeague from "./StandingsLeague";
+import StandingsTable from "./StandingsTable";
+import SeriesCard from "./SeriesCard";
+
+const seasons = {
+  20222023: {
+    seasonInfo: seasonConference,
+    standings: standingsConference
+  },
+  20212022: {
+    seasonInfo: seasonDivision,
+    standings: standingsDivision
+  },
+  20202021: {
+    seasonInfo: seasonLeague,
+    standings: standingsLeague
+  }
+}
 
 function Standings() {
   const [season, setSeason] = React.useState(20222023);
   const [type, setType] = React.useState("regular");
+  const [seasonInfo, setSeasonInfo] = React.useState(seasonConference);
+  const [standings, setStandings] = React.useState(standingsConference);
 
   const handleSeasonChange = (event) => {
     setSeason(event.target.value);
@@ -17,8 +35,10 @@ function Standings() {
     setType(event.target.value);
   };
 
-  const seasonInfo = seasonConference;
-  const standings = standingsConference;
+  React.useEffect(() => {
+    setSeasonInfo(seasons[season].seasonInfo);
+    setStandings(seasons[season].standings);
+  }, [season]);
 
   return(
     <Container maxWidth={false} sx={{ maxWidth: "1300px", py: 3 }}>
@@ -36,21 +56,34 @@ function Standings() {
         <InputLabel id="type-label">Type</InputLabel>
         <Select labelId="type-label" id="type" value={type} label="Type" onChange={handleTypeChange}>
           <MenuItem value="regular">Regular</MenuItem>
-          {"playoffs" in standings && <MenuItem value="playoffs">Playoffs</MenuItem>}
+          {playoffs !== null && <MenuItem value="playoffs">Playoffs</MenuItem>}
         </Select>
       </FormControl>
       <Divider sx={{ mt: 1, mb: 3 }} />
 
       {type === "regular" ? (
         seasonInfo.ConferencesInUse ? (
-          <StandingsConference standings={standings.regular} season={seasonInfo} />
+          <StandingsConference standings={standings} season={seasonInfo} />
         ) : seasonInfo.DivisionsInUse ? (
-          <StandingsDivision standings={standings.regular} />
+          <StandingsDivision standings={standings} season={seasonInfo} />
         ) : (
-          <StandingsLeague standings={standings.regular} />
+          <Box sx={{ mt: 5 }}>
+            <StandingsTable standings={standings} season={seasonInfo} />
+          </Box>
         )
       ) : (
-        <></>
+        playoffs.map((round) => (
+          <div key={round.round}>
+            <Typography variant="h5" component="h2" mt={4} mb={2}>{round.round}</Typography>
+            <Grid container spacing={2}>
+              {round.series.map((series) => (
+                <Grid key={series.ID} item xs={12} sm={6} md={4} lg={3}>
+                  <SeriesCard series={series} />
+                </Grid>
+              ))}
+            </Grid>
+          </div>
+        ))
       )}
     </Container>
   );
