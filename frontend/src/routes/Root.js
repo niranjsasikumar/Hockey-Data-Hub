@@ -2,7 +2,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Box, CssBaseline } from "@mui/material";
 import NavBar from "../components/layout/navigation/NavBar";
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Footer from "../components/layout/footer/Footer";
 
 function Root() {
@@ -15,6 +15,7 @@ function Root() {
           minHeight: "100vh",
         }}
       >
+        <ScrollRestoration />
         <CssBaseline />
         <NavBar />
         <Outlet />
