@@ -5,6 +5,7 @@ import Root from "./routes/Root"
 import ErrorPage from "./routes/ErrorPage";
 import Home from "./components/pages/home/Home";
 import Scores from "./components/pages/scores/Scores";
+import Standings from "./components/pages/standings/Standings";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "scores",
         element: <Scores />
+      },
+      {
+        path: "standings",
+        element: <Standings />
       }
     ]
   }
