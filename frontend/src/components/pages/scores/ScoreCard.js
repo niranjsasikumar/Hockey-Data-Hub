@@ -32,7 +32,7 @@ function ScoreCard({ game }) {
                   src={game.AwayLogoURL}
                   alt=""
                 />
-                <Typography variant="h6" component="p" sx={{ display: { xs: "none", md: "block" } }}>{game.AwayShortName}</Typography>
+                <Typography variant="h6" component="p" sx={{ display: { xs: "none", md: "block" } }}>{game.AwayName}</Typography>
                 <Typography variant="h6" component="p" sx={{ display: { xs: "block", md: "none" } }}>{game.AwayAbbreviation}</Typography>
               </Box>
               <Typography variant="h6" component="p" fontSize={28}>{game.AwayGoals}</Typography>
@@ -49,7 +49,7 @@ function ScoreCard({ game }) {
                   src={game.HomeLogoURL}
                   alt=""
                 />
-                <Typography variant="h6" component="p" sx={{ display: { xs: "none", md: "block" } }}>{game.HomeShortName}</Typography>
+                <Typography variant="h6" component="p" sx={{ display: { xs: "none", md: "block" } }}>{game.HomeName}</Typography>
                 <Typography variant="h6" component="p" sx={{ display: { xs: "block", md: "none" } }}>{game.HomeAbbreviation}</Typography>
               </Box>
               <Typography variant="h6" component="p" fontSize={28}>{game.HomeGoals}</Typography>
