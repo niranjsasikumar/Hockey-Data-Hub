@@ -3,52 +3,62 @@ export const skaterStats = {
     {
       name: "Games Played",
       property: "GamesPlayed",
-      abbreviation: "GP"
+      abbreviation: "GP",
+      sortDescending: true
     },
     {
       name: "Goals",
       property: "Goals",
-      abbreviation: "G"
+      abbreviation: "G",
+      sortDescending: true
     },
     {
       name: "Assists",
       property: "Assists",
-      abbreviation: "A"
+      abbreviation: "A",
+      sortDescending: true
     },
     {
       name: "Points",
       property: "Points",
-      abbreviation: "P"
+      abbreviation: "P",
+      sortDescending: true
     },
     {
       name: "Points per Games Played",
       property: "PointsPerGamesPlayed",
-      abbreviation: "P/PG"
+      abbreviation: "P/PG",
+      sortDescending: true
     },
     {
       name: "Power Play Goals",
       property: "PowerPlayGoals",
-      abbreviation: "PPG"
+      abbreviation: "PPG",
+      sortDescending: true
     },
     {
       name: "Power Play Points",
       property: "PowerPlayPoints",
-      abbreviation: "PPP"
+      abbreviation: "PPP",
+      sortDescending: true
     },
     {
       name: "Shots",
       property: "Shots",
-      abbreviation: "S"
+      abbreviation: "S",
+      sortDescending: true
     },
     {
       name: "Shooting Percentage",
       property: "ShootingPercentage",
-      abbreviation: "S%"
+      abbreviation: "S%",
+      sortDescending: true
     },
     {
       name: "Faceoff Win Percentage",
       property: "FaceoffPercentage",
-      abbreviation: "FOW%"
+      abbreviation: "FOW%",
+      sortDescending: true
     }
   ],
   players: [
@@ -363,6 +373,219 @@ export const skaterStats = {
       FaceoffPercentage: 0
     }
   ]
-}
+};
+
+export const goalieStats = {
+  columns: [
+    {
+      name: "Games Played",
+      property: "GamesPlayed",
+      abbreviation: "GP",
+      sortDescending: true
+    },
+    {
+      name: "Games Started",
+      property: "GamesStarted",
+      abbreviation: "GS",
+      sortDescending: true
+    },
+    {
+      name: "Wins",
+      property: "Wins",
+      abbreviation: "W",
+      sortDescending: true
+    },
+    {
+      name: "Shots Against",
+      property: "ShotsAgainst",
+      abbreviation: "SA",
+      sortDescending: true
+    },
+    {
+      name: "Saves",
+      property: "Saves",
+      abbreviation: "Svs",
+      sortDescending: true
+    },
+    {
+      name: "Goals Against",
+      property: "GoalsAgainst",
+      abbreviation: "GA",
+      sortDescending: true
+    },
+    {
+      name: "Save Percentage",
+      property: "SavePercentage",
+      abbreviation: "Sv%",
+      sortDescending: true
+    },
+    {
+      name: "Goals Against Average",
+      property: "GoalsAgainstAverage",
+      abbreviation: "GAA",
+      sortDescending: false
+    },
+    {
+      name: "Shutouts",
+      property: "Shutouts",
+      abbreviation: "SO",
+      sortDescending: true
+    },
+    {
+      name: "Time On Ice",
+      property: "TimeOnIce",
+      abbreviation: "TOI",
+      sortDescending: true
+    }
+  ],
+  players: [
+    {
+      ID: 2022202328478009n,
+      PlayerID: 8478009,
+      Player: 'Ilya Sorokin',
+      TeamID: 2,
+      Team: 'New York Islanders',
+      TeamAbbreviation: "NYI",
+      Season: 20222023,
+      ImageURL: 'https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8478009.jpg',
+      TeamLogoURL: 'https://www-league.nhlstatic.com/images/logos/teams-20222023-light/2.svg',
+      Number: '30',
+      Captain: 0,
+      AlternateCaptain: 0,
+      Catches: 'L',
+      Nationality: 'RUS',
+      DateOfBirth: "1995-08-04T04:00:00.000Z",
+      Height: `6' 3"`,
+      Weight: 195,
+      GamesPlayed: 62,
+      GamesStarted: 60,
+      Wins: 31,
+      ShotsAgainst: 1838,
+      GoalsAgainst: 140,
+      Saves: 1699,
+      SavePercentage: 0.924374,
+      GoalsAgainstAverage: 2.34175,
+      Shutouts: 6,
+      TimeOnIce: "3587:04"
+    },
+    {
+      ID: 2022202368476999n,
+      PlayerID: 8476999,
+      Player: 'Linus Ullmark',
+      TeamID: 6,
+      Team: 'Boston Bruins',
+      TeamAbbreviation: "BOS",
+      Season: 20222023,
+      ImageURL: 'https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8476999.jpg',
+      TeamLogoURL: 'https://www-league.nhlstatic.com/images/logos/teams-20222023-light/6.svg',
+      Number: '35',
+      Captain: 0,
+      AlternateCaptain: 0,
+      Catches: 'L',
+      Nationality: 'SWE',
+      DateOfBirth: "1993-07-31T04:00:00.000Z",
+      Height: `6' 5"`,
+      Weight: 212,
+      GamesPlayed: 49,
+      GamesStarted: 48,
+      Wins: 40,
+      ShotsAgainst: 1457,
+      GoalsAgainst: 91,
+      Saves: 1366,
+      SavePercentage: 0.937543,
+      GoalsAgainstAverage: 1.89439,
+      Shutouts: 2,
+      TimeOnIce: "2882:12"
+    },
+    {
+      ID: 2022202368480280n,
+      PlayerID: 8480280,
+      Player: 'Jeremy Swayman',
+      TeamID: 6,
+      Team: 'Boston Bruins',
+      TeamAbbreviation: "BOS",
+      Season: 20222023,
+      ImageURL: 'https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8480280.jpg',
+      TeamLogoURL: 'https://www-league.nhlstatic.com/images/logos/teams-20222023-light/6.svg',
+      Number: '1',
+      Captain: 0,
+      AlternateCaptain: 0,
+      Catches: 'L',
+      Nationality: 'USA',
+      DateOfBirth: "1998-11-24T05:00:00.000Z",
+      Height: `6' 2"`,
+      Weight: 194,
+      GamesPlayed: 37,
+      GamesStarted: 33,
+      Wins: 24,
+      ShotsAgainst: 953,
+      GoalsAgainst: 76,
+      Saves: 877,
+      SavePercentage: 0.920252,
+      GoalsAgainstAverage: 2.26529,
+      Shutouts: 4,
+      TimeOnIce: "2012:59"
+    },
+    {
+      ID: 20222023308479410n,
+      PlayerID: 8479406,
+      Player: 'Filip Gustavsson',
+      TeamID: 30,
+      Team: 'Minnesota Wild',
+      TeamAbbreviation: "MIN",
+      Season: 20222023,
+      ImageURL: 'https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8479406.jpg',
+      TeamLogoURL: 'https://www-league.nhlstatic.com/images/logos/teams-20222023-light/30.svg',
+      Number: '32',
+      Captain: 0,
+      AlternateCaptain: 0,
+      Catches: 'L',
+      Nationality: 'SWE',
+      DateOfBirth: "1998-06-07T04:00:00.000Z",
+      Height: `6' 2"`,
+      Weight: 184,
+      GamesPlayed: 39,
+      GamesStarted: 37,
+      Wins: 22,
+      ShotsAgainst: 1173,
+      GoalsAgainst: 81,
+      Saves: 1092,
+      SavePercentage: 0.930946,
+      GoalsAgainstAverage: 2.10305,
+      Shutouts: 3,
+      TimeOnIce: "2310:56"
+    },
+    {
+      ID: 20222023528476944n,
+      PlayerID: 8476945,
+      Player: 'Connor Hellebuyck',
+      TeamID: 52,
+      Team: 'Winnipeg Jets',
+      TeamAbbreviation: "WPG",
+      Season: 20222023,
+      ImageURL: 'https://cms.nhl.bamgrid.com/images/headshots/current/168x168/8476945.jpg',
+      TeamLogoURL: 'https://www-league.nhlstatic.com/images/logos/teams-20222023-light/52.svg',
+      Number: '37',
+      Captain: 0,
+      AlternateCaptain: 0,
+      Catches: 'L',
+      Nationality: 'USA',
+      DateOfBirth: "1993-05-19T04:00:00.000Z",
+      Height: `6' 4"`,
+      Weight: 216,
+      GamesPlayed: 64,
+      GamesStarted: 64,
+      Wins: 37,
+      ShotsAgainst: 1964,
+      GoalsAgainst: 157,
+      Saves: 1807,
+      SavePercentage: 0.920061,
+      GoalsAgainstAverage: 2.49338,
+      Shutouts: 4,
+      TimeOnIce: "3778:00"
+    }
+  ]
+};
 
 skaterStats.players.sort((a, b) => b.Points - a.Points);
+goalieStats.players.sort((a, b) => b.SavePercentage - a.SavePercentage);

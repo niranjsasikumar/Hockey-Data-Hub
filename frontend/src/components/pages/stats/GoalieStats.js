@@ -1,15 +1,14 @@
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Stack, Box, Typography } from "@mui/material";
 
-function SkaterStats({ stats }) {
+function GoalieStats({ stats }) {
   return(
     <TableContainer component={Paper} elevation={2} sx={{ border: "1px solid lightgrey", borderBottom: "none", mb: 4 }}>
-      <Table size="small" aria-label="skater statistics table">
+      <Table size="small" aria-label="goalie statistics table">
 
         <TableHead>
           <TableRow>
             <TableCell sx={{ position: "sticky", left: "0", backgroundColor: "#F7F7F7" }}>Player</TableCell>
             <TableCell align="center">Team</TableCell>
-            <TableCell align="center">Pos</TableCell>
             <TableCell align="center">S/C</TableCell>
             {stats.columns.map((column) => (
               <TableCell align="center" key={column.abbreviation}>{column.abbreviation}</TableCell>
@@ -56,8 +55,7 @@ function SkaterStats({ stats }) {
                   <Typography variant="body2">{player.TeamAbbreviation}</Typography>
                 </Stack>
               </TableCell>
-              <TableCell align="center">{player.Position}</TableCell>
-              <TableCell align="center">{player.Shoots}</TableCell>
+              <TableCell align="center">{player.Catches}</TableCell>
               {stats.columns.map((column) => (
                 player[column.property] !== null && <TableCell align="center" key={column.name}>{player[column.property]}</TableCell>
               ))}
@@ -70,4 +68,4 @@ function SkaterStats({ stats }) {
   );
 }
 
-export default SkaterStats;
+export default GoalieStats;
