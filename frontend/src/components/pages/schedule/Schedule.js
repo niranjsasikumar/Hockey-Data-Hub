@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Grid } from "@mui/material";
+import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Alert, Grid } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import { teams } from "./sample-schedule-data";
 import { schedule } from "./sample-schedule-data";
@@ -26,6 +26,8 @@ function Schedule() {
         </Select>
       </FormControl>
       <Divider sx={{ mt: 1, mb: 3 }} />
+
+      <Alert severity="warning">This web app is currently under development, therefore, the information displayed below is static and independent of the Date and Team fields above.</Alert>
 
       {schedule.map((date) => (
         <div key={date.date}>
