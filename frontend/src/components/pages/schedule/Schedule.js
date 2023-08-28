@@ -1,12 +1,11 @@
 import React from "react";
 import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Alert, Grid } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
-import { teams } from "./sample-schedule-data";
-import { schedule } from "./sample-schedule-data";
+import { teams, schedule } from "./sample-schedule-data";
 import ScheduleCard from "./ScheduleCard";
 
 function Schedule() {
-  const [team, setTeam] = React.useState("");
+  const [team, setTeam] = React.useState("All Teams");
 
   const handleTeamChange = (event) => {
     setTeam(event.target.value);
