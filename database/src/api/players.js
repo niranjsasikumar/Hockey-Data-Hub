@@ -17,8 +17,24 @@ async function getPlayerStatsData(teamRoster, season) {
 }
 
 // Get the URL of a player's headshot image
-function getPlayerImageUrl(playerId) {
-  return "https://cms.nhl.bamgrid.com/images/headshots/current/168x168/" + playerId + ".jpg";
+function getPlayerImageUrl(season, team, playerId) {
+  return "https://assets.nhle.com/mugs/nhl/" + season + "/" + team + "/" + playerId + ".png";
+}
+
+// Get the place of birth of a player as a formatted string
+function getPlaceOfBirth(player) {
+  let result = "";
+
+  if (player.birthCity) {
+    result += player.birthCity;
+  } else {
+    return result;
+  }
+
+  if (player.birthStateProvince) result += ", " + player.birthStateProvince;
+  if (player.birthCountry) result += ", " + player.birthCountry;
+
+  return result;
 }
 
 // Returns player values that can be inserted into either "skaters" or "goalies" tables
@@ -29,8 +45,10 @@ function extractPlayerData(season, team, player) {
     player.person?.fullName,
     team.id,
     team.name,
+    team.teamName,
+    team.abbreviation,
     season,
-    getPlayerImageUrl(player.person?.id),
+    getPlayerImageUrl(season, team.abbreviation, player.person?.id),
     getLogoUrl(season, team.id),
     player.jerseyNumber,
     player.person?.captain,
@@ -38,6 +56,7 @@ function extractPlayerData(season, team, player) {
     player.person?.shootsCatches,
     player.person?.nationality,
     player.person?.birthDate,
+    getPlaceOfBirth(player.person),
     player.person?.height,
     player.person?.weight
   ];
@@ -49,14 +68,17 @@ function extractGoalieData(season, team, player, hasStats, playerStats) {
 
   if (hasStats) {
     values.push(hasStats ? playerStats.games : null);
+    values.push(playerStats.gamesStarted);
+    values.push(playerStats.wins);
     values.push(playerStats.shotsAgainst);
     values.push(playerStats.goalsAgainst);
     values.push(playerStats.saves);
     values.push(playerStats.savePercentage);
     values.push(playerStats.goalAgainstAverage);
     values.push(playerStats.shutouts);
+    values.push(playerStats.timeOnIce);
   } else {
-    for (let i = 0; i < 7; i++) values.push(null);
+    for (let i = 0; i < 10; i++) values.push(null);
   }
 
   return values;
@@ -65,7 +87,7 @@ function extractGoalieData(season, team, player, hasStats, playerStats) {
 // Returns a row of values to insert into "skaters" table
 function extractSkaterData(season, team, player, hasStats, playerStats) {
   const values = extractPlayerData(season, team, player);
-  values.splice(9, 0, player.position?.abbreviation, player.position?.type);
+  values.splice(11, 0, player.position?.abbreviation, player.position?.type);
           
   if (hasStats) {
     values.push(hasStats ? playerStats.games : null);
