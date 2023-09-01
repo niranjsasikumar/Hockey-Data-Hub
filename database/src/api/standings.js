@@ -3,7 +3,7 @@ import { getLogoUrl, fetchDataFromApi } from "./api.js";
 // Get standings data for the given seasons from NHL API
 async function getStandingsData(seasons) {
   const standingsDataPromises = seasons.map(
-    season => fetchDataFromApi("/standings?expand=standings.record&season=" + season)
+    season => fetchDataFromApi("/standings?expand=standings.record,standings.team&season=" + season)
   );
   return await Promise.all(standingsDataPromises);
 }
@@ -15,16 +15,21 @@ function getRecordString(record) {
 
 // Returns a row of values to insert into "standings" table
 function extractStandingsData(division, team) {
+  const { id, name, teamName, abbreviation } = team.team;
+
   return [
-    parseInt(division.season.toString() + team.team?.id.toString()),
-    team.team?.id,
-    team.team?.name,
+    parseInt(division.season.toString() + id.toString()),
+    id,
+    name,
+    teamName,
+    abbreviation,
     division.season,
-    getLogoUrl(division.season, team.team?.id),
-    division.conference?.name,
-    division.division?.name,
+    getLogoUrl(division.season, id),
+    division.conference?.name ? division.conference?.name : null,
+    division.division?.name ? division.division?.name : null,
     team.clinchIndicator,
-    parseInt(team.divisionRank) ? parseInt(team.divisionRank) : team.leagueRank,
+    team.divisionRank === "0" ? null : team.divisionRank,
+    team.leagueRank,
     team.points,
     team.gamesPlayed,
     team.leagueRecord?.wins,
