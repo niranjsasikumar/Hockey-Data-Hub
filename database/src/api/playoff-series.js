@@ -9,26 +9,34 @@ function hasPlayoffsData(season) {
 // Get playoffs data for the given seasons from NHL API
 async function getPlayoffsData(seasons) {
   const playoffsDataPromises = seasons.map(
-    season => fetchDataFromApi("/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary&season=" + season)
+    season => fetchDataFromApi("/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary,series.matchup.team&season=" + season)
   );
   return await Promise.all(playoffsDataPromises);
 }
 
 // Returns a row of values to insert into "playoff_series" table
 function extractPlayoffSeriesData(season, round, series) {
+  const team1 = series.matchupTeams[0].team;
+  const team2 = series.matchupTeams[1].team;
+
   return [
     parseInt(season.toString() + round.number.toString() + series.seriesNumber.toString()),
     season,
     round.number,
     round.names?.name,
     series.seriesNumber,
-    series.matchupTeams[0].team?.id,
-    series.matchupTeams[0].team?.name,
-    getLogoUrl(season, series.matchupTeams[0].team?.id),
-    series.matchupTeams[1].team?.id,
-    series.matchupTeams[1].team?.name,
-    getLogoUrl(season, series.matchupTeams[1].team?.id),
-    series.currentGame?.seriesSummary?.seriesStatus
+    team1.id,
+    team1.name,
+    team1.teamName,
+    team1.abbreviation,
+    getLogoUrl(season, team1.id),
+    team2.id,
+    team2.name,
+    team2.teamName,
+    team2.abbreviation,
+    getLogoUrl(season, team2.id),
+    series.currentGame?.seriesSummary?.seriesStatus,
+    series.currentGame?.seriesSummary?.seriesStatusShort
   ];
 }
 
