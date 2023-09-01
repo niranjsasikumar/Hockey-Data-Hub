@@ -51,21 +51,27 @@ function getPlayoffRounds(playoffsData) {
 
 // Returns a row of values to insert into "seasons" table
 function extractSeasonData(seasonData, standingsData, playoffsData) {
+  const id = seasonData.seasonId;
   const [conferences, divisions] = getSeasonStructure(standingsData);
 
   return [
-    seasonData.seasonId,
+    id,
     seasonData.regularSeasonStartDate,
     seasonData.regularSeasonEndDate,
     seasonData.seasonEndDate,
     seasonData.numberOfGames,
-    seasonData.tiesInUse,
     seasonData.conferencesInUse,
     seasonData.divisionsInUse,
     seasonData.wildCardInUse,
     conferences,
     divisions,
-    getPlayoffRounds(playoffsData)
+    getPlayoffRounds(playoffsData),
+    seasonData.tiesInUse,
+    id >= 19992000 ? true : false,
+    id >= 19331934 ? true : false,
+    id >= 19591960 ? true : false,
+    id >= 19971998 ? true : false,
+    id >= 19551956 ? true : false,
   ];
 }
 
