@@ -42,7 +42,7 @@ function GameCard({ game }) {
                 <Typography variant="h6" component="p" sx={{ display: { xs: "none", md: "block" } }}>{game.awayShortName}</Typography>
                 <Typography variant="h6" component="p" sx={{ display: { xs: "block", md: "none" } }}>{game.awayAbbreviation}</Typography>
               </Box>
-              <Typography variant="h6" component="p" fontSize={28}>{game.awayGoals === null ? "‎" : game.awayGoals}</Typography>
+              <Typography variant="h6" component="p" fontSize={28}>{game.awayGoals === null ? "-" : game.awayGoals}</Typography>
             </Stack>
             <Stack
               direction="row"
@@ -59,7 +59,7 @@ function GameCard({ game }) {
                 <Typography variant="h6" component="p" sx={{ display: { xs: "none", md: "block" } }}>{game.homeShortName}</Typography>
                 <Typography variant="h6" component="p" sx={{ display: { xs: "block", md: "none" } }}>{game.homeAbbreviation}</Typography>
               </Box>
-              <Typography variant="h6" component="p" fontSize={28}>{game.homeGoals === null ? "‎" : game.homeGoals}</Typography>
+              <Typography variant="h6" component="p" fontSize={28}>{game.homeGoals === null ? "-" : game.homeGoals}</Typography>
             </Stack>
           </Grid>
 

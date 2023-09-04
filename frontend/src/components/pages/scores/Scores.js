@@ -37,7 +37,7 @@ function Scores() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }
 
   React.useEffect(() => {
     fetchScores(date);
@@ -55,7 +55,7 @@ function Scores() {
       <Divider sx={{ mt: 3, mb: 4 }} />
 
       {loadingFailed ? (
-        <Typography>Loading failed.</Typography>
+        <Typography>Failed to load scores.</Typography>
       ) : isLoading ? (
         <Stack direction="row" alignItems="center" spacing={2}>
           <CircularProgress size={25} />

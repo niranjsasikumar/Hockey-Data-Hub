@@ -1,6 +1,7 @@
 import express from "express";
-import scoresRoute from "./src/routes/scores-route.js";
 import cors from "cors";
+import scoresRoute from "./src/routes/scores-route.js";
+import scheduleRoute from "./src/routes/schedule-route.js";
 
 // Initialization and configuration
 const app = express();
@@ -9,6 +10,7 @@ app.use(cors());
 
 // Routes
 app.use("/scores", scoresRoute);
+app.use("/schedule", scheduleRoute);
 
 app.listen(port, () => {
   console.log(`Connected. Listening on port ${port}.`);

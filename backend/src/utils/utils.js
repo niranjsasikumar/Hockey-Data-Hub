@@ -10,3 +10,19 @@ export async function fetchDataFromNHLApi(endpoint) {
 export function getLogoUrl(season, teamId) {
   return "https://www-league.nhlstatic.com/images/logos/teams-" + season + "-light/" + teamId + ".svg";
 };
+
+export function getTodaysDate(offset) {
+  let today = new Date();
+  today.setMinutes(today.getMinutes() - offset);
+  today.setUTCMilliseconds(0);
+  today.setUTCSeconds(0);
+  today.setUTCMinutes(0);
+  today.setUTCHours(0);
+  today.setMinutes(today.getMinutes() + offset);
+  return today;
+}
+
+export async function getCurrentSeason() {
+  const response = await fetchDataFromNHLApi("/seasons/current");
+  return Number(response.seasons[0].seasonId);
+}
