@@ -26,3 +26,8 @@ export async function getCurrentSeason() {
   const response = await fetchDataFromNHLApi("/seasons/current");
   return Number(response.seasons[0].seasonId);
 }
+
+export async function seasonHasPlayoffsData(season) {
+  const playoffsData = await fetchDataFromNHLApi(`/tournaments/playoffs?season=${season}`);
+  return "rounds" in playoffsData;
+}
