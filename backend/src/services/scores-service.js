@@ -72,7 +72,7 @@ function getDateTimeRanges(dateTimeString, days) {
 }
 
 // Get scores data from the database
-export async function getScoresData(dateString, days) {
+async function getScoresData(dateString, days) {
   const dateTimeRanges = getDateTimeRanges(dateString, days);
   const scores = [];
 

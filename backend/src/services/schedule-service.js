@@ -1,53 +1,49 @@
 import connection from "../database/database.js";
-import { getTodaysDate, getCurrentSeason, fetchDataFromNHLApi } from "../utils/utils.js";
-import { getScoresData } from "./scores-service.js";
+import { getTodaysDate, fetchDataFromNHLApi, getCurrentSeason } from "../utils/utils.js";
 import { extractGames, queryColumns, gameTypes } from "../utils/game-utils.js";
 
 // Get schedule data from database or NHL API
-export default async function getSchedule(date, offset) {
+export default async function getSchedule(team, date, offset) {
   const [results] = await connection.query(
     `SELECT seasonEndDate FROM seasons
     WHERE id = (SELECT MAX(id) FROM seasons)`
   );
   let lastSeasonEndDate = new Date(results[0].seasonEndDate);
-  lastSeasonEndDate.setMinutes(lastSeasonEndDate.getMinutes() + 1440 + Number(offset));
+  lastSeasonEndDate.setMinutes(lastSeasonEndDate.getMinutes() - 10080 + Number(offset));
   lastSeasonEndDate = lastSeasonEndDate.toISOString();
-
-  let dateTime = date;
-  let rangeDays = 1;
 
   if (date === "null") {
     const today = getTodaysDate(Number(offset));
-    let scheduleData = await fetchScheduleData(today.toISOString(), 7);
+    let scheduleData = await fetchScheduleData(team, today.toISOString(), 7);
     if (scheduleData.length > 0) return scheduleData;
-    scheduleData = await fetchNextSeasonSchedule(Number(offset));
+    scheduleData = await fetchNextSeasonSchedule(team, Number(offset));
     if (scheduleData.length > 0) return scheduleData;
-    return await getScoresData(lastSeasonEndDate, 8);
+    return await getScheduleData(team, lastSeasonEndDate, 8);
   } else if (date > lastSeasonEndDate) {
-    return await fetchScheduleData(dateTime, 1);
+    return await fetchScheduleData(team, date, 7);
   }
 
-  return await getScheduleData(dateTime, rangeDays);
+  return await getScheduleData(team, date, 7);
 }
 
 // Fetch schedule data from NHL API
-async function fetchScheduleData(dateString, days) {
+async function fetchScheduleData(team, dateString, days) {
   const dateTimeRanges = getDateTimeRanges(dateString, days);
   const startDate = dateTimeRanges[0].startString.substring(0, 10);
   const endDate = dateTimeRanges[dateTimeRanges.length - 1].endString.substring(0, 10);
 
   const scheduleData = await fetchDataFromNHLApi(
-    `/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series,series.round&startDate=${startDate}&endDate=${endDate}`
+    `/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series,series.round${team !== "all" && `&teamId=${team}`}&startDate=${startDate}&endDate=${endDate}`
   );
   
   return extractScheduleFromData(scheduleData.dates, dateTimeRanges);
 }
 
 // Fetch the schedule of the next season from NHL API
-async function fetchNextSeasonSchedule(offset) {
+async function fetchNextSeasonSchedule(team, offset) {
   const nextSeason = (await getCurrentSeason()) + 10001;
   const scheduleData = (await fetchDataFromNHLApi(
-    `/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series,series.round&season=${nextSeason}`
+    `/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series,series.round${team !== "all" && `&teamId=${team}`}&season=${nextSeason}`
   )).dates;
   if (scheduleData.length === 0) return [];
 
@@ -93,7 +89,7 @@ function extractScheduleFromData(scheduleData, dateTimeRanges) {
 }
 
 // Get schedule data from the database
-async function getScheduleData(dateString, days) {
+async function getScheduleData(team, dateString, days) {
   const dateTimeRanges = getDateTimeRanges(dateString, days);
   const schedule = [];
 
@@ -101,6 +97,7 @@ async function getScheduleData(dateString, days) {
     const [results] = await connection.query(
       `SELECT ${queryColumns.toString()} FROM games
       WHERE dateTime >= "${range.startString}" AND dateTime < "${range.endString}"
+      ${team !== "all" ? `AND (awayId = ${team} OR homeId = ${team})` : ""}
       ORDER BY dateTime ASC`
     );
 

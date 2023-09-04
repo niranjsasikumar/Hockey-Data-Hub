@@ -3,7 +3,6 @@ import axios from "axios";
 import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Stack, CircularProgress, Grid } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import GameCard from "../common-components/GameCard";
-import { teams } from "./sample-schedule-data";
 
 function getFormattedDateString(date) {
   return new Date(date).toLocaleString("en-US", {
@@ -22,17 +21,27 @@ function Schedule() {
   const [schedule, setSchedule] = React.useState(null);
   const [teamsList, setTeamsList] = React.useState(null);
 
-  async function fetchSchedule(date) {
+  React.useEffect(() => {
+    fetchSchedule(date, team);
+  }, [date, team]);
+
+  async function fetchSchedule(date, team) {
     try {
       setLoadingFailed(false);
       setIsLoading(true);
       let response = null;
       if (date === null) {
         const offset = new Date().getTimezoneOffset();
-        response = await axios.get("http://localhost:5000/schedule", { params: { date: "null", offset: offset } });
+        response = await axios.get(
+          "http://localhost:5000/schedule",
+          { params: { team: team, date: "null", offset: offset } }
+        );
       } else {
         const offset = new Date(date.toISOString()).getTimezoneOffset();
-        response = await axios.get("http://localhost:5000/schedule", { params: { date: date.toISOString(), offset: offset } });
+        response = await axios.get(
+          "http://localhost:5000/schedule",
+          { params: { team: team, date: date.toISOString(), offset: offset } }
+        );
       }
       setSchedule(response.data);
     } catch (error) {
@@ -43,17 +52,13 @@ function Schedule() {
   }
 
   React.useEffect(() => {
-    fetchSchedule(date);
-  }, [date]);
+    fetchTeams();
+  }, []);
 
   async function fetchTeams() {
     const response = await axios.get("http://localhost:5000/teams/list/current");
     setTeamsList(response.data);
   }
-
-  React.useEffect(() => {
-    fetchTeams();
-  }, []);
 
   const handleDateChange = (value) => {
     setDate(value);
