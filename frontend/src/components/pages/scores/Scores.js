@@ -19,6 +19,10 @@ function Scores() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [scores, setScores] = React.useState(null);
 
+  React.useEffect(() => {
+    fetchScores(date);
+  }, [date]);
+
   async function fetchScores(date) {
     try {
       setLoadingFailed(false);
@@ -26,10 +30,16 @@ function Scores() {
       let response = null;
       if (date === null) {
         const offset = new Date().getTimezoneOffset();
-        response = await axios.get(`http://localhost:5000/scores/null/${offset}`);
+        response = await axios.get(
+          "http://localhost:5000/scores",
+          { params: { date: "null", offset: offset } }
+        );
       } else {
         const offset = new Date(date.toISOString()).getTimezoneOffset();
-        response = await axios.get(`http://localhost:5000/scores/${date.toISOString()}/${offset}`);
+        response = await axios.get(
+          "http://localhost:5000/scores",
+          { params: { date: date.toISOString(), offset: offset } }
+        );
       }
       setScores(response.data);
     } catch (error) {
@@ -38,10 +48,6 @@ function Scores() {
       setIsLoading(false);
     }
   }
-
-  React.useEffect(() => {
-    fetchScores(date);
-  }, [date]);
 
   const handleDateChange = (value) => {
     setDate(value);
