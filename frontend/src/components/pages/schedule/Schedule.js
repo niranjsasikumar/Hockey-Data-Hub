@@ -16,10 +16,11 @@ function getFormattedDateString(date) {
 
 function Schedule() {
   const [date, setDate] = React.useState(null);
-  const [team, setTeam] = React.useState("");
+  const [team, setTeam] = React.useState("all");
   const [loadingFailed, setLoadingFailed] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
   const [schedule, setSchedule] = React.useState(null);
+  const [teamsList, setTeamsList] = React.useState(null);
 
   async function fetchSchedule(date) {
     try {
@@ -28,10 +29,10 @@ function Schedule() {
       let response = null;
       if (date === null) {
         const offset = new Date().getTimezoneOffset();
-        response = await axios.get(`http://localhost:5000/schedule`, { params: { date: "null", offset: offset } });
+        response = await axios.get("http://localhost:5000/schedule", { params: { date: "null", offset: offset } });
       } else {
         const offset = new Date(date.toISOString()).getTimezoneOffset();
-        response = await axios.get(`http://localhost:5000/schedule`, { params: { date: date.toISOString(), offset: offset } });
+        response = await axios.get("http://localhost:5000/schedule", { params: { date: date.toISOString(), offset: offset } });
       }
       setSchedule(response.data);
     } catch (error) {
@@ -44,6 +45,15 @@ function Schedule() {
   React.useEffect(() => {
     fetchSchedule(date);
   }, [date]);
+
+  async function fetchTeams() {
+    const response = await axios.get("http://localhost:5000/teams/list/current");
+    setTeamsList(response.data);
+  }
+
+  React.useEffect(() => {
+    fetchTeams();
+  }, []);
 
   const handleDateChange = (value) => {
     setDate(value);
@@ -61,8 +71,9 @@ function Schedule() {
       <FormControl sx={{ mr: 2, mb: 2, width: 230 }}>
         <InputLabel id="team-label">Team</InputLabel>
         <Select labelId="team-label" id="team" value={team} label="Team" onChange={handleTeamChange}>
-          {teams.map((team) => (
-            <MenuItem value={team} key={team}>{team}</MenuItem>
+          <MenuItem value="all">All Teams</MenuItem>
+          {teamsList?.map((team) => (
+            <MenuItem value={team.id} key={team.id}>{team.name}</MenuItem>
           ))}
         </Select>
       </FormControl>
