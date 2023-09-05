@@ -1,7 +1,9 @@
 import { Router } from "express";
-import seasonsController from "../controllers/seasons-controller.js";
+import seasonsListController from "../controllers/seasons-list-controller.js";
+import seasonInfoController from "../controllers/season-info-controller.js";
 
 const seasonsRoute = Router();
-seasonsRoute.get("/", seasonsController);
+seasonsRoute.get("/list", seasonsListController);
+seasonsRoute.get("/info/:season", seasonInfoController);
 
 export default seasonsRoute;

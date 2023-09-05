@@ -1,7 +1,7 @@
 import connection from "../database/database.js";
 import { getCurrentSeason, seasonHasPlayoffsData } from "../utils/utils.js";
 
-export default async function getSeasons() {
+export default async function getSeasonsList() {
   const [results] = await connection.query(
     `SELECT id, playoffRounds FROM seasons
     ORDER BY id DESC`
