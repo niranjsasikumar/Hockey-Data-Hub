@@ -6,6 +6,7 @@ import teamsRoute from "./src/routes/teams-route.js";
 import seasonsRoute from "./src/routes/seasons-route.js";
 import standingsRoute from "./src/routes/standings-route.js";
 import playoffsRoute from "./src/routes/playoffs-route.js";
+import statsRoute from "./src/routes/stats-route.js";
 
 // Initialization and configuration
 const app = express();
@@ -19,6 +20,7 @@ app.use("/teams", teamsRoute);
 app.use("/seasons", seasonsRoute);
 app.use("/standings", standingsRoute);
 app.use("/playoffs", playoffsRoute);
+app.use("/stats", statsRoute);
 
 app.listen(port, () => {
   console.log(`Connected. Listening on port ${port}.`);
