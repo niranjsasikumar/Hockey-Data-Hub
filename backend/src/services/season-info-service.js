@@ -13,6 +13,8 @@ const queryColumns = [
   "id",
   "conferencesInUse",
   "divisionsInUse",
+  "conferences",
+  "divisions",
   "tiesInUse",
   "overtimeLossPointInUse",
   "powerPlayStatsTracked",
