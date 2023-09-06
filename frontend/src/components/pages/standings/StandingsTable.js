@@ -12,8 +12,8 @@ function StandingsTable({ standings, season }) {
             <TableCell align="center">GP</TableCell>
             <TableCell align="center">W</TableCell>
             <TableCell align="center">L</TableCell>
-            {Boolean(season.TiesInUse) && <TableCell align="center">T</TableCell>}
-            {Boolean(season.OvertimeInUse) && <TableCell align="center">OTL</TableCell>}
+            {Boolean(season.tiesInUse) && <TableCell align="center">T</TableCell>}
+            {Boolean(season.overtimeLossPointInUse) && <TableCell align="center">OTL</TableCell>}
             <TableCell align="center">GF</TableCell>
             <TableCell align="center">GA</TableCell>
             <TableCell align="center">Diff</TableCell>
@@ -25,8 +25,8 @@ function StandingsTable({ standings, season }) {
         </TableHead>
 
         <TableBody>
-          {standings.map((team) => (
-            <TableRow key={team.Name}>
+          {standings?.map((team) => (
+            <TableRow key={team.teamId}>
               <TableCell
               component="th"
               scope="row"
@@ -35,7 +35,7 @@ function StandingsTable({ standings, season }) {
                 position: "sticky",
                 left: "0",
                 backgroundColor: "#fff",
-                borderLeft: team.ClinchIndicator !== null ? "3px solid #160085" : "none",
+                borderLeft: team.clinchIndicator !== null ? "3px solid #160085" : "none",
                 borderRight: "1px solid lightgrey",
                 boxSizing: "border-box"
               }}
@@ -49,26 +49,26 @@ function StandingsTable({ standings, season }) {
                   <Box
                     component="img"
                     sx={{ width: "30px", height: "auto", mr: 1 }}
-                    src={team.LogoURL}
+                    src={team.logoURL}
                     alt=""
                   />
-                  <Typography variant="body2" sx={{ display: { xs: "none", sm: "block" } }}>{team.Name}</Typography>
-                  <Typography variant="body2" sx={{ display: { xs: "block", sm: "none" } }}>{team.Abbreviation}</Typography>
+                  <Typography variant="body2" sx={{ display: { xs: "none", sm: "block" } }}>{team.teamShortName}</Typography>
+                  <Typography variant="body2" sx={{ display: { xs: "block", sm: "none" } }}>{team.teamAbbreviation}</Typography>
                 </Stack>
               </TableCell>
-              <TableCell align="center">{team.Points}</TableCell>
-              <TableCell align="center">{team.GamesPlayed}</TableCell>
-              <TableCell align="center">{team.Wins}</TableCell>
-              <TableCell align="center">{team.Losses}</TableCell>
-              {Boolean(season.TiesInUse) && <TableCell align="center">{team.Ties}</TableCell>}
-              {Boolean(season.OvertimeInUse) && <TableCell align="center">{team.OvertimeLosses}</TableCell>}
-              <TableCell align="center">{team.GoalsFor}</TableCell>
-              <TableCell align="center">{team.GoalsAgainst}</TableCell>
-              <TableCell align="center">{team.Difference}</TableCell>
-              <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>{team.HomeRecord}</TableCell>
-              <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>{team.AwayRecord}</TableCell>
-              <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>{team.Last10}</TableCell>
-              <TableCell align="center">{team.Streak}</TableCell>
+              <TableCell align="center">{team.points}</TableCell>
+              <TableCell align="center">{team.gamesPlayed}</TableCell>
+              <TableCell align="center">{team.wins}</TableCell>
+              <TableCell align="center">{team.losses}</TableCell>
+              {Boolean(season.tiesInUse) && <TableCell align="center">{team.ties}</TableCell>}
+              {Boolean(season.overtimeLossPointInUse) && <TableCell align="center">{team.overtimeLosses}</TableCell>}
+              <TableCell align="center">{team.goalsFor}</TableCell>
+              <TableCell align="center">{team.goalsAgainst}</TableCell>
+              <TableCell align="center">{team.difference}</TableCell>
+              <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>{team.homeRecord}</TableCell>
+              <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>{team.awayRecord}</TableCell>
+              <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>{team.last10}</TableCell>
+              <TableCell align="center">{team.streak}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -27,10 +27,10 @@ function SeriesCard({ series }) {
                 <Box
                   component="img"
                   sx={{ width: "40px", height: "auto", mr: 1 }}
-                  src={series.Team1LogoURL}
+                  src={series.team1LogoURL}
                   alt=""
                 />
-                <Typography>{series.Team1Abbreviation}</Typography>
+                <Typography>{series.team1Abbreviation}</Typography>
               </Box>
             </Stack>
             <Stack
@@ -42,10 +42,10 @@ function SeriesCard({ series }) {
                 <Box
                   component="img"
                   sx={{ width: "40px", height: "auto", mr: 1 }}
-                  src={series.Team2LogoURL}
+                  src={series.team2LogoURL}
                   alt=""
                 />
-                <Typography>{series.Team2Abbreviation}</Typography>
+                <Typography>{series.team2Abbreviation}</Typography>
               </Box>
             </Stack>
           </Grid>
@@ -61,7 +61,7 @@ function SeriesCard({ series }) {
               textAlign: "center"
             }}
           >
-            <Typography variant="button">{series.SeriesStatusShort}</Typography>
+            <Typography variant="button">{series.statusShort}</Typography>
           </Grid>
         </Grid>
       </CardContent>
