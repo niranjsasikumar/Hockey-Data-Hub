@@ -113,12 +113,14 @@ function extractPlayerData(player) {
     faceoffWinPct
   } = player;
 
+  const currentTeam = teamAbbrevs.slice(-3);
+
   return {
     playerId: playerId,
     player: skaterFullName,
-    imageURL: `https://assets.nhle.com/mugs/nhl/${seasonId}/${teamAbbrevs}/${playerId}.png`,
-    teamAbbreviation: teamAbbrevs,
-    teamLogoURL: `https://assets.nhle.com/logos/nhl/svg/${teamAbbrevs}_light.svg`,
+    imageURL: `https://assets.nhle.com/mugs/nhl/${seasonId}/${currentTeam}/${playerId}.png`,
+    teamAbbreviation: teamAbbrevs.split(",").join(", "),
+    teamLogoURL: `https://assets.nhle.com/logos/nhl/svg/${currentTeam}_light.svg`,
     position: positionCode === "L" || positionCode === "R" ? positionCode + "W" : positionCode,
     shoots: shootsCatches,
     gamesPlayed: gamesPlayed,
@@ -138,11 +140,19 @@ async function getStats(season, sort) {
   const sortString = getSortString(sort);
   
   const [stats] = await connection.query(
-    `SELECT ${queryColumns} FROM skaters
+    `SELECT ${queryColumns}, GROUP_CONCAT(teamAbbreviation ORDER BY id SEPARATOR ", ") AS teamAbbreviation, GROUP_CONCAT(teamId ORDER BY id SEPARATOR ",") AS teamIds FROM skaters
     WHERE season = ${season}
+    GROUP BY ${queryColumns}
     ORDER BY ${sortString}, playerId ASC
     LIMIT 20`
   );
+
+  for (const player of stats) {
+    const teamAbbreviation = player.teamAbbreviation.split(", ")[0];
+    const teamId = player.teamIds.split(",")[0];
+    player.imageURL = `https://assets.nhle.com/mugs/nhl/${season}/${teamAbbreviation}/${player.playerId}.png`;
+    player.teamLogoURL = `https://www-league.nhlstatic.com/images/logos/teams-${season}-light/${teamId}.svg`;
+  }
 
   return stats;
 }
@@ -175,9 +185,6 @@ function getSortString(sort) {
 const queryColumns = [
   "playerId",
   "player",
-  "imageURL",
-  "teamAbbreviation",
-  "teamLogoURL",
   "position",
   "shoots",
   "gamesPlayed",

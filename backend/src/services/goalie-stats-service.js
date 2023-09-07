@@ -135,12 +135,14 @@ function extractPlayerData(player) {
     timeOnIce
   } = player;
 
+  const currentTeam = teamAbbrevs.slice(-3);
+
   return {
     playerId: playerId,
     player: goalieFullName,
-    imageURL: `https://assets.nhle.com/mugs/nhl/${seasonId}/${teamAbbrevs}/${playerId}.png`,
-    teamAbbreviation: teamAbbrevs,
-    teamLogoURL: `https://assets.nhle.com/logos/nhl/svg/${teamAbbrevs}_light.svg`,
+    imageURL: `https://assets.nhle.com/mugs/nhl/${seasonId}/${currentTeam}/${playerId}.png`,
+    teamAbbreviation: teamAbbrevs.split(",").join(", "),
+    teamLogoURL: `https://assets.nhle.com/logos/nhl/svg/${currentTeam}_light.svg`,
     catches: shootsCatches,
     gamesPlayed: gamesPlayed,
     gamesStarted: gamesStarted,
@@ -160,13 +162,18 @@ async function getStats(season, sort) {
   const sortString = getSortString(sort);
   
   const [stats] = await connection.query(
-    `SELECT ${queryColumns} FROM goalies
+    `SELECT ${queryColumns}, GROUP_CONCAT(teamAbbreviation ORDER BY id SEPARATOR ", ") AS teamAbbreviation, GROUP_CONCAT(teamId ORDER BY id SEPARATOR ",") AS teamIds FROM goalies
     WHERE season = ${season} AND gamesPlayed >= ${minGamesPlayed}
+    GROUP BY ${queryColumns}
     ORDER BY ${sortString}, playerId ASC
     LIMIT 20`
   );
 
   for (const player of stats) {
+    const teamAbbreviation = player.teamAbbreviation.split(", ")[0];
+    const teamId = player.teamIds.split(",")[0];
+    player.imageURL = `https://assets.nhle.com/mugs/nhl/${season}/${teamAbbreviation}/${player.playerId}.png`;
+    player.teamLogoURL = `https://www-league.nhlstatic.com/images/logos/teams-${season}-light/${teamId}.svg`;
     player.savePercentage = player.savePercentage ? Math.round((player.savePercentage + Number.EPSILON) * 10000) / 100 : null;
     player.goalsAgainstAverage = Math.round((player.goalsAgainstAverage + Number.EPSILON) * 1000) / 1000;
   }
@@ -215,9 +222,6 @@ async function getMinGamesPlayed(season) {
 const queryColumns = [
   "playerId",
   "player",
-  "imageURL",
-  "teamAbbreviation",
-  "teamLogoURL",
   "catches",
   "gamesPlayed",
   "gamesStarted",
