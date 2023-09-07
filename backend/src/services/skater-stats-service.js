@@ -1,44 +1,141 @@
+import { getCurrentSeason } from "../utils/utils.js";
+import axios from "axios";
 import connection from "../database/database.js";
 
 export default async function getSkaterStats(season, sort) {
+  if (season === "current") return await getCurrentSeasonStats(sort);
   return await getStats(season, sort);
 }
 
-async function getStats(season, sort) {
-  let sortString;
+async function getCurrentSeasonStats(sort) {
+  const sortArray = getSortArray(sort);
+  const currentSeason = await getCurrentSeason();
+  const url = `https://api.nhle.com/stats/rest/en/skater/summary?isAggregate=false&isGame=false&sort=${JSON.stringify(sortArray)}&start=0&limit=20&factCayenneExp=gamesPlayed%3E=1&cayenneExp=gameTypeId=2%20and%20seasonId%3C=${currentSeason}%20and%20seasonId%3E=${currentSeason}`;
+  const { data } = await axios.get(url);
+
+  const stats = [];
+
+  for (const player of data.data) {
+    const playerData = extractPlayerData(player);
+    stats.push(playerData);
+  }
+
+  return stats;
+}
+
+function getSortArray(sort) {
+  let sortArray;
 
   switch (sort) {
     case "gamesPlayed":
-      sortString = "gamesPlayed DESC";
+      sortArray = [
+        { property: "gamesPlayed", direction: "DESC" }
+      ];
       break;
     case "goals":
-      sortString = "goals DESC, assists DESC";
+      sortArray = [
+        { property: "goals", direction: "DESC" },
+        { property: "assists", direction: "DESC" }
+      ];
       break;
     case "assists":
-      sortString = "assists DESC, goals DESC";
+      sortArray = [
+        { property: "assists", direction: "DESC" },
+        { property: "goals", direction: "DESC" }
+      ];
       break;
     case "points":
-      sortString = "points DESC, goals DESC, assists DESC";
+      sortArray = [
+        { property: "points", direction: "DESC" },
+        { property: "goals", direction: "DESC" },
+        { property: "assists", direction: "DESC" }
+      ];
       break;
     case "pointsPerGamesPlayed":
-      sortString = "pointsPerGamesPlayed DESC, gamesPlayed ASC";
+      sortArray = [
+        { property: "pointsPerGame", direction: "DESC" },
+        { property: "gamesPlayed", direction: "ASC" }
+      ];
       break;
     case "powerPlayGoals":
-      sortString = "powerPlayGoals DESC, powerPlayPoints DESC";
+      sortArray = [
+        { property: "ppGoals", direction: "DESC" },
+        { property: "ppPoints", direction: "DESC" }
+      ];
       break;
     case "powerPlayPoints":
-      sortString = "powerPlayPoints DESC, powerPlayGoals DESC";
+      sortArray = [
+        { property: "ppPoints", direction: "DESC" },
+        { property: "ppGoals", direction: "DESC" }
+      ];
       break;
     case "shots":
-      sortString = "shots DESC, shootingPercentage DESC";
+      sortArray = [
+        { property: "shots", direction: "DESC" },
+        { property: "shootingPct", direction: "DESC" }
+      ];
       break;
     case "shootingPercentage":
-      sortString = "shootingPercentage DESC, goals DESC";
+      sortArray = [
+        { property: "shootingPct", direction: "DESC" },
+        { property: "goals", direction: "DESC" }
+      ];
       break;
     case "faceoffPercentage":
-      sortString = "faceoffPercentage DESC, gamesPlayed DESC";
+      sortArray = [
+        { property: "faceoffWinPct", direction: "DESC" },
+        { property: "gamesPlayed", direction: "DESC" }
+      ];
       break;
   }
+
+  sortArray.push({ property: "playerId", direction: "ASC" });
+  return sortArray;
+}
+
+function extractPlayerData(player) {
+  const {
+    playerId,
+    skaterFullName,
+    seasonId,
+    teamAbbrevs,
+    positionCode,
+    shootsCatches,
+    gamesPlayed,
+    goals,
+    assists,
+    points,
+    pointsPerGame,
+    ppGoals,
+    ppPoints,
+    shots,
+    shootingPct,
+    faceoffWinPct
+  } = player;
+
+  return {
+    playerId: playerId,
+    player: skaterFullName,
+    imageURL: `https://assets.nhle.com/mugs/nhl/${seasonId}/${teamAbbrevs}/${playerId}.png`,
+    teamAbbreviation: teamAbbrevs,
+    teamLogoURL: `https://assets.nhle.com/logos/nhl/svg/${teamAbbrevs}_light.svg`,
+    position: positionCode === "L" || positionCode === "R" ? positionCode + "W" : positionCode,
+    shoots: shootsCatches,
+    gamesPlayed: gamesPlayed,
+    goals: goals,
+    assists: assists,
+    points: points,
+    pointsPerGamesPlayed: pointsPerGame ? Math.round((pointsPerGame + Number.EPSILON) * 1000) / 1000 : null,
+    powerPlayGoals: ppGoals,
+    powerPlayPoints: ppPoints,
+    shots: shots,
+    shootingPercentage: shootingPct ? Math.round((shootingPct + Number.EPSILON) * 10000) / 100 : null,
+    faceoffPercentage: faceoffWinPct ? Math.round((faceoffWinPct + Number.EPSILON) * 10000) / 100 : null
+  };
+}
+
+async function getStats(season, sort) {
+  const sortString = getSortString(sort);
   
   const [stats] = await connection.query(
     `SELECT ${queryColumns} FROM skaters
@@ -48,6 +145,31 @@ async function getStats(season, sort) {
   );
 
   return stats;
+}
+
+function getSortString(sort) {
+  switch (sort) {
+    case "gamesPlayed":
+      return "gamesPlayed DESC";
+    case "goals":
+      return "goals DESC, assists DESC";
+    case "assists":
+      return "assists DESC, goals DESC";
+    case "points":
+      return "points DESC, goals DESC, assists DESC";
+    case "pointsPerGamesPlayed":
+      return "pointsPerGamesPlayed DESC, gamesPlayed ASC";
+    case "powerPlayGoals":
+      return "powerPlayGoals DESC, powerPlayPoints DESC";
+    case "powerPlayPoints":
+      return "powerPlayPoints DESC, powerPlayGoals DESC";
+    case "shots":
+      return "shots DESC, shootingPercentage DESC";
+    case "shootingPercentage":
+      return "shootingPercentage DESC, goals DESC";
+    case "faceoffPercentage":
+      return "faceoffPercentage DESC, gamesPlayed DESC";
+  }
 }
 
 const queryColumns = [
