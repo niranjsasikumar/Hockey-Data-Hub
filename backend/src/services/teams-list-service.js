@@ -1,16 +1,21 @@
+import { fetchDataFromNHLApi } from "../utils/utils.js";
 import connection from "../database/database.js";
 
 export default async function getTeamsList(season) {
-  if (season === "current") {
-    return await getCurrentTeams();
-  }
+  if (season === "current") return await getCurrentTeams();
+  return await getTeams(season);
 }
 
 async function getCurrentTeams() {
-  const [results] = await connection.query(
-    `SELECT id, name FROM teams
-    ORDER BY name ASC`
-  );
+  const teamsData = (await fetchDataFromNHLApi("/teams")).teams;
+  const teams = teamsData.map(({ id, name }) => ({ id, name }));
+  return teams.sort((a, b) => a.name.localeCompare(b.name));
+}
 
-  return results;
+async function getTeams(season) {
+  return (await connection.query(
+    `SELECT teamId AS id, team AS name FROM standings
+    WHERE season = ${season}
+    ORDER BY name ASC`
+  ))[0];
 }
