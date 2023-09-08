@@ -15,16 +15,17 @@ function getRecordString(record) {
 
 // Returns a row of values to insert into "standings" table
 function extractStandingsData(division, team) {
+  const { season } = division;
   const { id, name, teamName, abbreviation } = team.team;
 
   return [
-    parseInt(division.season.toString() + id.toString()),
+    parseInt(season.toString() + id.toString()),
     id,
     name,
     teamName,
     abbreviation,
-    division.season,
-    getLogoUrl(division.season, id),
+    season,
+    getLogoUrl(season, id),
     division.conference?.name ? division.conference?.name : null,
     division.division?.name ? division.division?.name : null,
     team.clinchIndicator,
@@ -35,7 +36,7 @@ function extractStandingsData(division, team) {
     team.leagueRecord?.wins,
     team.leagueRecord?.losses,
     team.leagueRecord?.ties,
-    team.leagueRecord?.ot,
+    season >= 19992000 ? team.leagueRecord?.ot : null,
     team.goalsScored,
     team.goalsAgainst,
     team.goalsScored - team.goalsAgainst,
