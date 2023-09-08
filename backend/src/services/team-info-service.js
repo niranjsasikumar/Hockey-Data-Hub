@@ -148,6 +148,7 @@ async function getCurrentRoster(team) {
     } = player;
 
     const playerInfo = {
+      id,
       name: fullName,
       imageURL: `https://assets.nhle.com/mugs/nhl/${currentSeason}/${teamAbbreviation}/${id}.png`,
       captain,
@@ -308,6 +309,7 @@ async function getGoalies(season, team) {
 }
 
 const rosterQueryColumns = [
+  "playerId AS id",
   "player AS name",
   "imageURL",
   "captain",
