@@ -3,11 +3,11 @@ import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody
 function SkaterStats({ stats, season }) {
   return(
     <TableContainer component={Paper} elevation={2} sx={{ border: "1px solid lightgrey", borderBottom: "none", mb: 4 }}>
-      <Table size="small" aria-label="skater statistics table">
+      <Table size="small" aria-label="skater statistics table" sx={{ borderCollapse: "separate" }}>
 
         <TableHead>
           <TableRow>
-            <TableCell sx={{ position: "sticky", left: "0", backgroundColor: "#F7F7F7" }}>Player</TableCell>
+            <TableCell sx={{ position: "sticky", left: "0", backgroundColor: "#fff", borderRight: "1px solid lightgrey" }}>Player</TableCell>
             <TableCell align="center">Team</TableCell>
             <TableCell align="center">Pos</TableCell>
             <TableCell align="center">S/C</TableCell>
@@ -30,7 +30,7 @@ function SkaterStats({ stats, season }) {
               <TableCell
                 component="th"
                 scope="row"
-                sx={{ maxWidth: { xs: "100px", sm: "max-content" }, position: "sticky", left: "0", backgroundColor: "#F7F7F7" }}
+                sx={{ maxWidth: { xs: "100px", sm: "max-content" }, position: "sticky", left: "0", backgroundColor: "#fff", borderRight: "1px solid lightgrey" }}
               >
                 <Stack
                   direction="row"
