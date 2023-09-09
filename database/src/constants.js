@@ -3,8 +3,8 @@ dotenv.config();
 
 export const API_BASE_URL = "https://statsapi.web.nhl.com/api/v1";
 
-export const CURRENT_SEASON = 20232024;
-export const CURRENT_SEASON_YEAR = 2023;
+export const LAST_SEASON_YEAR = process.env.LAST_SEASON_YEAR;
+export const LAST_SEASON = LAST_SEASON_YEAR.toString() + (LAST_SEASON_YEAR + 1);
 
 export const SEASONS = [];
 for (let year = 1917; year < CURRENT_SEASON_YEAR; year++) {
