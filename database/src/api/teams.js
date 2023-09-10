@@ -1,5 +1,5 @@
 import { getLogoUrl, fetchDataFromApi } from "./api.js";
-import { CURRENT_SEASON } from "../constants.js";
+import { LAST_SEASON } from "../constants.js";
 
 // Returns a row of values to insert into "teams" table
 function extractTeamData(team) {
@@ -9,7 +9,7 @@ function extractTeamData(team) {
     team.locationName,
     team.teamName,
     team.abbreviation,
-    getLogoUrl(CURRENT_SEASON, team.id),
+    getLogoUrl(LAST_SEASON, team.id),
     team.venue?.name,
     team.venue?.city,
     team.firstYearOfPlay,

@@ -7,7 +7,7 @@ export const LAST_SEASON_YEAR = process.env.LAST_SEASON_YEAR;
 export const LAST_SEASON = LAST_SEASON_YEAR.toString() + (LAST_SEASON_YEAR + 1);
 
 export const SEASONS = [];
-for (let year = 1917; year < CURRENT_SEASON_YEAR; year++) {
+for (let year = 1917; year <= LAST_SEASON_YEAR; year++) {
   if (year === 2004) continue; // Season not played due to labour lockout
   const season = parseInt(year.toString() + (year+1).toString());
   SEASONS.push(season);
