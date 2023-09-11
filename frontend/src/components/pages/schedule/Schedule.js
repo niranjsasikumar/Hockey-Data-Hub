@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
+import { apiEndpoint } from "../../../utils/common-utils";
 import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Stack, CircularProgress, Grid } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
-import GameCard from "../common-components/GameCard";
+import GameCard from "../common/GameCard";
 
 function getFormattedDateString(date) {
   return new Date(date).toLocaleString("en-US", {
@@ -33,13 +34,13 @@ function Schedule() {
       if (date === null) {
         const offset = new Date().getTimezoneOffset();
         response = await axios.get(
-          "http://localhost:5000/schedule",
+          apiEndpoint("/schedule"),
           { params: { team: team, date: "null", offset: offset } }
         );
       } else {
         const offset = new Date(date.toISOString()).getTimezoneOffset();
         response = await axios.get(
-          "http://localhost:5000/schedule",
+          apiEndpoint("/schedule"),
           { params: { team: team, date: date.toISOString(), offset: offset } }
         );
       }
@@ -56,7 +57,7 @@ function Schedule() {
   }, []);
 
   async function fetchTeams() {
-    const response = await axios.get("http://localhost:5000/teams/list/current");
+    const response = await axios.get(apiEndpoint("/teams/list/current"));
     setTeamsList(response.data);
   }
 

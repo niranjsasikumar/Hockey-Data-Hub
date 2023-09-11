@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
+import { apiEndpoint } from "../../../utils/common-utils";
 import { Container, Typography, Divider, Stack, CircularProgress, Grid } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
-import GameCard from "../common-components/GameCard";
+import GameCard from "../common/GameCard";
 
 function getFormattedDateString(date) {
   return new Date(date).toLocaleString("en-US", {
@@ -31,13 +32,13 @@ function Scores() {
       if (date === null) {
         const offset = new Date().getTimezoneOffset();
         response = await axios.get(
-          "http://localhost:5000/scores",
+          apiEndpoint("/scores"),
           { params: { date: "null", offset: offset } }
         );
       } else {
         const offset = new Date(date.toISOString()).getTimezoneOffset();
         response = await axios.get(
-          "http://localhost:5000/scores",
+          apiEndpoint("/scores"),
           { params: { date: date.toISOString(), offset: offset } }
         );
       }

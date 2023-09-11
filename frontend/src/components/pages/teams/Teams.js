@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { apiEndpoint } from "../../../utils/common-utils";
 import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Stack, CircularProgress } from "@mui/material";
 import TeamInfo from "./TeamInfo";
 
@@ -17,7 +18,7 @@ function Teams() {
   }, []);
 
   async function fetchSeasons() {
-    const response = await axios.get("http://localhost:5000/seasons/list");
+    const response = await axios.get(apiEndpoint("/seasons/list"));
     setSeasonsList(response.data);
     setSeason(response.data[0].value);
   }
@@ -45,14 +46,14 @@ function Teams() {
   }
 
   async function fetchTeamsList(season, team) {
-    const { data } = await axios.get(`http://localhost:5000/teams/list/${season}`);
+    const { data } = await axios.get(apiEndpoint(`/teams/list/${season}`));
     if (!data.some((teamData) => teamData.id === team)) setTeam("");
     setTeamsList(data);
   }
 
   async function fetchTeamInfo(season, team) {
     const teamData = (await axios.get(
-      "http://localhost:5000/teams/info",
+      apiEndpoint("/teams/info"),
       { params: { season: season, team: team } }
     )).data;
 

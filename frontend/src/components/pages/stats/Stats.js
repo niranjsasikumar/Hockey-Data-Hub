@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { apiEndpoint } from "../../../utils/common-utils";
 import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Stack, CircularProgress } from "@mui/material";
 import SkaterStats from "./SkaterStats";
 import GoalieStats from "./GoalieStats";
@@ -51,7 +52,7 @@ function Stats() {
   }, []);
 
   async function fetchSeasons() {
-    const response = await axios.get("http://localhost:5000/seasons/list");
+    const response = await axios.get(apiEndpoint("/seasons/list"));
     setSeasonsList(response.data);
     setSeason(response.data[0].value);
   }
@@ -79,13 +80,13 @@ function Stats() {
   }
 
   async function fetchSeasonInfo(season) {
-    const response = await axios.get(`http://localhost:5000/seasons/info/${season}`);
+    const response = await axios.get(apiEndpoint(`/seasons/info/${season}`));
     setSeasonInfo(response.data);
   }
 
   async function fetchSkaterStats(season, sort) {
     const response = await axios.get(
-      "http://localhost:5000/stats/skaters",
+      apiEndpoint("/stats/skaters"),
       { params: { season: season, sort: sort } }
     );
     setSkaterStats(response.data);
@@ -93,7 +94,7 @@ function Stats() {
 
   async function fetchGoalieStats(season, sort) {
     const response = await axios.get(
-      "http://localhost:5000/stats/goalies",
+      apiEndpoint("/stats/goalies"),
       { params: { season: season, sort: sort } }
     );
     setGoalieStats(response.data);

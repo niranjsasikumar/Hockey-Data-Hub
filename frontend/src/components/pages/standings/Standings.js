@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { apiEndpoint } from "../../../utils/common-utils";
 import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Stack, CircularProgress, Box, Grid } from "@mui/material";
 import StandingsConference from "./StandingsConference";
 import StandingsDivision from "./StandingsDivision";
@@ -24,7 +25,7 @@ function Standings() {
   }, []);
 
   async function fetchSeasons() {
-    const response = await axios.get("http://localhost:5000/seasons/list");
+    const response = await axios.get(apiEndpoint("/seasons/list"));
     setSeasonsList(response.data);
     setSeason(response.data[0].value);
   }
@@ -52,17 +53,17 @@ function Standings() {
   }
 
   async function fetchSeasonInfo(season) {
-    const response = await axios.get(`http://localhost:5000/seasons/info/${season}`);
+    const response = await axios.get(apiEndpoint(`/seasons/info/${season}`));
     setSeasonInfo(response.data);
   }
 
   async function fetchStandings(season) {
-    const response = await axios.get(`http://localhost:5000/standings/${season}`);
+    const response = await axios.get(apiEndpoint(`/standings/${season}`));
     setStandings(response.data);
   }
 
   async function fetchPlayoffs(season) {
-    const response = await axios.get(`http://localhost:5000/playoffs/${season}`);
+    const response = await axios.get(apiEndpoint(`/playoffs/${season}`));
     setPlayoffs(response.data);
   }
 
