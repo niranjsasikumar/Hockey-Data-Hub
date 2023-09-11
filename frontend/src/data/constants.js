@@ -1,1 +1,1 @@
-export const API_BASE_URL = "https://13.58.172.232:10641";
+export const API_BASE_URL = "https://server.niranjsasikumar.com/";
