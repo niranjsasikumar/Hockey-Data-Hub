@@ -1,6 +1,6 @@
 import React from "react";
 import { skaterStats, goalieStats } from "./sample-stats-data";
-import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem, Alert } from "@mui/material";
+import { Container, Typography, Divider, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import SkaterStats from "./SkaterStats";
 import GoalieStats from "./GoalieStats";
 
@@ -56,6 +56,8 @@ function Stats() {
         <InputLabel id="season-label">Season</InputLabel>
         <Select labelId="season-label" id="season" value={season} label="Season" onChange={handleSeasonChange}>
           <MenuItem value={20222023}>2022-2023</MenuItem>
+          <MenuItem value={20212022}>2021-2022</MenuItem>
+          <MenuItem value={20202021}>2020-2021</MenuItem>
         </Select>
       </FormControl>
 
@@ -88,8 +90,6 @@ function Stats() {
       )}
       
       <Divider sx={{ mt: 1, mb: 3 }} />
-
-      <Alert severity="warning">This web app is currently under development, therefore, the information displayed below is static and sorting is only applied to the 10 players listed below instead of all players who played during the selected season.</Alert>
 
       {type === "skaters" ? (
         <>
