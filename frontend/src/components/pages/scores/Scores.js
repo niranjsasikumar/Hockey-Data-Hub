@@ -1,4 +1,4 @@
-import { Container, Typography, Divider, Alert, Grid } from "@mui/material";
+import { Container, Typography, Divider, Grid } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import { scores } from "./sample-scores-data";
 import ScoreCard from "./ScoreCard";
@@ -10,8 +10,6 @@ function Scores() {
       <Divider sx={{ mt: 2, mb: 3 }} />
       <DatePicker label="Date" views={["year", "month", "day"]}/>
       <Divider sx={{ my: 3 }} />
-
-      <Alert severity="warning">This web app is currently under development, therefore, the information displayed below is static and independent of the Date field above.</Alert>
 
       {scores.map((date) => (
         <div key={date.date}>
