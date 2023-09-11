@@ -8,7 +8,6 @@ import Scores from "./components/pages/scores/Scores";
 import Standings from "./components/pages/standings/Standings";
 import Schedule from "./components/pages/schedule/Schedule";
 import Stats from "./components/pages/stats/Stats";
-import Teams from "./components/pages/teams/Teams";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -39,10 +38,6 @@ const router = createBrowserRouter([
       {
         path: "stats",
         element: <Stats />
-      },
-      {
-        path: "teams",
-        element: <Teams />
       }
     ]
   }

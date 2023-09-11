@@ -27,7 +27,7 @@ export const skaterStats = {
     {
       name: "Points per Games Played",
       property: "PointsPerGamesPlayed",
-      abbreviation: "P/GP",
+      abbreviation: "P/PG",
       sortDescending: true
     },
     {
