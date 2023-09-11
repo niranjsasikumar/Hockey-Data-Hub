@@ -1,4 +1,5 @@
 import express from "express";
+import dotenv from "dotenv";
 import cors from "cors";
 import scoresRoute from "./src/routes/scores-route.js";
 import scheduleRoute from "./src/routes/schedule-route.js";
@@ -10,7 +11,8 @@ import statsRoute from "./src/routes/stats-route.js";
 
 // Initialization and configuration
 const app = express();
-const port = process.env.PORT || 5000;
+dotenv.config();
+const port = process.env.API_PORT;
 app.use(cors());
 
 // Routes
