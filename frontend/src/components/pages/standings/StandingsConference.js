@@ -4,7 +4,7 @@ import StandingsTable from "./StandingsTable";
 function StandingsConference({ standings, season }) {
   return(
     <>
-      {standings.map((conference) => (
+      {standings?.map((conference) => (
         <div key={conference.conference}>
           <Typography variant="h4" component="h2" mt={4}>{conference.conference} Conference</Typography>
           {conference.divisions.map((division) => (

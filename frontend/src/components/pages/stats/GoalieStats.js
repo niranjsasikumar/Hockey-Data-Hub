@@ -1,28 +1,35 @@
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Stack, Box, Typography } from "@mui/material";
 
-function GoalieStats({ stats }) {
+function GoalieStats({ stats, season }) {
   return(
     <TableContainer component={Paper} elevation={2} sx={{ border: "1px solid lightgrey", borderBottom: "none", mb: 4 }}>
-      <Table size="small" aria-label="goalie statistics table">
+      <Table size="small" aria-label="goalie statistics table" sx={{ borderCollapse: "separate" }}>
 
         <TableHead>
           <TableRow>
-            <TableCell sx={{ position: "sticky", left: "0", backgroundColor: "#F7F7F7" }}>Player</TableCell>
+            <TableCell sx={{ position: "sticky", left: "0", backgroundColor: "#fff", borderRight: "1px solid lightgrey" }}>Player</TableCell>
             <TableCell align="center">Team</TableCell>
             <TableCell align="center">S/C</TableCell>
-            {stats.columns.map((column) => (
-              <TableCell align="center" key={column.abbreviation}>{column.abbreviation}</TableCell>
-            ))}
+            <TableCell align="center">GP</TableCell>
+            <TableCell align="center">GS</TableCell>
+            <TableCell align="center">W</TableCell>
+            {Boolean(season.saveStatsTracked) && <TableCell align="center">SA</TableCell>}
+            {Boolean(season.saveStatsTracked) && <TableCell align="center">Svs</TableCell>}
+            <TableCell align="center">GA</TableCell>
+            {Boolean(season.saveStatsTracked) && <TableCell align="center">Sv%</TableCell>}
+            <TableCell align="center">GAA</TableCell>
+            <TableCell align="center">SO</TableCell>
+            <TableCell align="center">TOI</TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
-          {stats.players.map((player) => (
-            <TableRow key={player.PlayerID}>
+          {stats?.map((player) => (
+            <TableRow key={player.playerId}>
               <TableCell
                 component="th"
                 scope="row"
-                sx={{ maxWidth: { xs: "100px", sm: "max-content" }, position: "sticky", left: "0", backgroundColor: "#F7F7F7" }}
+                sx={{ maxWidth: { xs: "100px", sm: "max-content" }, position: "sticky", left: "0", backgroundColor: "#fff", borderRight: "1px solid lightgrey" }}
               >
                 <Stack
                   direction="row"
@@ -32,11 +39,11 @@ function GoalieStats({ stats }) {
                 >
                   <Box
                     component="img"
-                    src={player.ImageURL}
+                    src={player.imageURL}
                     alt=""
                     sx={{ display: { xs: "none", sm: "block" }, width: "50px", borderRadius: "50%", border: "1px solid grey", mr: 1.5 }}
                   />
-                  <Typography variant="body2">{player.Player}</Typography>
+                  <Typography variant="body2">{player.player}</Typography>
                 </Stack>
               </TableCell>
               <TableCell align="center">
@@ -49,16 +56,23 @@ function GoalieStats({ stats }) {
                   <Box
                     component="img"
                     sx={{ width: { xs: "30px", sm: "40px" }, height: "auto", mr: 1 }}
-                    src={player.TeamLogoURL}
+                    src={player.teamLogoURL}
                     alt=""
                   />
-                  <Typography variant="body2">{player.TeamAbbreviation}</Typography>
+                  <Typography variant="body2">{player.teamAbbreviation}</Typography>
                 </Stack>
               </TableCell>
-              <TableCell align="center">{player.Catches}</TableCell>
-              {stats.columns.map((column) => (
-                player[column.property] !== null && <TableCell align="center" key={column.name}>{player[column.property]}</TableCell>
-              ))}
+              <TableCell align="center">{player.catches}</TableCell>
+              <TableCell align="center">{player.gamesPlayed}</TableCell>
+              <TableCell align="center">{player.gamesStarted}</TableCell>
+              <TableCell align="center">{player.wins}</TableCell>
+              {Boolean(season.saveStatsTracked) && <TableCell align="center">{player.shotsAgainst}</TableCell>}
+              {Boolean(season.saveStatsTracked) && <TableCell align="center">{player.saves}</TableCell>}
+              <TableCell align="center">{player.goalsAgainst}</TableCell>
+              {Boolean(season.saveStatsTracked) && <TableCell align="center">{player.savePercentage}</TableCell>}
+              <TableCell align="center">{player.goalsAgainstAverage}</TableCell>
+              <TableCell align="center">{player.shutouts}</TableCell>
+              <TableCell align="center">{player.timeOnIce}</TableCell>
             </TableRow>
           ))}
         </TableBody>
