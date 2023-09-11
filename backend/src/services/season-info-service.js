@@ -1,10 +1,10 @@
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 import { fetchDataFromNHLApi } from "../utils/utils.js";
 
 export default async function getSeasonInfo(season) {
   if (season === "current") return await getCurrentSeasonInfo();
 
-  return (await connection.query(
+  return (await pool.query(
     `SELECT ${queryColumns} FROM seasons
     WHERE id = ${season}`
   ))[0][0];

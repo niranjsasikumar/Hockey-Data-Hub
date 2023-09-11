@@ -1,8 +1,8 @@
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 import { getCurrentSeason, seasonHasPlayoffsData } from "../utils/utils.js";
 
 export default async function getSeasonsList() {
-  const [results] = await connection.query(
+  const [results] = await pool.query(
     `SELECT id, playoffRounds FROM seasons
     ORDER BY id DESC`
   );

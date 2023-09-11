@@ -1,5 +1,5 @@
 import { fetchDataFromNHLApi } from "../utils/utils.js";
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 
 export default async function getTeamsList(season) {
   if (season === "current") return await getCurrentTeams();
@@ -13,7 +13,7 @@ async function getCurrentTeams() {
 }
 
 async function getTeams(season) {
-  return (await connection.query(
+  return (await pool.query(
     `SELECT teamId AS id, team AS name FROM standings
     WHERE season = ${season}
     ORDER BY name ASC`

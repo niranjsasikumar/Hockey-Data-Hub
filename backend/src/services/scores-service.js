@@ -1,10 +1,10 @@
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 import { getTodaysDate, fetchDataFromNHLApi } from "../utils/utils.js";
 import { extractGames, queryColumns, gameTypes } from "../utils/game-utils.js";
 
 // Get scores data from database or NHL API
 export default async function getScores(date, offset) {
-  const [results] = await connection.query(
+  const [results] = await pool.query(
     `SELECT seasonEndDate FROM seasons
     WHERE id = (SELECT MAX(id) FROM seasons)`
   );
@@ -77,7 +77,7 @@ async function getScoresData(dateString, days) {
   const scores = [];
 
   for (const range of dateTimeRanges) {
-    const [results] = await connection.query(
+    const [results] = await pool.query(
       `SELECT ${queryColumns.toString()} FROM games
       WHERE dateTime >= "${range.startString}" AND dateTime < "${range.endString}"
       ORDER BY dateTime ASC`

@@ -1,6 +1,6 @@
 import getSeasonInfo from "./season-info-service.js";
 import { fetchDataFromNHLApi } from "../utils/utils.js";
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 
 export default async function getStandings(season) {
   const seasonInfo = await getSeasonInfo(season);
@@ -105,7 +105,7 @@ async function getStandingsConference(season, conferences, divisions) {
     });
 
     for (let j = i * divsPerConf; j < (i + 1) * divsPerConf; j++) {
-      const [results] = await connection.query(
+      const [results] = await pool.query(
         `SELECT ${queryColumns} FROM standings
         WHERE season = ${season} AND division = "${divisions[j]}"
         ORDER BY divisionRank ASC`
@@ -151,7 +151,7 @@ async function getStandingsDivision(season, divisions) {
   const standings = [];
 
   for (const division of divisions) {
-    const [results] = await connection.query(
+    const [results] = await pool.query(
       `SELECT ${queryColumns} FROM standings
       WHERE season = ${season} AND division = "${division}"
       ORDER BY divisionRank ASC`
@@ -167,7 +167,7 @@ async function getStandingsDivision(season, divisions) {
 }
 
 async function getStandingsLeague(season) {
-  return (await connection.query(
+  return (await pool.query(
     `SELECT ${queryColumns} FROM standings
     WHERE season = ${season}
     ORDER BY leagueRank ASC`

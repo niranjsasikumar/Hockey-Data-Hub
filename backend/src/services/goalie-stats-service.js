@@ -1,7 +1,7 @@
 import { getCurrentSeason } from "../utils/utils.js";
 import axios from "axios";
 import { fetchDataFromNHLApi } from "../utils/utils.js";
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 
 export default async function getGoalieStats(season, sort) {
   if (season === "current") return await getCurrentSeasonStats(sort);
@@ -161,7 +161,7 @@ async function getStats(season, sort) {
   const minGamesPlayed = await getMinGamesPlayed(season);
   const sortString = getSortString(sort);
   
-  const [stats] = await connection.query(
+  const [stats] = await pool.query(
     `SELECT ${queryColumns}, GROUP_CONCAT(teamAbbreviation ORDER BY id SEPARATOR ", ") AS teamAbbreviation, GROUP_CONCAT(teamId ORDER BY id SEPARATOR ",") AS teamIds FROM goalies
     WHERE season = ${season} AND gamesPlayed >= ${minGamesPlayed}
     GROUP BY ${queryColumns}
@@ -211,7 +211,7 @@ function getSortString(sort) {
 
 // Get the minimum number of games a goalie should have played to be included in the stats
 async function getMinGamesPlayed(season) {
-  const numberOfGames = (await connection.query(
+  const numberOfGames = (await pool.query(
     `SELECT numberOfGames FROM seasons
     WHERE id = ${season}`
   ))[0][0].numberOfGames;

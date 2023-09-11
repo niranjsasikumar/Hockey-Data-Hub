@@ -1,5 +1,5 @@
 import { fetchDataFromNHLApi, getCurrentSeason } from "../utils/utils.js";
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 
 export default async function getTeamInfo(season, team) {
   let basicInfoPromise, playoffsPromise, statsPromise, rosterPromise;
@@ -200,21 +200,21 @@ function getPlaceOfBirth(player) {
 }
 
 async function getBasicTeamInfo(season, team) {
-  return (await connection.query(
+  return (await pool.query(
     `SELECT team AS name, logoURL, conference, division FROM standings
     WHERE season = ${season} AND teamId = ${team}`
   ))[0][0];
 }
 
 async function getPlayoffsResult(season, team) {
-  const playoffRounds = (await connection.query(
+  const playoffRounds = (await pool.query(
     `SELECT playoffRounds FROM seasons
     WHERE id = ${season}`
   ))[0][0].playoffRounds;
 
   if (playoffRounds === null) return null;
 
-  const [series] = await connection.query(
+  const [series] = await pool.query(
     `SELECT ${playoffsQueryColumns} FROM playoff_series
     WHERE season = ${season} AND (team1Id = ${team} OR team2Id = ${team})
     ORDER BY id DESC`
@@ -249,7 +249,7 @@ const playoffsQueryColumns = [
 ];
 
 async function getTeamStats(season, team) {
-  return (await connection.query(
+  return (await pool.query(
     `SELECT ${statsQueryColumns} FROM standings
     WHERE season = ${season} AND teamId = ${team}`
   ))[0][0];
@@ -288,21 +288,21 @@ async function getRoster(season, team) {
 }
 
 async function getForwards(season, team) {
-  return (await connection.query(
+  return (await pool.query(
     `SELECT ${rosterQueryColumns}, position, shoots FROM skaters
     WHERE season = ${season} AND teamId = ${team} AND positionType = "Forward"`
   ))[0];
 }
 
 async function getDefensemen(season, team) {
-  return (await connection.query(
+  return (await pool.query(
     `SELECT ${rosterQueryColumns}, shoots FROM skaters
     WHERE season = ${season} AND teamId = ${team} AND positionType = "Defenseman"`
   ))[0];
 }
 
 async function getGoalies(season, team) {
-  return (await connection.query(
+  return (await pool.query(
     `SELECT ${rosterQueryColumns}, catches FROM goalies
     WHERE season = ${season} AND teamId = ${team}`
   ))[0];

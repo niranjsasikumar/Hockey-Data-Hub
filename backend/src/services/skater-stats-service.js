@@ -1,6 +1,6 @@
 import { getCurrentSeason } from "../utils/utils.js";
 import axios from "axios";
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 
 export default async function getSkaterStats(season, sort) {
   if (season === "current") return await getCurrentSeasonStats(sort);
@@ -139,7 +139,7 @@ function extractPlayerData(player) {
 async function getStats(season, sort) {
   const sortString = getSortString(sort);
   
-  const [stats] = await connection.query(
+  const [stats] = await pool.query(
     `SELECT ${queryColumns}, GROUP_CONCAT(teamAbbreviation ORDER BY id SEPARATOR ", ") AS teamAbbreviation, GROUP_CONCAT(teamId ORDER BY id SEPARATOR ",") AS teamIds FROM skaters
     WHERE season = ${season}
     GROUP BY ${queryColumns}

@@ -1,10 +1,10 @@
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 import { getTodaysDate, fetchDataFromNHLApi, getCurrentSeason } from "../utils/utils.js";
 import { extractGames, queryColumns, gameTypes } from "../utils/game-utils.js";
 
 // Get schedule data from database or NHL API
 export default async function getSchedule(team, date, offset) {
-  const [results] = await connection.query(
+  const [results] = await pool.query(
     `SELECT seasonEndDate FROM seasons
     WHERE id = (SELECT MAX(id) FROM seasons)`
   );
@@ -94,7 +94,7 @@ async function getScheduleData(team, dateString, days) {
   const schedule = [];
 
   for (const range of dateTimeRanges) {
-    const [results] = await connection.query(
+    const [results] = await pool.query(
       `SELECT ${queryColumns.toString()} FROM games
       WHERE dateTime >= "${range.startString}" AND dateTime < "${range.endString}"
       ${team !== "all" ? `AND (awayId = ${team} OR homeId = ${team})` : ""}

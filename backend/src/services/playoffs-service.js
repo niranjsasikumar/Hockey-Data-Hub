@@ -1,10 +1,10 @@
-import connection from "../database/database.js";
+import pool from "../database/database.js";
 import { fetchDataFromNHLApi } from "../utils/utils.js";
 
 export default async function getPlayoffs(season) {
   if (season === "current") return await getCurrentSeasonPlayoffs();
 
-  const playoffRounds = (await connection.query(
+  const playoffRounds = (await pool.query(
     `SELECT playoffRounds FROM seasons
     WHERE id = ${season}`
   ))[0][0].playoffRounds;
@@ -14,7 +14,7 @@ export default async function getPlayoffs(season) {
   const playoffs = [];
 
   for (const round of playoffRounds.split(",")) {
-    const [series] = await connection.query(
+    const [series] = await pool.query(
       `SELECT ${queryColumns} FROM playoff_series
       WHERE season = ${season} AND round = "${round}"`
     );
