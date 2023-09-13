@@ -32,3 +32,7 @@ Hockey Data Hub is a web application that displays various information related t
 
 - View information, season results, and the roster for a specific team
 - Switch between seasons and teams to view the team information for a specific season
+
+## Disclaimer
+
+This application is not affiliated with or endorsed by the National Hockey League. Any trademarks used in this application are done so with the sole purpose of identifying the respective entities, and remain the property of their respective owners.
