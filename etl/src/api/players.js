@@ -38,7 +38,8 @@ function getPlaceOfBirth(player) {
 }
 
 // Returns player values that can be inserted into either "skaters" or "goalies" tables
-function extractPlayerData(season, team, player) {
+async function extractPlayerData(season, team, player) {
+  const teamLogoUrl = await getLogoUrl(season, team.id);
   return [
     parseInt(season.toString() + team.id.toString() + player.person?.id.toString()),
     player.person?.id,
@@ -49,7 +50,7 @@ function extractPlayerData(season, team, player) {
     team.abbreviation,
     season,
     getPlayerImageUrl(season, team.abbreviation, player.person?.id),
-    getLogoUrl(season, team.id),
+    teamLogoUrl,
     player.jerseyNumber,
     player.person?.captain,
     player.person?.alternateCaptain,
@@ -63,8 +64,8 @@ function extractPlayerData(season, team, player) {
 }
 
 // Returns a row of values to insert into "goalies" table
-function extractGoalieData(season, team, player, hasStats, playerStats) {
-  const values = extractPlayerData(season, team, player);
+async function extractGoalieData(season, team, player, hasStats, playerStats) {
+  const values = await extractPlayerData(season, team, player);
 
   if (hasStats) {
     values.push(hasStats ? playerStats.games : null);
@@ -85,8 +86,8 @@ function extractGoalieData(season, team, player, hasStats, playerStats) {
 }
 
 // Returns a row of values to insert into "skaters" table
-function extractSkaterData(season, team, player, hasStats, playerStats) {
-  const values = extractPlayerData(season, team, player);
+async function extractSkaterData(season, team, player, hasStats, playerStats) {
+  const values = await extractPlayerData(season, team, player);
   values.splice(11, 0, player.position?.abbreviation, player.position?.type);
           
   if (hasStats) {
@@ -127,9 +128,9 @@ export async function getPlayerValues(seasons) {
         playerStats.length === 0 ? hasStats = false : playerStats = playerStats[0].stat;
 
         if (player.position?.type === "Goalie") {
-          goalieValues.push(extractGoalieData(seasons[i], team, player, hasStats, playerStats));
+          goalieValues.push(await extractGoalieData(seasons[i], team, player, hasStats, playerStats));
         } else {
-          skaterValues.push(extractSkaterData(seasons[i], team, player, hasStats, playerStats));
+          skaterValues.push(await extractSkaterData(seasons[i], team, player, hasStats, playerStats));
         }
       }
     }

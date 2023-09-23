@@ -77,11 +77,13 @@ function getGoalScorers(game) {
 }
 
 // Returns a row of values to insert into "games" table
-function extractGameData(season, game) {
+async function extractGameData(season, game) {
   const [awayGoalScorers, homeGoalScorers] = getGoalScorers(game);
   const currentPeriod = game.linescore?.currentPeriodOrdinal;
   const series = game.seriesSummary?.series;
   const { away, home } = game.teams;
+  const awayLogoUrl = await getLogoUrl(season, away.team?.id);
+  const homeLogoUrl = await getLogoUrl(season, home.team?.id);
 
   return [
     game.gamePk,
@@ -98,14 +100,14 @@ function extractGameData(season, game) {
     away.team?.name,
     away.team?.teamName,
     away.team?.abbreviation,
-    getLogoUrl(season, away.team?.id),
+    awayLogoUrl,
     away.score,
     awayGoalScorers,
     home.team?.id,
     home.team?.name,
     home.team?.teamName,
     home.team?.abbreviation,
-    getLogoUrl(season, home.team?.id),
+    homeLogoUrl,
     home.score,
     homeGoalScorers
   ];
@@ -121,7 +123,7 @@ export async function getGameValues(seasons) {
       for (const game of date.games) {
         if (!PLAYOFFS_DATA_SEASONS.includes(seasons[i]) && game.gameType === "P") continue;
         if (game.linescore?.currentPeriodOrdinal === undefined) continue;
-        gameValues.push(extractGameData(seasons[i], game));
+        gameValues.push(await extractGameData(seasons[i], game));
       }
     }
   }

@@ -14,9 +14,10 @@ function getRecordString(record) {
 }
 
 // Returns a row of values to insert into "standings" table
-function extractStandingsData(division, team) {
+async function extractStandingsData(division, team) {
   const { season } = division;
   const { id, name, teamName, abbreviation } = team.team;
+  const teamLogoUrl = await getLogoUrl(season, id);
 
   return [
     parseInt(season.toString() + id.toString()),
@@ -25,7 +26,7 @@ function extractStandingsData(division, team) {
     teamName,
     abbreviation,
     season,
-    getLogoUrl(season, id),
+    teamLogoUrl,
     division.conference?.name ? division.conference?.name : null,
     division.division?.name ? division.division?.name : null,
     team.clinchIndicator,
@@ -53,9 +54,10 @@ export async function getStandingsValues(seasons) {
   const standingsValues = [];
 
   for (const season of standingsData) {
+    console.log(season.records[0].season);
     for (const division of season.records) {
       for (const team of division.teamRecords) {
-        standingsValues.push(extractStandingsData(division, team));
+        standingsValues.push(await extractStandingsData(division, team));
       }
     }
   }

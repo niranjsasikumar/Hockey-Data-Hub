@@ -2,14 +2,15 @@ import { getLogoUrl, fetchDataFromApi } from "./api.js";
 import { LAST_SEASON } from "../constants.js";
 
 // Returns a row of values to insert into "teams" table
-function extractTeamData(team) {
+async function extractTeamData(team) {
+  const logoUrl = await getLogoUrl(LAST_SEASON, team.id);
   return [
     team.id,
     team.name,
     team.locationName,
     team.teamName,
     team.abbreviation,
-    getLogoUrl(LAST_SEASON, team.id),
+    logoUrl,
     team.venue?.name,
     team.venue?.city,
     team.firstYearOfPlay,
@@ -25,7 +26,7 @@ export async function getTeamValues() {
   const teamValues = [];
 
   for (const team of teamsData) {
-    teamValues.push(extractTeamData(team));
+    teamValues.push(await extractTeamData(team));
   }
 
   return teamValues;

@@ -15,9 +15,11 @@ async function getPlayoffsData(seasons) {
 }
 
 // Returns a row of values to insert into "playoff_series" table
-function extractPlayoffSeriesData(season, round, series) {
+async function extractPlayoffSeriesData(season, round, series) {
   const team1 = series.matchupTeams[0].team;
   const team2 = series.matchupTeams[1].team;
+  const team1LogoUrl = await getLogoUrl(season, team1.id);
+  const team2LogoUrl = await getLogoUrl(season, team2.id);
 
   return [
     parseInt(season.toString() + round.number.toString() + series.seriesNumber.toString()),
@@ -29,12 +31,12 @@ function extractPlayoffSeriesData(season, round, series) {
     team1.name,
     team1.teamName,
     team1.abbreviation,
-    getLogoUrl(season, team1.id),
+    team1LogoUrl,
     team2.id,
     team2.name,
     team2.teamName,
     team2.abbreviation,
-    getLogoUrl(season, team2.id),
+    team2LogoUrl,
     series.currentGame?.seriesSummary?.seriesStatus,
     series.currentGame?.seriesSummary?.seriesStatusShort
   ];
@@ -49,7 +51,7 @@ export async function getPlayoffSeriesValues(seasons) {
   for (let i = 0; i < validSeasons.length; i++) {
     for (const round of playoffsData[i].rounds) {
       for (const series of round.series) {
-        playoffSeriesValues.push(extractPlayoffSeriesData(validSeasons[i], round, series));
+        playoffSeriesValues.push(await extractPlayoffSeriesData(validSeasons[i], round, series));
       }
     }
   }
