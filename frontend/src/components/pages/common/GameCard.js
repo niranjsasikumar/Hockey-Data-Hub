@@ -81,7 +81,7 @@ function GameCard({ game }) {
           </Grid>
         </Grid>
 
-        {game.status.includes("Final") && (
+        {game.awayGoals !== null && (
           <Accordion disableGutters sx={{ borderTop: "1px solid lightgrey" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
