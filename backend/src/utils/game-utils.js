@@ -7,6 +7,8 @@ export function extractGames(scheduleData) {
   for (const date of scheduleData) {
     for (const game of date.games) {
       const { away, home } = game.teams;
+      const awayAbbreviation = away.team?.abbreviation;
+      const homeAbbreviation = home.team?.abbreviation;
       const [awayGoalScorers, homeGoalScorers] = getGoalScorers(game);
 
       games.push({
@@ -17,13 +19,13 @@ export function extractGames(scheduleData) {
         playoffRound: "seriesSummary" in game ? game.seriesSummary?.series?.round?.names?.name : null,
         playoffGameNumber: game.seriesSummary?.gameLabel,
         awayShortName: away.team?.teamName,
-        awayAbbreviation: away.team?.abbreviation,
-        awayLogoURL: getLogoUrl(game.season, away.team?.id),
+        awayAbbreviation: awayAbbreviation,
+        awayLogoURL: `https://assets.nhle.com/logos/nhl/svg/${awayAbbreviation}_light.svg`,
         awayGoals: ["3", "4", "5", "6", "7"].includes(game.status.statusCode) ? away.score : null,
         awayGoalScorers: awayGoalScorers,
         homeShortName: home.team?.teamName,
-        homeAbbreviation: home.team?.abbreviation,
-        homeLogoURL: getLogoUrl(game.season, home.team?.id),
+        homeAbbreviation: homeAbbreviation,
+        homeLogoURL: `https://assets.nhle.com/logos/nhl/svg/${homeAbbreviation}_light.svg`,
         homeGoals: ["3", "4", "5", "6", "7"].includes(game.status.statusCode) ? home.score : null,
         homeGoalScorers: homeGoalScorers
       });
