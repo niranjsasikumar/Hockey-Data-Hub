@@ -1,4 +1,4 @@
-import { getCurrentSeason } from "../utils/utils.js";
+import { getCurrentSeason, getLogoUrl } from "../utils/utils.js";
 import axios from "axios";
 import { fetchDataFromNHLApi } from "../utils/utils.js";
 import pool from "../database/database.js";
@@ -173,7 +173,7 @@ async function getStats(season, sort) {
     const teamAbbreviation = player.teamAbbreviation.split(", ")[0];
     const teamId = player.teamIds.split(",")[0];
     player.imageURL = `https://assets.nhle.com/mugs/nhl/${season}/${teamAbbreviation}/${player.playerId}.png`;
-    player.teamLogoURL = `https://www-league.nhlstatic.com/images/logos/teams-${season}-light/${teamId}.svg`;
+    player.teamLogoURL = await getLogoUrl(season, teamId);
     player.savePercentage = player.savePercentage ? Math.round((player.savePercentage + Number.EPSILON) * 10000) / 100 : null;
     player.goalsAgainstAverage = Math.round((player.goalsAgainstAverage + Number.EPSILON) * 1000) / 1000;
   }
