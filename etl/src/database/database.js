@@ -20,10 +20,13 @@ for (const [key, value] of Object.entries(columns)) {
   rows.forEach(row => value.push(row.Field));
 }
 
-// Insert the given rows into the specified table, the column names are given as an array of strings and the rows to insert is an array containing arrays of values
+/* Insert the given rows into the specified table, the column names are given as
+an array of strings and the rows to insert is an array containing arrays of
+values */
 export async function insertIntoTable(table, columns, rows) {
   if (rows.length === 0) return;
-  const statement = "REPLACE INTO " + table + " (`" + columns.join("`, `") + "`) VALUES ?";
+  const statement = "REPLACE INTO " + table + " (`" + columns.join("`, `")
+    + "`) VALUES ?";
   await connection.query(statement, [rows]);
 }
 

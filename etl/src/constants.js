@@ -13,7 +13,8 @@ for (let year = 1917; year <= LAST_SEASON_YEAR; year++) {
   SEASONS.push(season);
 }
 
-// Seasons to consider for playoffs data, the seasons that are not included are due to missing or inconsistent data
+/* Seasons to consider for playoffs data, the seasons that are not included are
+due to missing or inconsistent data */
 export const PLAYOFFS_DATA_SEASONS = SEASONS.filter(
   season => (season >= 19421943 && season <= 19721973) || season >= 19811982
 );

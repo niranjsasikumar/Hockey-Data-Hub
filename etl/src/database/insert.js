@@ -27,7 +27,9 @@ export async function insertSeasonData(seasons) {
 export async function insertPlayoffSeriesData(seasons) {
   console.log("Start inserting into / updating \"playoff_series\" table");
   const playoffSeriesValues = await getPlayoffSeriesValues(seasons);
-  await insertIntoTable("playoff_series", columns.playoff_series, playoffSeriesValues);
+  await insertIntoTable(
+    "playoff_series", columns.playoff_series, playoffSeriesValues
+  );
   console.log("Finished inserting into / updating \"playoff_series\" table");
 }
 
@@ -41,11 +43,15 @@ export async function insertStandingsData(seasons) {
 
 // Insert or update data in "skaters" and "goalies" tables
 export async function insertPlayerData(seasons) {
-  console.log("Start inserting into / updating \"skaters\" and \"goalies\" tables");
+  console.log(
+    "Start inserting into / updating \"skaters\" and \"goalies\" tables"
+  );
   const [skaterValues, goalieValues] = await getPlayerValues(seasons);
   await insertIntoTable("skaters", columns.skaters, skaterValues);
   await insertIntoTable("goalies", columns.goalies, goalieValues);
-  console.log("Finished inserting into / updating \"skaters\" and \"goalies\" tables");
+  console.log(
+    "Finished inserting into / updating \"skaters\" and \"goalies\" tables"
+  );
 }
 
 // Insert or update data in "games" table

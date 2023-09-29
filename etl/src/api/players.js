@@ -3,7 +3,9 @@ import { getLogoUrl, fetchDataFromApi } from "./api.js";
 // Get team data for the given seasons from NHL API
 async function getTeamData(seasons) {
   const teamDataPromises = seasons.map(
-    season => fetchDataFromApi("/teams?expand=team.roster,roster.person&season=" + season)
+    season => fetchDataFromApi(
+      "/teams?expand=team.roster,roster.person&season=" + season
+    )
   );
   return await Promise.all(teamDataPromises);
 }
@@ -11,14 +13,20 @@ async function getTeamData(seasons) {
 // Get player stats for the given team and season from NHL API
 async function getPlayerStatsData(teamRoster, season) {
   const playerStatsDataPromises = teamRoster.map(
-    player => fetchDataFromApi("/people/" + player.person?.id + "/stats?stats=statsSingleSeason&season=" + season)
+    player => fetchDataFromApi(
+      "/people/" + player.person?.id + "/stats?stats=statsSingleSeason&season="
+      + season
+    )
   );
   return await Promise.all(playerStatsDataPromises);
 }
 
 // Get the URL of a player's headshot image
 function getPlayerImageUrl(season, team, playerId) {
-  return "https://assets.nhle.com/mugs/nhl/" + season + "/" + team + "/" + playerId + ".png";
+  return (
+    "https://assets.nhle.com/mugs/nhl/" + season + "/" + team + "/" + playerId
+    + ".png"
+  );
 }
 
 // Get the place of birth of a player as a formatted string
@@ -37,11 +45,16 @@ function getPlaceOfBirth(player) {
   return result;
 }
 
-// Returns player values that can be inserted into either "skaters" or "goalies" tables
+/* Returns player values that can be inserted into either "skaters" or "goalies"
+tables */
 async function extractPlayerData(season, team, player) {
   const teamLogoUrl = await getLogoUrl(season, team.id);
+  const recordId = parseInt(
+    season.toString() + team.id.toString() + player.person?.id.toString()
+  );
+
   return [
-    parseInt(season.toString() + team.id.toString() + player.person?.id.toString()),
+    recordId,
     player.person?.id,
     player.person?.fullName,
     team.id,
@@ -108,7 +121,8 @@ async function extractSkaterData(season, team, player, hasStats, playerStats) {
   return values;
 }
 
-// Convert player data from NHL API for the given seasons to rows of values to insert into "skaters" and "goalies" tables
+/* Convert player data from NHL API for the given seasons to rows of values to
+insert into "skaters" and "goalies" tables */
 export async function getPlayerValues(seasons) {
   const teamData = await getTeamData(seasons);
   const skaterValues = [];
@@ -125,12 +139,18 @@ export async function getPlayerValues(seasons) {
         const player = roster[j];
         let playerStats = playerStatsData[j].stats[0].splits;
         let hasStats = true;
-        playerStats.length === 0 ? hasStats = false : playerStats = playerStats[0].stat;
+        
+        if (playerStats.length === 0) hasStats = false;
+        else playerStats = playerStats[0].stat;
 
         if (player.position?.type === "Goalie") {
-          goalieValues.push(await extractGoalieData(seasons[i], team, player, hasStats, playerStats));
+          goalieValues.push(await extractGoalieData(
+            seasons[i], team, player, hasStats, playerStats
+          ));
         } else {
-          skaterValues.push(await extractSkaterData(seasons[i], team, player, hasStats, playerStats));
+          skaterValues.push(await extractSkaterData(
+            seasons[i], team, player, hasStats, playerStats
+          ));
         }
       }
     }

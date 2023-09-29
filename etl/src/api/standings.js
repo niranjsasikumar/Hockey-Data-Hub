@@ -3,14 +3,20 @@ import { getLogoUrl, fetchDataFromApi } from "./api.js";
 // Get standings data for the given seasons from NHL API
 async function getStandingsData(seasons) {
   const standingsDataPromises = seasons.map(
-    season => fetchDataFromApi("/standings?expand=standings.record,standings.team&season=" + season)
+    season => fetchDataFromApi(
+      "/standings?expand=standings.record,standings.team&season=" + season
+    )
   );
   return await Promise.all(standingsDataPromises);
 }
 
 // Returns a formatted string given a record object from standings data
 function getRecordString(record) {
-  return record.wins + "-" + record.losses + ("ties" in record ? "-" + record.ties : "") + ("ot" in record ? "-" + record.ot : "");
+  return (
+    record.wins + "-" + record.losses
+    + ("ties" in record ? "-" + record.ties : "")
+    + ("ot" in record ? "-" + record.ot : "")
+  );
 }
 
 // Returns a row of values to insert into "standings" table
@@ -48,7 +54,8 @@ async function extractStandingsData(division, team) {
   ];
 }
 
-// Convert standings data from NHL API for the given seasons to rows of values to insert into "standings" table
+/* Convert standings data from NHL API for the given seasons to rows of values
+to insert into "standings" table */
 export async function getStandingsValues(seasons) {
   const standingsData = await getStandingsData(seasons);
   const standingsValues = [];

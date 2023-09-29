@@ -9,20 +9,26 @@ function hasPlayoffsData(season) {
 // Get playoffs data for the given seasons from NHL API
 async function getPlayoffsData(seasons) {
   const playoffsDataPromises = seasons.map(
-    season => fetchDataFromApi("/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary,series.matchup.team&season=" + season)
+    season => fetchDataFromApi(
+      "/tournaments/playoffs?expand=round.series,schedule.game.seriesSummary"
+      + ",series.matchup.team&season=" + season
+    )
   );
   return await Promise.all(playoffsDataPromises);
 }
 
 // Returns a row of values to insert into "playoff_series" table
 async function extractPlayoffSeriesData(season, round, series) {
+  const recordId = parseInt(
+    season.toString() + round.number.toString() + series.seriesNumber.toString()
+  );
   const team1 = series.matchupTeams[0].team;
   const team2 = series.matchupTeams[1].team;
   const team1LogoUrl = await getLogoUrl(season, team1.id);
   const team2LogoUrl = await getLogoUrl(season, team2.id);
 
   return [
-    parseInt(season.toString() + round.number.toString() + series.seriesNumber.toString()),
+    recordId,
     season,
     round.number,
     round.names?.name,
@@ -42,7 +48,8 @@ async function extractPlayoffSeriesData(season, round, series) {
   ];
 }
 
-// Convert playoff series data from NHL API for the given seasons to rows of values to insert into "playoff_series" table
+/* Convert playoff series data from NHL API for the given seasons to rows of
+values to insert into "playoff_series" table */
 export async function getPlayoffSeriesValues(seasons) {
   const validSeasons = seasons.filter(hasPlayoffsData);
   const playoffsData = await getPlayoffsData(validSeasons);
@@ -51,7 +58,9 @@ export async function getPlayoffSeriesValues(seasons) {
   for (let i = 0; i < validSeasons.length; i++) {
     for (const round of playoffsData[i].rounds) {
       for (const series of round.series) {
-        playoffSeriesValues.push(await extractPlayoffSeriesData(validSeasons[i], round, series));
+        playoffSeriesValues.push(
+          await extractPlayoffSeriesData(validSeasons[i], round, series)
+        );
       }
     }
   }

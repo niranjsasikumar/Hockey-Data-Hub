@@ -16,7 +16,11 @@ async function getSeasonData(seasons) {
   );
 
   return await Promise.all(
-    seasonDataPromises.concat(standingsDataPromises).concat(playoffsDataPromises)
+    seasonDataPromises.concat(
+      standingsDataPromises
+    ).concat(
+      playoffsDataPromises
+    )
   );
 }
 
@@ -34,7 +38,9 @@ function getSeasonStructure(standingsData) {
     }
   }
 
-  conferences = conferences.size === 0 ? null : Array.from(conferences).toString();
+  conferences = conferences.size === 0
+    ? null
+    : Array.from(conferences).toString();
   divisions = divisions.length === 0 ? null : divisions.toString();
 
   return [conferences, divisions];
@@ -75,7 +81,8 @@ function extractSeasonData(seasonData, standingsData, playoffsData) {
   ];
 }
 
-// Convert data of seasons from NHL API to rows of values to insert into "seasons" table
+/* Convert data of seasons from NHL API to rows of values to insert into
+"seasons" table */
 export async function getSeasonValues(seasons) {
   const data = await getSeasonData(seasons);
   const len = seasons.length;
@@ -89,7 +96,9 @@ export async function getSeasonValues(seasons) {
       extractSeasonData(
         seasonData[i].seasons[0],
         standingsData[i].records,
-        PLAYOFFS_DATA_SEASONS.includes(seasons[i]) ? playoffsData[i].rounds : null
+        PLAYOFFS_DATA_SEASONS.includes(
+          seasons[i]
+        ) ? playoffsData[i].rounds : null
       )
     );
   }

@@ -20,7 +20,8 @@ async function extractTeamData(team) {
   ];
 }
 
-// Convert data of current teams from NHL API to rows of values to insert into "teams" table
+/* Convert data of current teams from NHL API to rows of values to insert into
+"teams" table */
 export async function getTeamValues() {
   const teamsData = (await fetchDataFromApi("/teams")).teams;
   const teamValues = [];
