@@ -1,4 +1,4 @@
-import { clearTeamsTable, insertIntoTable } from "./database.js";
+import { clearTable, insertIntoTable } from "./database.js";
 import { getTeamValues } from "../api/teams.js";
 import { getSeasonValues } from "../api/seasons.js";
 import { getPlayoffSeriesValues } from "../api/playoff-series.js";
@@ -9,7 +9,7 @@ import { getGameValues } from "../api/games.js";
 // Overwrite the data in "teams" table
 export async function updateTeamsData(connection, columns) {
   console.log("Start overwriting \"teams\" table");
-  await clearTeamsTable(connection);
+  await clearTable(connection, "teams");
   const teamValues = await getTeamValues();
   await insertIntoTable(connection, "teams", columns, teamValues);
   console.log("Finished overwriting \"teams\" table");

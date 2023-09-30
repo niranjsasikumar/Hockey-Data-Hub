@@ -38,6 +38,6 @@ export async function insertIntoTable(connection, table, columns, rows) {
 }
 
 // Delete all rows in teams table
-export async function clearTeamsTable(connection) {
-  await connection.query("DELETE FROM teams");
+export async function clearTable(connection, table) {
+  await connection.query(`DELETE FROM ${table}`);
 }
