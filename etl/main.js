@@ -1,4 +1,4 @@
-import { connection } from "./src/database/database.js";
+import { getDatabaseConnection, getColumns } from "./src/database/database.js";
 import {
   updateTeamsData,
   insertSeasonData,
@@ -9,13 +9,16 @@ import {
 } from "./src/database/insert.js";
 import { SEASONS } from "./src/constants.js";
 
+const connection = await getDatabaseConnection();
+const columns = await getColumns(connection);
+
 await Promise.all([
-  updateTeamsData(),
-  insertSeasonData(SEASONS),
-  insertPlayoffSeriesData(SEASONS),
-  insertStandingsData(SEASONS),
-  insertPlayerData(SEASONS),
-  insertGameData(SEASONS)
+  updateTeamsData(connection, columns.teams),
+  insertSeasonData(connection, columns.seasons, SEASONS),
+  insertPlayoffSeriesData(connection, columns.playoff_series, SEASONS),
+  insertStandingsData(connection, columns.standings, SEASONS),
+  insertPlayerData(connection, columns.skaters, columns.goalies, SEASONS),
+  insertGameData(connection, columns.games, SEASONS)
 ]);
 
 connection.end();

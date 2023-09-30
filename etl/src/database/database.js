@@ -1,16 +1,14 @@
 import mysql from "mysql2/promise";
 import { DB_CONFIG } from "../constants.js";
 
-async function getDatabaseConnection() {
+export async function getDatabaseConnection() {
   const connection = await mysql.createConnection(DB_CONFIG);
   console.log("Connected to database");
   return connection;
 }
 
-export const connection = await getDatabaseConnection();
-
 // Get column names of each table from database
-async function getColumns() {
+export async function getColumns(connection) {
   const columns = {
     teams: [],
     seasons: [],
@@ -29,12 +27,10 @@ async function getColumns() {
   return columns;
 }
 
-export const columns = await getColumns();
-
 /* Insert the given rows into the specified table, the column names are given as
 an array of strings and the rows to insert is an array containing arrays of
 values */
-export async function insertIntoTable(table, columns, rows) {
+export async function insertIntoTable(connection, table, columns, rows) {
   if (rows.length === 0) return;
   const statement = "REPLACE INTO " + table + " (`" + columns.join("`, `")
     + "`) VALUES ?";
@@ -42,6 +38,6 @@ export async function insertIntoTable(table, columns, rows) {
 }
 
 // Delete all rows in teams table
-export async function clearTeamsTable() {
+export async function clearTeamsTable(connection) {
   await connection.query("DELETE FROM teams");
 }
