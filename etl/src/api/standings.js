@@ -61,7 +61,6 @@ export async function getStandingsValues(seasons) {
   const standingsValues = [];
 
   for (const season of standingsData) {
-    console.log(season.records[0].season);
     for (const division of season.records) {
       for (const team of division.teamRecords) {
         standingsValues.push(await extractStandingsData(division, team));

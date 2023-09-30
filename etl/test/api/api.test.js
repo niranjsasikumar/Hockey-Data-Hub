@@ -1,6 +1,6 @@
 import { fetchDataFromApi, getLogoUrl } from "../../src/api/api.js";
 
-test("Fetch data from NHL API", async () => {
+test("Successfully fetch data from NHL API", async () => {
   const data = await fetchDataFromApi("/expands");
   expect(data.length).toBeGreaterThan(0);
   expect(data).toContainEqual({
