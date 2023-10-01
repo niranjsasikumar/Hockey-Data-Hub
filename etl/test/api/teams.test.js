@@ -1,6 +1,6 @@
 import { getTeamValues, extractTeamData } from "../../src/api/teams";
 
-test("Get team values", async () => {
+test("getTeamValues", async () => {
   const teamValues = await getTeamValues();
   expect(teamValues.length).toBeGreaterThan(0);
 });
@@ -38,7 +38,7 @@ const team = {
   active: true
 };
 
-test("Extract team data", async () => {
+test("extractTeamData", async () => {
   const teamData = await extractTeamData(team);
   expect(teamData[1]).toBe("New Jersey Devils");
   expect(teamData.length).toBe(12);

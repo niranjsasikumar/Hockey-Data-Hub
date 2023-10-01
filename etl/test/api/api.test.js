@@ -1,6 +1,6 @@
 import { fetchDataFromApi, getLogoUrl } from "../../src/api/api.js";
 
-test("Successfully fetch data from NHL API", async () => {
+test("fetchDataFromApi", async () => {
   const data = await fetchDataFromApi("/expands");
   expect(data.length).toBeGreaterThan(0);
   expect(data).toContainEqual({
@@ -9,14 +9,16 @@ test("Successfully fetch data from NHL API", async () => {
   });
 });
 
-test("Get logo URL for valid season and team ID", async () => {
-  const url = await getLogoUrl(19171918, 8);
-  expect(url).toBe(
-    "https://assets.nhle.com/logos/nhl/svg/MTL_19171918-19181919_light.svg"
-  );
-});
-
-test("Get logo URL for invalid season or team ID", async () => {
-  const url = await getLogoUrl(19171918, 55);
-  expect(url).toBe("");
+describe("getLogoUrl", () => {
+  test("Valid season and teamId", async () => {
+    const url = await getLogoUrl(19171918, 8);
+    expect(url).toBe(
+      "https://assets.nhle.com/logos/nhl/svg/MTL_19171918-19181919_light.svg"
+    );
+  });
+  
+  test("Invalid season or teamId", async () => {
+    const url = await getLogoUrl(19171918, 55);
+    expect(url).toBe("");
+  });
 });
