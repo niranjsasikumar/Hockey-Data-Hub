@@ -1,4 +1,5 @@
 import { getDatabaseConnection, getColumns } from "./src/database/database.js";
+import { DB_CONFIG, SEASONS } from "./src/constants.js";
 import {
   updateTeamsData,
   insertSeasonData,
@@ -7,9 +8,8 @@ import {
   insertPlayerData,
   insertGameData
 } from "./src/database/insert.js";
-import { SEASONS } from "./src/constants.js";
 
-const connection = await getDatabaseConnection();
+const connection = await getDatabaseConnection(DB_CONFIG);
 const columns = await getColumns(connection);
 
 await Promise.all([

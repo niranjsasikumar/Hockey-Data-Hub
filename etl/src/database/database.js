@@ -1,8 +1,8 @@
 import mysql from "mysql2/promise";
 import { DB_CONFIG } from "../constants.js";
 
-export async function getDatabaseConnection() {
-  const connection = await mysql.createConnection(DB_CONFIG);
+export async function getDatabaseConnection(config) {
+  const connection = await mysql.createConnection(config);
   console.log("Connected to database");
   return connection;
 }
