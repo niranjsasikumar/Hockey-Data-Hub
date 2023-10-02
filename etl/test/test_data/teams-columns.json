@@ -1,0 +1,14 @@
+[
+  "id",
+  "name",
+  "locationName",
+  "teamName",
+  "abbreviation",
+  "lightLogoURL",
+  "venueName",
+  "venueCity",
+  "firstYearOfPlay",
+  "conference",
+  "division",
+  "backgroundColour"
+]

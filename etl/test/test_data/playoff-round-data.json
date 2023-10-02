@@ -1,0 +1,288 @@
+{
+  "number": 1,
+  "code": 1,
+  "names": {
+    "name": "Semifinals",
+    "shortName": "SF"
+  },
+  "format": {
+    "name": "BO7",
+    "description": "Best of 7",
+    "numberOfGames": 7,
+    "numberOfWins": 4
+  },
+  "series": [
+    {
+      "seriesNumber": 1,
+      "seriesCode": "A",
+      "names": {
+        "matchupName": "Red Wings (1) vs. Maple Leafs (3)",
+        "matchupShortName": "DET v TOR",
+        "teamAbbreviationA": "DET",
+        "teamAbbreviationB": "TOR",
+        "seriesSlug": "red-wings-vs-maple-leafs-series-a"
+      },
+      "currentGame": {
+        "seriesSummary": {
+          "gamePk": 1942030116,
+          "gameNumber": 6,
+          "gameLabel": "Game 6",
+          "necessary": true,
+          "gameCode": 116,
+          "gameTime": "1943-03-31T00:00:00Z",
+          "seriesStatus": "Red Wings win 4-2",
+          "seriesStatusShort": "DET wins 4-2"
+        }
+      },
+      "conference": {
+        "id": 6,
+        "name": "Eastern",
+        "link": "/api/v1/conferences/6"
+      },
+      "round": {
+        "number": 1
+      },
+      "matchupTeams": [
+        {
+          "team": {
+            "id": 17,
+            "name": "Detroit Red Wings",
+            "link": "/api/v1/teams/17",
+            "venue": {
+              "id": 5145,
+              "name": "Little Caesars Arena",
+              "link": "/api/v1/venues/5145",
+              "city": "Detroit",
+              "timeZone": {
+                "id": "America/Detroit",
+                "offset": -4,
+                "tz": "EDT"
+              }
+            },
+            "abbreviation": "DET",
+            "teamName": "Red Wings",
+            "locationName": "Detroit",
+            "firstYearOfPlay": "1932",
+            "division": {
+              "id": 17,
+              "name": "Atlantic",
+              "nameShort": "ATL",
+              "link": "/api/v1/divisions/17",
+              "abbreviation": "A"
+            },
+            "conference": {
+              "id": 6,
+              "name": "Eastern",
+              "link": "/api/v1/conferences/6"
+            },
+            "franchise": {
+              "franchiseId": 12,
+              "teamName": "Red Wings",
+              "link": "/api/v1/franchises/12"
+            },
+            "shortName": "Detroit",
+            "officialSiteUrl": "http://www.detroitredwings.com/",
+            "franchiseId": 12,
+            "active": true
+          },
+          "seed": {
+            "type": "1",
+            "rank": 1,
+            "isTop": true
+          },
+          "seriesRecord": {
+            "wins": 4,
+            "losses": 2
+          }
+        },
+        {
+          "team": {
+            "id": 10,
+            "name": "Toronto Maple Leafs",
+            "link": "/api/v1/teams/10",
+            "venue": {
+              "name": "Scotiabank Arena",
+              "link": "/api/v1/venues/null",
+              "city": "Toronto",
+              "timeZone": {
+                "id": "America/Toronto",
+                "offset": -4,
+                "tz": "EDT"
+              }
+            },
+            "abbreviation": "TOR",
+            "teamName": "Maple Leafs",
+            "locationName": "Toronto",
+            "firstYearOfPlay": "1927",
+            "division": {
+              "id": 17,
+              "name": "Atlantic",
+              "nameShort": "ATL",
+              "link": "/api/v1/divisions/17",
+              "abbreviation": "A"
+            },
+            "conference": {
+              "id": 6,
+              "name": "Eastern",
+              "link": "/api/v1/conferences/6"
+            },
+            "franchise": {
+              "franchiseId": 5,
+              "teamName": "Maple Leafs",
+              "link": "/api/v1/franchises/5"
+            },
+            "shortName": "Toronto",
+            "officialSiteUrl": "http://www.mapleleafs.com/",
+            "franchiseId": 5,
+            "active": true
+          },
+          "seed": {
+            "type": "3",
+            "rank": 3,
+            "isTop": false
+          },
+          "seriesRecord": {
+            "wins": 2,
+            "losses": 4
+          }
+        }
+      ]
+    },
+    {
+      "seriesNumber": 2,
+      "seriesCode": "B",
+      "names": {
+        "matchupName": "Bruins (2) vs. Canadiens ()",
+        "matchupShortName": "BOS v MTL",
+        "teamAbbreviationA": "BOS",
+        "teamAbbreviationB": "MTL",
+        "seriesSlug": "bruins-vs-canadiens-series-b"
+      },
+      "currentGame": {
+        "seriesSummary": {
+          "gamePk": 1942030125,
+          "gameNumber": 5,
+          "gameLabel": "Game 5",
+          "necessary": true,
+          "gameCode": 125,
+          "gameTime": "1943-03-31T00:00:00Z",
+          "seriesStatus": "Bruins win 4-1",
+          "seriesStatusShort": "BOS wins 4-1"
+        }
+      },
+      "conference": {
+        "id": 6,
+        "name": "Eastern",
+        "link": "/api/v1/conferences/6"
+      },
+      "round": {
+        "number": 1
+      },
+      "matchupTeams": [
+        {
+          "team": {
+            "id": 6,
+            "name": "Boston Bruins",
+            "link": "/api/v1/teams/6",
+            "venue": {
+              "id": 5085,
+              "name": "TD Garden",
+              "link": "/api/v1/venues/5085",
+              "city": "Boston",
+              "timeZone": {
+                "id": "America/New_York",
+                "offset": -4,
+                "tz": "EDT"
+              }
+            },
+            "abbreviation": "BOS",
+            "teamName": "Bruins",
+            "locationName": "Boston",
+            "firstYearOfPlay": "1924",
+            "division": {
+              "id": 17,
+              "name": "Atlantic",
+              "nameShort": "ATL",
+              "link": "/api/v1/divisions/17",
+              "abbreviation": "A"
+            },
+            "conference": {
+              "id": 6,
+              "name": "Eastern",
+              "link": "/api/v1/conferences/6"
+            },
+            "franchise": {
+              "franchiseId": 6,
+              "teamName": "Bruins",
+              "link": "/api/v1/franchises/6"
+            },
+            "shortName": "Boston",
+            "officialSiteUrl": "http://www.bostonbruins.com/",
+            "franchiseId": 6,
+            "active": true
+          },
+          "seed": {
+            "type": "2",
+            "rank": 2,
+            "isTop": true
+          },
+          "seriesRecord": {
+            "wins": 4,
+            "losses": 1
+          }
+        },
+        {
+          "team": {
+            "id": 8,
+            "name": "Montréal Canadiens",
+            "link": "/api/v1/teams/8",
+            "venue": {
+              "id": 5028,
+              "name": "Bell Centre",
+              "link": "/api/v1/venues/5028",
+              "city": "Montréal",
+              "timeZone": {
+                "id": "America/Montreal",
+                "offset": -4,
+                "tz": "EDT"
+              }
+            },
+            "abbreviation": "MTL",
+            "teamName": "Canadiens",
+            "locationName": "Montréal",
+            "firstYearOfPlay": "1917",
+            "division": {
+              "id": 17,
+              "name": "Atlantic",
+              "nameShort": "ATL",
+              "link": "/api/v1/divisions/17",
+              "abbreviation": "A"
+            },
+            "conference": {
+              "id": 6,
+              "name": "Eastern",
+              "link": "/api/v1/conferences/6"
+            },
+            "franchise": {
+              "franchiseId": 1,
+              "teamName": "Canadiens",
+              "link": "/api/v1/franchises/1"
+            },
+            "shortName": "Montréal",
+            "officialSiteUrl": "http://www.canadiens.com/",
+            "franchiseId": 1,
+            "active": true
+          },
+          "seed": {
+            "rank": 4,
+            "isTop": false
+          },
+          "seriesRecord": {
+            "wins": 1,
+            "losses": 4
+          }
+        }
+      ]
+    }
+  ]
+}
