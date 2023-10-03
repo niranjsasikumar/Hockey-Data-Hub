@@ -1,0 +1,19 @@
+[
+  "id",
+  "regularSeasonStartDate",
+  "regularSeasonEndDate",
+  "seasonEndDate",
+  "numberOfGames",
+  "conferencesInUse",
+  "divisionsInUse",
+  "wildCardInUse",
+  "conferences",
+  "divisions",
+  "playoffRounds",
+  "tiesInUse",
+  "overtimeLossPointInUse",
+  "powerPlayStatsTracked",
+  "shootingStatsTracked",
+  "faceoffStatsTracked",
+  "saveStatsTracked"
+]

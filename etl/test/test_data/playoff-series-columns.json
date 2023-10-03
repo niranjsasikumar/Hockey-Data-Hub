@@ -1,0 +1,19 @@
+[
+  "id",
+  "season",
+  "roundId",
+  "round",
+  "seriesId",
+  "team1Id",
+  "team1Name",
+  "team1ShortName",
+  "team1Abbreviation",
+  "team1LogoURL",
+  "team2Id",
+  "team2Name",
+  "team2ShortName",
+  "team2Abbreviation",
+  "team2LogoURL",
+  "status",
+  "statusShort"
+]

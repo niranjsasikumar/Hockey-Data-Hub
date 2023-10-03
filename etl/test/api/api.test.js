@@ -1,4 +1,4 @@
-import { fetchDataFromApi, getLogoUrl } from "../../src/api/api.js";
+import { fetchDataFromApi, getLogoUrl } from "../../src/api/api";
 
 test("fetchDataFromApi", async () => {
   const data = await fetchDataFromApi("/expands");

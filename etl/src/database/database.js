@@ -18,12 +18,10 @@ export async function getColumns(pool) {
     games: []
   };
 
-  const connection = await pool.getConnection();
   for (const [key, value] of Object.entries(columns)) {
-    const [rows] = await connection.query("SHOW COLUMNS FROM " + key);
+    const [rows] = await pool.query("SHOW COLUMNS FROM " + key);
     rows.forEach(row => value.push(row.Field));
   }
-  connection.release();
 
   return columns;
 }
@@ -35,14 +33,10 @@ export async function insertIntoTable(pool, table, columns, rows) {
   if (rows.length === 0) return;
   const statement = "REPLACE INTO " + table + " (`" + columns.join("`, `")
     + "`) VALUES ?";
-  const connection = await pool.getConnection();
-  await connection.query(statement, [rows]);
-  connection.release();
+  await pool.query(statement, [rows]);
 }
 
 // Delete all rows in teams table
 export async function clearTable(pool, table) {
-  const connection = await pool.getConnection();
-  await connection.query(`DELETE FROM ${table}`);
-  connection.release();
+  await pool.query(`DELETE FROM ${table}`);
 }
