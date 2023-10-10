@@ -89,7 +89,7 @@ async function getCurrentTeamStats(team) {
         goalsScored,
         goalsAgainst,
         records: { overallRecords },
-        streak: { streakCode }
+        streak
       } = record;
 
       const [homeRecord, awayRecord, , last10] = overallRecords;
@@ -101,15 +101,15 @@ async function getCurrentTeamStats(team) {
         gamesPlayed,
         wins,
         losses,
-        ties: ties ? ties : null,
-        overtimeLosses: ot ? ot : null,
+        ties: ties !== undefined ? ties : null,
+        overtimeLosses: ot !== undefined ? ot : null,
         goalsFor: goalsScored,
         goalsAgainst,
         difference: goalsScored - goalsAgainst,
         homeRecord: getRecordString(homeRecord),
         awayRecord: getRecordString(awayRecord),
         last10: getRecordString(last10),
-        streak: streakCode
+        streak: streak ? streak.streakCode : "-"
       };
     }
   }

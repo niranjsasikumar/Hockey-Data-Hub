@@ -73,15 +73,15 @@ function getDivisionRecords(records) {
       gamesPlayed: gamesPlayed,
       wins: wins,
       losses: losses,
-      ties: ties ? ties : null,
-      overtimeLosses: ot ? ot : null,
+      ties: ties !== undefined ? ties : null,
+      overtimeLosses: ot !== undefined ? ot : null,
       goalsFor: goalsScored,
       goalsAgainst: goalsAgainst,
       difference: goalsScored - goalsAgainst,
       homeRecord: getRecordString(homeRecord),
       awayRecord: getRecordString(awayRecord),
       last10: getRecordString(last10),
-      streak: streak.streakCode
+      streak: streak ? streak.streakCode : "-"
     });
   }
 
