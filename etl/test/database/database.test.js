@@ -1,9 +1,9 @@
 import { createPool } from "mysql2/promise";
-import { TEST_DB_CONFIG } from "../test_data/db-config";
+import { TEST_DB_CONFIG } from "../test_data/database/db-config";
 import {
   getConnectionPool, getColumns, insertIntoTable, clearTable
 } from "../../src/database/database";
-import teamsColumns from "../test_data/teams-columns.json";
+import teamsColumns from "../test_data/database/teams-columns.json";
 import { updateTeamsData } from "../../src/database/insert";
 
 let pool;
@@ -36,7 +36,8 @@ test("insertIntoTable", async () => {
   expect(rows.length).toBe(31);
 
   const table = "teams";
-  await insertIntoTable(pool, table, teamsColumns, [Object.values(row)]);
+  const rowToInsert = [Object.values(row)];
+  await insertIntoTable(pool, table, teamsColumns, rowToInsert);
   [rows] = await pool.query("SELECT * FROM teams");
   expect(rows.length).toBe(32);
 });
@@ -45,7 +46,8 @@ test("clearTable", async () => {
   const [teamRows] = await pool.query("SELECT * FROM teams");
   expect(teamRows.length).toBe(32);
 
-  await clearTable(pool, "teams");
+  const table = "teams";
+  await clearTable(pool, table);
   let [rows] = await pool.query("SELECT * FROM teams");
   expect(rows.length).toBe(0);
 

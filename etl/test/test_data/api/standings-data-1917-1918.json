@@ -1,0 +1,373 @@
+{
+  "standingsType": "regularSeason",
+  "league": {
+    "id": 133,
+    "name": "National Hockey League",
+    "link": "/api/v1/league/133"
+  },
+  "season": "19171918",
+  "teamRecords": [
+    {
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8",
+        "venue": {
+          "id": 5028,
+          "name": "Bell Centre",
+          "link": "/api/v1/venues/5028",
+          "city": "Montréal",
+          "timeZone": {
+            "id": "America/Montreal",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "MTL",
+        "teamName": "Canadiens",
+        "locationName": "Montréal",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "id": 17,
+          "name": "Atlantic",
+          "nameShort": "ATL",
+          "link": "/api/v1/divisions/17",
+          "abbreviation": "A"
+        },
+        "conference": {
+          "id": 6,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/6"
+        },
+        "franchise": {
+          "franchiseId": 1,
+          "teamName": "Canadiens",
+          "link": "/api/v1/franchises/1"
+        },
+        "shortName": "Montréal",
+        "officialSiteUrl": "http://www.canadiens.com/",
+        "franchiseId": 1,
+        "active": true
+      },
+      "leagueRecord": {
+        "wins": 13,
+        "losses": 9,
+        "ties": 0,
+        "ot": 0,
+        "type": "league"
+      },
+      "goalsAgainst": 84,
+      "goalsScored": 116,
+      "points": 26,
+      "divisionRank": "0",
+      "divisionL10Rank": "0",
+      "divisionRoadRank": "0",
+      "divisionHomeRank": "0",
+      "conferenceRank": "0",
+      "conferenceL10Rank": "0",
+      "conferenceRoadRank": "0",
+      "conferenceHomeRank": "0",
+      "leagueRank": "1",
+      "leagueL10Rank": "2",
+      "leagueRoadRank": "1",
+      "leagueHomeRank": "2",
+      "wildCardRank": "0",
+      "gamesPlayed": 22,
+      "streak": {
+        "streakType": "losses",
+        "streakNumber": 3,
+        "streakCode": "L3"
+      },
+      "pointsPercentage": 0.5909090909090909,
+      "ppDivisionRank": "2",
+      "ppConferenceRank": "2",
+      "ppLeagueRank": "2",
+      "records": {
+        "overallRecords": [
+          {
+            "wins": 8,
+            "losses": 3,
+            "ties": 0,
+            "type": "home"
+          },
+          {
+            "wins": 5,
+            "losses": 6,
+            "ties": 0,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 5,
+            "losses": 5,
+            "ties": 0,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    },
+    {
+      "team": {
+        "id": 57,
+        "name": "Toronto Arenas",
+        "link": "/api/v1/teams/57",
+        "abbreviation": "TAN",
+        "teamName": "Arenas",
+        "locationName": "Toronto",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "link": "/api/v1/divisions/null"
+        },
+        "conference": {
+          "link": "/api/v1/conferences/null"
+        },
+        "franchise": {
+          "franchiseId": 5,
+          "teamName": "Maple Leafs",
+          "link": "/api/v1/franchises/5"
+        },
+        "shortName": "Toronto",
+        "franchiseId": 5,
+        "active": false
+      },
+      "leagueRecord": {
+        "wins": 13,
+        "losses": 9,
+        "ties": 0,
+        "ot": 0,
+        "type": "league"
+      },
+      "goalsAgainst": 109,
+      "goalsScored": 109,
+      "points": 26,
+      "divisionRank": "0",
+      "divisionL10Rank": "0",
+      "divisionRoadRank": "0",
+      "divisionHomeRank": "0",
+      "conferenceRank": "0",
+      "conferenceL10Rank": "0",
+      "conferenceRoadRank": "0",
+      "conferenceHomeRank": "0",
+      "leagueRank": "2",
+      "leagueL10Rank": "1",
+      "leagueRoadRank": "2",
+      "leagueHomeRank": "1",
+      "wildCardRank": "0",
+      "gamesPlayed": 22,
+      "streak": {
+        "streakType": "losses",
+        "streakNumber": 1,
+        "streakCode": "L1"
+      },
+      "pointsPercentage": 0.5909090909090909,
+      "ppDivisionRank": "1",
+      "ppConferenceRank": "1",
+      "ppLeagueRank": "1",
+      "records": {
+        "overallRecords": [
+          {
+            "wins": 10,
+            "losses": 1,
+            "ties": 0,
+            "type": "home"
+          },
+          {
+            "wins": 3,
+            "losses": 8,
+            "ties": 0,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 6,
+            "losses": 4,
+            "ties": 0,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    },
+    {
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36",
+        "abbreviation": "SEN",
+        "teamName": "Senators",
+        "locationName": "Ottawa",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "link": "/api/v1/divisions/null"
+        },
+        "conference": {
+          "link": "/api/v1/conferences/null"
+        },
+        "franchise": {
+          "franchiseId": 3,
+          "teamName": "Eagles",
+          "link": "/api/v1/franchises/3"
+        },
+        "shortName": "Ottawa",
+        "franchiseId": 3,
+        "active": false
+      },
+      "leagueRecord": {
+        "wins": 9,
+        "losses": 13,
+        "ties": 0,
+        "ot": 0,
+        "type": "league"
+      },
+      "goalsAgainst": 114,
+      "goalsScored": 102,
+      "points": 18,
+      "divisionRank": "0",
+      "divisionL10Rank": "0",
+      "divisionRoadRank": "0",
+      "divisionHomeRank": "0",
+      "conferenceRank": "0",
+      "conferenceL10Rank": "0",
+      "conferenceRoadRank": "0",
+      "conferenceHomeRank": "0",
+      "leagueRank": "3",
+      "leagueL10Rank": "3",
+      "leagueRoadRank": "3",
+      "leagueHomeRank": "3",
+      "wildCardRank": "0",
+      "gamesPlayed": 22,
+      "streak": {
+        "streakType": "wins",
+        "streakNumber": 3,
+        "streakCode": "W3"
+      },
+      "pointsPercentage": 0.4090909090909091,
+      "ppDivisionRank": "3",
+      "ppConferenceRank": "3",
+      "ppLeagueRank": "3",
+      "records": {
+        "overallRecords": [
+          {
+            "wins": 6,
+            "losses": 5,
+            "ties": 0,
+            "type": "home"
+          },
+          {
+            "wins": 3,
+            "losses": 8,
+            "ties": 0,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 4,
+            "losses": 6,
+            "ties": 0,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    },
+    {
+      "team": {
+        "id": 41,
+        "name": "Montreal Wanderers",
+        "link": "/api/v1/teams/41",
+        "abbreviation": "MWN",
+        "teamName": "Wanderers",
+        "locationName": "Montreal",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "link": "/api/v1/divisions/null"
+        },
+        "conference": {
+          "link": "/api/v1/conferences/null"
+        },
+        "franchise": {
+          "franchiseId": 2,
+          "teamName": "Wanderers",
+          "link": "/api/v1/franchises/2"
+        },
+        "shortName": "Montreal",
+        "franchiseId": 2,
+        "active": false
+      },
+      "leagueRecord": {
+        "wins": 1,
+        "losses": 5,
+        "ties": 0,
+        "ot": 0,
+        "type": "league"
+      },
+      "goalsAgainst": 37,
+      "goalsScored": 17,
+      "points": 2,
+      "divisionRank": "0",
+      "divisionL10Rank": "0",
+      "divisionRoadRank": "0",
+      "divisionHomeRank": "0",
+      "conferenceRank": "0",
+      "conferenceL10Rank": "0",
+      "conferenceRoadRank": "0",
+      "conferenceHomeRank": "0",
+      "leagueRank": "4",
+      "leagueL10Rank": "4",
+      "leagueRoadRank": "4",
+      "leagueHomeRank": "4",
+      "wildCardRank": "0",
+      "gamesPlayed": 6,
+      "streak": {
+        "streakType": "losses",
+        "streakNumber": 5,
+        "streakCode": "L5"
+      },
+      "pointsPercentage": 0.16666666666666666,
+      "ppDivisionRank": "4",
+      "ppConferenceRank": "4",
+      "ppLeagueRank": "4",
+      "records": {
+        "overallRecords": [
+          {
+            "wins": 1,
+            "losses": 2,
+            "ties": 0,
+            "type": "home"
+          },
+          {
+            "wins": 0,
+            "losses": 3,
+            "ties": 0,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 1,
+            "losses": 5,
+            "ties": 0,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    }
+  ]
+}

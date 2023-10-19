@@ -1,0 +1,767 @@
+{
+  "standingsType": "regularSeason",
+  "league": {
+    "id": 133,
+    "name": "National Hockey League",
+    "link": "/api/v1/league/133"
+  },
+  "division": {
+    "id": 1,
+    "name": "Atlantic",
+    "link": "/api/v1/divisions/1"
+  },
+  "conference": {
+    "id": 1,
+    "name": "Eastern",
+    "link": "/api/v1/conferences/1"
+  },
+  "season": "20002001",
+  "teamRecords": [
+    {
+      "team": {
+        "id": 1,
+        "name": "New Jersey Devils",
+        "link": "/api/v1/teams/1",
+        "venue": {
+          "name": "Prudential Center",
+          "link": "/api/v1/venues/null",
+          "city": "Newark",
+          "timeZone": {
+            "id": "America/New_York",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "NJD",
+        "teamName": "Devils",
+        "locationName": "New Jersey",
+        "firstYearOfPlay": "1982",
+        "division": {
+          "id": 1,
+          "name": "Atlantic",
+          "link": "/api/v1/divisions/1"
+        },
+        "conference": {
+          "id": 1,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/1"
+        },
+        "franchise": {
+          "franchiseId": 23,
+          "teamName": "Devils",
+          "link": "/api/v1/franchises/23"
+        },
+        "shortName": "New Jersey",
+        "officialSiteUrl": "http://www.newjerseydevils.com/",
+        "franchiseId": 23,
+        "active": true
+      },
+      "leagueRecord": {
+        "wins": 48,
+        "losses": 19,
+        "ties": 12,
+        "ot": 3,
+        "type": "league"
+      },
+      "goalsAgainst": 195,
+      "goalsScored": 295,
+      "points": 111,
+      "divisionRank": "1",
+      "divisionL10Rank": "1",
+      "divisionRoadRank": "1",
+      "divisionHomeRank": "2",
+      "conferenceRank": "1",
+      "conferenceL10Rank": "1",
+      "conferenceRoadRank": "1",
+      "conferenceHomeRank": "5",
+      "leagueRank": "3",
+      "leagueL10Rank": "2",
+      "leagueRoadRank": "1",
+      "leagueHomeRank": "10",
+      "wildCardRank": "0",
+      "gamesPlayed": 82,
+      "streak": {
+        "streakType": "wins",
+        "streakNumber": 4,
+        "streakCode": "W4"
+      },
+      "clinchIndicator": "z",
+      "pointsPercentage": 0.676829268292683,
+      "ppDivisionRank": "1",
+      "ppConferenceRank": "1",
+      "ppLeagueRank": "2",
+      "records": {
+        "divisionRecords": [
+          {
+            "wins": 8,
+            "losses": 8,
+            "ties": 2,
+            "ot": 1,
+            "type": "Northeast"
+          },
+          {
+            "wins": 15,
+            "losses": 3,
+            "ties": 2,
+            "ot": 0,
+            "type": "Southeast"
+          },
+          {
+            "wins": 3,
+            "losses": 1,
+            "ties": 1,
+            "ot": 1,
+            "type": "Central"
+          },
+          {
+            "wins": 7,
+            "losses": 0,
+            "ties": 0,
+            "ot": 0,
+            "type": "Northwest"
+          },
+          {
+            "wins": 7,
+            "losses": 5,
+            "ties": 7,
+            "ot": 1,
+            "type": "Atlantic"
+          },
+          {
+            "wins": 8,
+            "losses": 2,
+            "ties": 0,
+            "ot": 0,
+            "type": "Pacific"
+          }
+        ],
+        "overallRecords": [
+          {
+            "wins": 24,
+            "losses": 11,
+            "ties": 6,
+            "ot": 0,
+            "type": "home"
+          },
+          {
+            "wins": 24,
+            "losses": 8,
+            "ties": 6,
+            "ot": 3,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 8,
+            "losses": 2,
+            "ties": 0,
+            "ot": 0,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    },
+    {
+      "team": {
+        "id": 4,
+        "name": "Philadelphia Flyers",
+        "link": "/api/v1/teams/4",
+        "venue": {
+          "id": 5096,
+          "name": "Wells Fargo Center",
+          "link": "/api/v1/venues/5096",
+          "city": "Philadelphia",
+          "timeZone": {
+            "id": "America/New_York",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "PHI",
+        "teamName": "Flyers",
+        "locationName": "Philadelphia",
+        "firstYearOfPlay": "1967",
+        "division": {
+          "id": 1,
+          "name": "Atlantic",
+          "link": "/api/v1/divisions/1"
+        },
+        "conference": {
+          "id": 1,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/1"
+        },
+        "franchise": {
+          "franchiseId": 16,
+          "teamName": "Flyers",
+          "link": "/api/v1/franchises/16"
+        },
+        "shortName": "Philadelphia",
+        "officialSiteUrl": "http://www.philadelphiaflyers.com/",
+        "franchiseId": 16,
+        "active": true
+      },
+      "leagueRecord": {
+        "wins": 43,
+        "losses": 25,
+        "ties": 11,
+        "ot": 3,
+        "type": "league"
+      },
+      "goalsAgainst": 207,
+      "goalsScored": 240,
+      "points": 100,
+      "divisionRank": "2",
+      "divisionL10Rank": "4",
+      "divisionRoadRank": "3",
+      "divisionHomeRank": "1",
+      "conferenceRank": "4",
+      "conferenceL10Rank": "12",
+      "conferenceRoadRank": "5",
+      "conferenceHomeRank": "2",
+      "leagueRank": "7",
+      "leagueL10Rank": "20",
+      "leagueRoadRank": "8",
+      "leagueHomeRank": "6",
+      "wildCardRank": "0",
+      "gamesPlayed": 82,
+      "streak": {
+        "streakType": "wins",
+        "streakNumber": 2,
+        "streakCode": "W2"
+      },
+      "clinchIndicator": "x",
+      "pointsPercentage": 0.6097560975609756,
+      "ppDivisionRank": "2",
+      "ppConferenceRank": "3",
+      "ppLeagueRank": "7",
+      "records": {
+        "divisionRecords": [
+          {
+            "wins": 8,
+            "losses": 8,
+            "ties": 3,
+            "ot": 1,
+            "type": "Northeast"
+          },
+          {
+            "wins": 12,
+            "losses": 5,
+            "ties": 3,
+            "ot": 0,
+            "type": "Southeast"
+          },
+          {
+            "wins": 5,
+            "losses": 2,
+            "ties": 1,
+            "ot": 0,
+            "type": "Central"
+          },
+          {
+            "wins": 5,
+            "losses": 1,
+            "ties": 2,
+            "ot": 0,
+            "type": "Northwest"
+          },
+          {
+            "wins": 11,
+            "losses": 5,
+            "ties": 2,
+            "ot": 2,
+            "type": "Atlantic"
+          },
+          {
+            "wins": 2,
+            "losses": 4,
+            "ties": 0,
+            "ot": 0,
+            "type": "Pacific"
+          }
+        ],
+        "overallRecords": [
+          {
+            "wins": 26,
+            "losses": 11,
+            "ties": 4,
+            "ot": 0,
+            "type": "home"
+          },
+          {
+            "wins": 17,
+            "losses": 14,
+            "ties": 7,
+            "ot": 3,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 4,
+            "losses": 4,
+            "ties": 1,
+            "ot": 1,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    },
+    {
+      "team": {
+        "id": 5,
+        "name": "Pittsburgh Penguins",
+        "link": "/api/v1/teams/5",
+        "venue": {
+          "id": 5034,
+          "name": "PPG Paints Arena",
+          "link": "/api/v1/venues/5034",
+          "city": "Pittsburgh",
+          "timeZone": {
+            "id": "America/New_York",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "PIT",
+        "teamName": "Penguins",
+        "locationName": "Pittsburgh",
+        "firstYearOfPlay": "1967",
+        "division": {
+          "id": 1,
+          "name": "Atlantic",
+          "link": "/api/v1/divisions/1"
+        },
+        "conference": {
+          "id": 1,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/1"
+        },
+        "franchise": {
+          "franchiseId": 17,
+          "teamName": "Penguins",
+          "link": "/api/v1/franchises/17"
+        },
+        "shortName": "Pittsburgh",
+        "officialSiteUrl": "http://pittsburghpenguins.com/",
+        "franchiseId": 17,
+        "active": true
+      },
+      "leagueRecord": {
+        "wins": 42,
+        "losses": 28,
+        "ties": 9,
+        "ot": 3,
+        "type": "league"
+      },
+      "goalsAgainst": 256,
+      "goalsScored": 281,
+      "points": 96,
+      "divisionRank": "3",
+      "divisionL10Rank": "2",
+      "divisionRoadRank": "2",
+      "divisionHomeRank": "3",
+      "conferenceRank": "6",
+      "conferenceL10Rank": "5",
+      "conferenceRoadRank": "4",
+      "conferenceHomeRank": "6",
+      "leagueRank": "9",
+      "leagueL10Rank": "6",
+      "leagueRoadRank": "7",
+      "leagueHomeRank": "12",
+      "wildCardRank": "0",
+      "gamesPlayed": 82,
+      "streak": {
+        "streakType": "wins",
+        "streakNumber": 1,
+        "streakCode": "W1"
+      },
+      "clinchIndicator": "x",
+      "pointsPercentage": 0.5853658536585366,
+      "ppDivisionRank": "3",
+      "ppConferenceRank": "5",
+      "ppLeagueRank": "9",
+      "records": {
+        "divisionRecords": [
+          {
+            "wins": 7,
+            "losses": 9,
+            "ties": 3,
+            "ot": 0,
+            "type": "Northeast"
+          },
+          {
+            "wins": 11,
+            "losses": 7,
+            "ties": 2,
+            "ot": 0,
+            "type": "Southeast"
+          },
+          {
+            "wins": 7,
+            "losses": 2,
+            "ties": 0,
+            "ot": 0,
+            "type": "Central"
+          },
+          {
+            "wins": 4,
+            "losses": 2,
+            "ties": 1,
+            "ot": 1,
+            "type": "Northwest"
+          },
+          {
+            "wins": 12,
+            "losses": 5,
+            "ties": 2,
+            "ot": 1,
+            "type": "Atlantic"
+          },
+          {
+            "wins": 1,
+            "losses": 3,
+            "ties": 1,
+            "ot": 1,
+            "type": "Pacific"
+          }
+        ],
+        "overallRecords": [
+          {
+            "wins": 24,
+            "losses": 15,
+            "ties": 2,
+            "ot": 0,
+            "type": "home"
+          },
+          {
+            "wins": 18,
+            "losses": 13,
+            "ties": 7,
+            "ot": 3,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 6,
+            "losses": 2,
+            "ties": 1,
+            "ot": 1,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    },
+    {
+      "team": {
+        "id": 3,
+        "name": "New York Rangers",
+        "link": "/api/v1/teams/3",
+        "venue": {
+          "id": 5054,
+          "name": "Madison Square Garden",
+          "link": "/api/v1/venues/5054",
+          "city": "New York",
+          "timeZone": {
+            "id": "America/New_York",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "NYR",
+        "teamName": "Rangers",
+        "locationName": "New York",
+        "firstYearOfPlay": "1926",
+        "division": {
+          "id": 1,
+          "name": "Atlantic",
+          "link": "/api/v1/divisions/1"
+        },
+        "conference": {
+          "id": 1,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/1"
+        },
+        "franchise": {
+          "franchiseId": 10,
+          "teamName": "Rangers",
+          "link": "/api/v1/franchises/10"
+        },
+        "shortName": "NY Rangers",
+        "officialSiteUrl": "http://www.newyorkrangers.com/",
+        "franchiseId": 10,
+        "active": true
+      },
+      "leagueRecord": {
+        "wins": 33,
+        "losses": 43,
+        "ties": 5,
+        "ot": 1,
+        "type": "league"
+      },
+      "goalsAgainst": 290,
+      "goalsScored": 250,
+      "points": 72,
+      "divisionRank": "4",
+      "divisionL10Rank": "3",
+      "divisionRoadRank": "4",
+      "divisionHomeRank": "4",
+      "conferenceRank": "10",
+      "conferenceL10Rank": "9",
+      "conferenceRoadRank": "10",
+      "conferenceHomeRank": "11",
+      "leagueRank": "21",
+      "leagueL10Rank": "16",
+      "leagueRoadRank": "22",
+      "leagueHomeRank": "23",
+      "wildCardRank": "0",
+      "gamesPlayed": 82,
+      "streak": {
+        "streakType": "losses",
+        "streakNumber": 1,
+        "streakCode": "L1"
+      },
+      "pointsPercentage": 0.43902439024390244,
+      "ppDivisionRank": "4",
+      "ppConferenceRank": "10",
+      "ppLeagueRank": "21",
+      "records": {
+        "divisionRecords": [
+          {
+            "wins": 8,
+            "losses": 11,
+            "ties": 1,
+            "ot": 0,
+            "type": "Northeast"
+          },
+          {
+            "wins": 12,
+            "losses": 8,
+            "ties": 0,
+            "ot": 0,
+            "type": "Southeast"
+          },
+          {
+            "wins": 3,
+            "losses": 3,
+            "ties": 0,
+            "ot": 1,
+            "type": "Central"
+          },
+          {
+            "wins": 4,
+            "losses": 2,
+            "ties": 0,
+            "ot": 0,
+            "type": "Northwest"
+          },
+          {
+            "wins": 5,
+            "losses": 12,
+            "ties": 3,
+            "ot": 0,
+            "type": "Atlantic"
+          },
+          {
+            "wins": 1,
+            "losses": 7,
+            "ties": 1,
+            "ot": 0,
+            "type": "Pacific"
+          }
+        ],
+        "overallRecords": [
+          {
+            "wins": 17,
+            "losses": 20,
+            "ties": 3,
+            "ot": 1,
+            "type": "home"
+          },
+          {
+            "wins": 16,
+            "losses": 23,
+            "ties": 2,
+            "ot": 0,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 5,
+            "losses": 5,
+            "ties": 0,
+            "ot": 0,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    },
+    {
+      "team": {
+        "id": 2,
+        "name": "New York Islanders",
+        "link": "/api/v1/teams/2",
+        "venue": {
+          "name": "UBS Arena",
+          "link": "/api/v1/venues/null",
+          "city": "Elmont",
+          "timeZone": {
+            "id": "America/New_York",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "NYI",
+        "teamName": "Islanders",
+        "locationName": "New York",
+        "firstYearOfPlay": "1972",
+        "division": {
+          "id": 1,
+          "name": "Atlantic",
+          "link": "/api/v1/divisions/1"
+        },
+        "conference": {
+          "id": 1,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/1"
+        },
+        "franchise": {
+          "franchiseId": 22,
+          "teamName": "Islanders",
+          "link": "/api/v1/franchises/22"
+        },
+        "shortName": "NY Islanders",
+        "officialSiteUrl": "http://www.newyorkislanders.com/",
+        "franchiseId": 22,
+        "active": true
+      },
+      "leagueRecord": {
+        "wins": 21,
+        "losses": 51,
+        "ties": 7,
+        "ot": 3,
+        "type": "league"
+      },
+      "goalsAgainst": 268,
+      "goalsScored": 185,
+      "points": 52,
+      "divisionRank": "5",
+      "divisionL10Rank": "5",
+      "divisionRoadRank": "5",
+      "divisionHomeRank": "5",
+      "conferenceRank": "15",
+      "conferenceL10Rank": "14",
+      "conferenceRoadRank": "14",
+      "conferenceHomeRank": "15",
+      "leagueRank": "30",
+      "leagueL10Rank": "27",
+      "leagueRoadRank": "29",
+      "leagueHomeRank": "30",
+      "wildCardRank": "0",
+      "gamesPlayed": 82,
+      "streak": {
+        "streakType": "losses",
+        "streakNumber": 3,
+        "streakCode": "L3"
+      },
+      "pointsPercentage": 0.3170731707317073,
+      "ppDivisionRank": "5",
+      "ppConferenceRank": "15",
+      "ppLeagueRank": "30",
+      "records": {
+        "divisionRecords": [
+          {
+            "wins": 4,
+            "losses": 15,
+            "ties": 0,
+            "ot": 1,
+            "type": "Northeast"
+          },
+          {
+            "wins": 7,
+            "losses": 9,
+            "ties": 3,
+            "ot": 1,
+            "type": "Southeast"
+          },
+          {
+            "wins": 2,
+            "losses": 3,
+            "ties": 1,
+            "ot": 0,
+            "type": "Central"
+          },
+          {
+            "wins": 1,
+            "losses": 5,
+            "ties": 0,
+            "ot": 0,
+            "type": "Northwest"
+          },
+          {
+            "wins": 7,
+            "losses": 10,
+            "ties": 2,
+            "ot": 1,
+            "type": "Atlantic"
+          },
+          {
+            "wins": 0,
+            "losses": 9,
+            "ties": 1,
+            "ot": 0,
+            "type": "Pacific"
+          }
+        ],
+        "overallRecords": [
+          {
+            "wins": 12,
+            "losses": 27,
+            "ties": 1,
+            "ot": 1,
+            "type": "home"
+          },
+          {
+            "wins": 9,
+            "losses": 24,
+            "ties": 6,
+            "ot": 2,
+            "type": "away"
+          },
+          {
+            "wins": 0,
+            "losses": 0,
+            "type": "shootOuts"
+          },
+          {
+            "wins": 2,
+            "losses": 7,
+            "ties": 1,
+            "ot": 0,
+            "type": "lastTen"
+          }
+        ]
+      },
+      "lastUpdated": "2023-10-19T05:47:21Z"
+    }
+  ]
+}

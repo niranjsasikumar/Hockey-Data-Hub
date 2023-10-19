@@ -1,5 +1,5 @@
 import { getTeamValues, extractTeamData } from "../../src/api/teams";
-import team from "../test_data/team-data.json";
+import team from "../test_data/api/team-data.json";
 
 test("getTeamValues", async () => {
   const teamValues = await getTeamValues();

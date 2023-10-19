@@ -1,7 +1,24 @@
 import { getLogoUrl, fetchDataFromApi } from "./api.js";
 
+/* Convert standings data from NHL API for the given seasons to rows of values
+to insert into "standings" table */
+export async function getStandingsValues(seasons) {
+  const standingsData = await getStandingsData(seasons);
+  const standingsValues = [];
+
+  for (const season of standingsData) {
+    for (const division of season.records) {
+      for (const team of division.teamRecords) {
+        standingsValues.push(await extractStandingsData(division, team));
+      }
+    }
+  }
+
+  return standingsValues;
+}
+
 // Get standings data for the given seasons from NHL API
-async function getStandingsData(seasons) {
+export async function getStandingsData(seasons) {
   const standingsDataPromises = seasons.map(
     season => fetchDataFromApi(
       "/standings?expand=standings.record,standings.team&season=" + season
@@ -10,17 +27,8 @@ async function getStandingsData(seasons) {
   return await Promise.all(standingsDataPromises);
 }
 
-// Returns a formatted string given a record object from standings data
-function getRecordString(record) {
-  return (
-    record.wins + "-" + record.losses
-    + ("ties" in record ? "-" + record.ties : "")
-    + ("ot" in record ? "-" + record.ot : "")
-  );
-}
-
 // Returns a row of values to insert into "standings" table
-async function extractStandingsData(division, team) {
+export async function extractStandingsData(division, team) {
   const { season } = division;
   const { id, name, teamName, abbreviation } = team.team;
   const teamLogoUrl = await getLogoUrl(season, id);
@@ -54,19 +62,11 @@ async function extractStandingsData(division, team) {
   ];
 }
 
-/* Convert standings data from NHL API for the given seasons to rows of values
-to insert into "standings" table */
-export async function getStandingsValues(seasons) {
-  const standingsData = await getStandingsData(seasons);
-  const standingsValues = [];
-
-  for (const season of standingsData) {
-    for (const division of season.records) {
-      for (const team of division.teamRecords) {
-        standingsValues.push(await extractStandingsData(division, team));
-      }
-    }
-  }
-
-  return standingsValues;
+// Returns a formatted string given a record object from standings data
+export function getRecordString(record) {
+  return (
+    record.wins + "-" + record.losses
+    + ("ties" in record ? "-" + record.ties : "")
+    + ("ot" in record ? "-" + record.ot : "")
+  );
 }

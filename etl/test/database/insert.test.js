@@ -1,5 +1,5 @@
 import { createPool } from "mysql2/promise";
-import { TEST_DB_CONFIG } from "../test_data/db-config";
+import { TEST_DB_CONFIG } from "../test_data/database/db-config";
 import {
   insertSeasonData,
   insertPlayoffSeriesData,
@@ -7,12 +7,12 @@ import {
   insertPlayerData,
   insertGameData
 } from "../../src/database/insert";
-import seasonsColumns from "../test_data/seasons-columns.json"
-import playoffsColumns from "../test_data/playoff-series-columns.json"
-import standingsColumns from "../test_data/standings-columns.json"
-import skatersColumns from "../test_data/skaters-columns.json"
-import goaliesColumns from "../test_data/goalies-columns.json"
-import gamesColumns from "../test_data/games-columns.json"
+import seasonsColumns from "../test_data/database/seasons-columns.json"
+import playoffsColumns from "../test_data/database/playoff-series-columns.json"
+import standingsColumns from "../test_data/database/standings-columns.json"
+import skatersColumns from "../test_data/database/skaters-columns.json"
+import goaliesColumns from "../test_data/database/goalies-columns.json"
+import gamesColumns from "../test_data/database/games-columns.json"
 
 let pool;
 let getRows;
