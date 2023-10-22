@@ -1,0 +1,219 @@
+{
+  "gamePk": 1942020008,
+  "link": "/api/v1/game/1942020008/feed/live",
+  "gameType": "R",
+  "season": "19421943",
+  "gameDate": "1942-11-09T01:00:00Z",
+  "status": {
+    "abstractGameState": "Final",
+    "codedGameState": "7",
+    "detailedState": "Final",
+    "statusCode": "7",
+    "startTimeTBD": false
+  },
+  "teams": {
+    "away": {
+      "leagueRecord": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "type": "league"
+      },
+      "score": 4,
+      "team": {
+        "id": 3,
+        "name": "New York Rangers",
+        "link": "/api/v1/teams/3",
+        "venue": {
+          "id": 5054,
+          "name": "Madison Square Garden",
+          "link": "/api/v1/venues/5054",
+          "city": "New York",
+          "timeZone": {
+            "id": "America/New_York",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "NYR",
+        "teamName": "Rangers",
+        "locationName": "New York",
+        "firstYearOfPlay": "1926",
+        "division": {
+          "id": 18,
+          "name": "Metropolitan",
+          "nameShort": "Metro",
+          "link": "/api/v1/divisions/18",
+          "abbreviation": "M"
+        },
+        "conference": {
+          "id": 6,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/6"
+        },
+        "franchise": {
+          "franchiseId": 10,
+          "teamName": "Rangers",
+          "link": "/api/v1/franchises/10"
+        },
+        "shortName": "NY Rangers",
+        "officialSiteUrl": "http://www.newyorkrangers.com/",
+        "franchiseId": 10,
+        "active": true
+      }
+    },
+    "home": {
+      "leagueRecord": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "type": "league"
+      },
+      "score": 10,
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8",
+        "venue": {
+          "id": 5028,
+          "name": "Bell Centre",
+          "link": "/api/v1/venues/5028",
+          "city": "Montréal",
+          "timeZone": {
+            "id": "America/Montreal",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "MTL",
+        "teamName": "Canadiens",
+        "locationName": "Montréal",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "id": 17,
+          "name": "Atlantic",
+          "nameShort": "ATL",
+          "link": "/api/v1/divisions/17",
+          "abbreviation": "A"
+        },
+        "conference": {
+          "id": 6,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/6"
+        },
+        "franchise": {
+          "franchiseId": 1,
+          "teamName": "Canadiens",
+          "link": "/api/v1/franchises/1"
+        },
+        "shortName": "Montréal",
+        "officialSiteUrl": "http://www.canadiens.com/",
+        "franchiseId": 1,
+        "active": true
+      }
+    }
+  },
+  "linescore": {
+    "currentPeriod": 3,
+    "currentPeriodOrdinal": "3rd",
+    "currentPeriodTimeRemaining": "Final",
+    "periods": [
+      {
+        "periodType": "REGULAR",
+        "num": 1,
+        "ordinalNum": "1st",
+        "home": {
+          "goals": 3,
+          "shotsOnGoal": 0,
+          "rinkSide": "right"
+        },
+        "away": {
+          "goals": 1,
+          "shotsOnGoal": 0,
+          "rinkSide": "left"
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 2,
+        "ordinalNum": "2nd",
+        "home": {
+          "goals": 3,
+          "shotsOnGoal": 0,
+          "rinkSide": "left"
+        },
+        "away": {
+          "goals": 2,
+          "shotsOnGoal": 0,
+          "rinkSide": "right"
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 3,
+        "ordinalNum": "3rd",
+        "home": {
+          "goals": 4,
+          "shotsOnGoal": 0,
+          "rinkSide": "right"
+        },
+        "away": {
+          "goals": 1,
+          "shotsOnGoal": 0,
+          "rinkSide": "left"
+        }
+      }
+    ],
+    "shootoutInfo": {
+      "away": {
+        "scores": 0,
+        "attempts": 0
+      },
+      "home": {
+        "scores": 0,
+        "attempts": 0
+      }
+    },
+    "teams": {
+      "home": {
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        },
+        "goals": 10,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      },
+      "away": {
+        "team": {
+          "id": 3,
+          "name": "New York Rangers",
+          "link": "/api/v1/teams/3"
+        },
+        "goals": 4,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      }
+    },
+    "powerPlayStrength": "Even",
+    "hasShootout": false,
+    "intermissionInfo": {
+      "intermissionTimeRemaining": 0,
+      "intermissionTimeElapsed": 0,
+      "inIntermission": false
+    }
+  },
+  "scoringPlays": [],
+  "venue": {
+    "name": "Montreal Forum",
+    "link": "/api/v1/venues/null"
+  },
+  "content": {
+    "link": "/api/v1/game/1942020008/content"
+  }
+}

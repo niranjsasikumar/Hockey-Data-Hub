@@ -1,0 +1,665 @@
+{
+  "gamePk": 1917020031,
+  "link": "/api/v1/game/1917020031/feed/live",
+  "gameType": "R",
+  "season": "19171918",
+  "gameDate": "1918-02-26T01:00:00Z",
+  "status": {
+    "abstractGameState": "Final",
+    "codedGameState": "7",
+    "detailedState": "Final",
+    "statusCode": "7",
+    "startTimeTBD": false
+  },
+  "teams": {
+    "away": {
+      "leagueRecord": {
+        "wins": 13,
+        "losses": 7,
+        "ties": 0,
+        "type": "league"
+      },
+      "score": 0,
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8",
+        "venue": {
+          "id": 5028,
+          "name": "Bell Centre",
+          "link": "/api/v1/venues/5028",
+          "city": "Montréal",
+          "timeZone": {
+            "id": "America/Montreal",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "MTL",
+        "teamName": "Canadiens",
+        "locationName": "Montréal",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "id": 17,
+          "name": "Atlantic",
+          "nameShort": "ATL",
+          "link": "/api/v1/divisions/17",
+          "abbreviation": "A"
+        },
+        "conference": {
+          "id": 6,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/6"
+        },
+        "franchise": {
+          "franchiseId": 1,
+          "teamName": "Canadiens",
+          "link": "/api/v1/franchises/1"
+        },
+        "shortName": "Montréal",
+        "officialSiteUrl": "http://www.canadiens.com/",
+        "franchiseId": 1,
+        "active": true
+      }
+    },
+    "home": {
+      "leagueRecord": {
+        "wins": 7,
+        "losses": 13,
+        "ties": 0,
+        "type": "league"
+      },
+      "score": 8,
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36",
+        "abbreviation": "SEN",
+        "teamName": "Senators",
+        "locationName": "Ottawa",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "link": "/api/v1/divisions/null"
+        },
+        "conference": {
+          "link": "/api/v1/conferences/null"
+        },
+        "franchise": {
+          "franchiseId": 3,
+          "teamName": "Eagles",
+          "link": "/api/v1/franchises/3"
+        },
+        "shortName": "Ottawa",
+        "franchiseId": 3,
+        "active": false
+      }
+    }
+  },
+  "linescore": {
+    "currentPeriod": 3,
+    "currentPeriodOrdinal": "3rd",
+    "currentPeriodTimeRemaining": "Final",
+    "periods": [
+      {
+        "periodType": "REGULAR",
+        "num": 1,
+        "ordinalNum": "1st",
+        "home": {
+          "goals": 4,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 0,
+          "shotsOnGoal": 0
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 2,
+        "ordinalNum": "2nd",
+        "home": {
+          "goals": 0,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 0,
+          "shotsOnGoal": 0
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 3,
+        "ordinalNum": "3rd",
+        "home": {
+          "goals": 4,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 0,
+          "shotsOnGoal": 0
+        }
+      }
+    ],
+    "shootoutInfo": {
+      "away": {
+        "scores": 0,
+        "attempts": 0
+      },
+      "home": {
+        "scores": 0,
+        "attempts": 0
+      }
+    },
+    "teams": {
+      "home": {
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        },
+        "goals": 8,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      },
+      "away": {
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        },
+        "goals": 0,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      }
+    },
+    "powerPlayStrength": "Even",
+    "hasShootout": false,
+    "intermissionInfo": {
+      "intermissionTimeRemaining": 0,
+      "intermissionTimeElapsed": 0,
+      "inIntermission": false
+    }
+  },
+  "scoringPlays": [
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445135,
+            "fullName": "George Boucher",
+            "link": "/api/v1/people/8445135"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 7
+        },
+        {
+          "player": {
+            "id": 8448011,
+            "fullName": "Frank Nighbor",
+            "link": "/api/v1/people/8448011"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 4
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN10",
+        "eventTypeId": "GOAL",
+        "description": "Georges Boucher (7) , assists: Frank Nighbor (4)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": true,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 0,
+        "eventId": 10,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "00:10",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-26T01:00:00Z",
+        "goals": {
+          "away": 0,
+          "home": 1
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445874,
+            "fullName": "Cy Denneny",
+            "link": "/api/v1/people/8445874"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 31
+        },
+        {
+          "player": {
+            "id": 8448011,
+            "fullName": "Frank Nighbor",
+            "link": "/api/v1/people/8448011"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 5
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN630",
+        "eventTypeId": "GOAL",
+        "description": "Cy Denneny (31) , assists: Frank Nighbor (5)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 1,
+        "eventId": 630,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "10:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-26T01:00:00Z",
+        "goals": {
+          "away": 0,
+          "home": 2
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8448011,
+            "fullName": "Frank Nighbor",
+            "link": "/api/v1/people/8448011"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 5
+        },
+        {
+          "player": {
+            "id": 8445135,
+            "fullName": "George Boucher",
+            "link": "/api/v1/people/8445135"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 6
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN930",
+        "eventTypeId": "GOAL",
+        "description": "Frank Nighbor (5) , assists: Georges Boucher (6)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 2,
+        "eventId": 930,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "15:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-26T01:00:00Z",
+        "goals": {
+          "away": 0,
+          "home": 3
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445135,
+            "fullName": "George Boucher",
+            "link": "/api/v1/people/8445135"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 8
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN1170",
+        "eventTypeId": "GOAL",
+        "description": "Georges Boucher (8) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 3,
+        "eventId": 1170,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "19:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-26T01:00:00Z",
+        "goals": {
+          "away": 0,
+          "home": 4
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445844,
+            "fullName": "Jack Darragh",
+            "link": "/api/v1/people/8445844"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 13
+        },
+        {
+          "player": {
+            "id": 8448011,
+            "fullName": "Frank Nighbor",
+            "link": "/api/v1/people/8448011"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 6
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN2430",
+        "eventTypeId": "GOAL",
+        "description": "Jack Darragh (13) , assists: Frank Nighbor (6)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 4,
+        "eventId": 2430,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "00:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-26T01:00:00Z",
+        "goals": {
+          "away": 0,
+          "home": 5
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445844,
+            "fullName": "Jack Darragh",
+            "link": "/api/v1/people/8445844"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 14
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN2490",
+        "eventTypeId": "GOAL",
+        "description": "Jack Darragh (14) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 5,
+        "eventId": 2490,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "01:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-26T01:00:00Z",
+        "goals": {
+          "away": 0,
+          "home": 6
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445874,
+            "fullName": "Cy Denneny",
+            "link": "/api/v1/people/8445874"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 32
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN3030",
+        "eventTypeId": "GOAL",
+        "description": "Cy Denneny (32) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 6,
+        "eventId": 3030,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "10:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-26T01:00:00Z",
+        "goals": {
+          "away": 0,
+          "home": 7
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445874,
+            "fullName": "Cy Denneny",
+            "link": "/api/v1/people/8445874"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 33
+        },
+        {
+          "player": {
+            "id": 8448011,
+            "fullName": "Frank Nighbor",
+            "link": "/api/v1/people/8448011"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 7
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN3450",
+        "eventTypeId": "GOAL",
+        "description": "Cy Denneny (33) , assists: Frank Nighbor (7)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 7,
+        "eventId": 3450,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "17:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-26T01:00:00Z",
+        "goals": {
+          "away": 0,
+          "home": 8
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    }
+  ],
+  "venue": {
+    "name": "Laurier Avenue Arena",
+    "link": "/api/v1/venues/null"
+  },
+  "content": {
+    "link": "/api/v1/game/1917020031/content"
+  }
+}

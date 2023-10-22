@@ -1,0 +1,727 @@
+{
+  "gamePk": 1917020028,
+  "link": "/api/v1/game/1917020028/feed/live",
+  "gameType": "R",
+  "season": "19171918",
+  "gameDate": "1918-02-19T01:00:00Z",
+  "status": {
+    "abstractGameState": "Final",
+    "codedGameState": "7",
+    "detailedState": "Final",
+    "statusCode": "7",
+    "startTimeTBD": false
+  },
+  "teams": {
+    "away": {
+      "leagueRecord": {
+        "wins": 12,
+        "losses": 6,
+        "ties": 0,
+        "type": "league"
+      },
+      "score": 9,
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8",
+        "venue": {
+          "id": 5028,
+          "name": "Bell Centre",
+          "link": "/api/v1/venues/5028",
+          "city": "Montréal",
+          "timeZone": {
+            "id": "America/Montreal",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "MTL",
+        "teamName": "Canadiens",
+        "locationName": "Montréal",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "id": 17,
+          "name": "Atlantic",
+          "nameShort": "ATL",
+          "link": "/api/v1/divisions/17",
+          "abbreviation": "A"
+        },
+        "conference": {
+          "id": 6,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/6"
+        },
+        "franchise": {
+          "franchiseId": 1,
+          "teamName": "Canadiens",
+          "link": "/api/v1/franchises/1"
+        },
+        "shortName": "Montréal",
+        "officialSiteUrl": "http://www.canadiens.com/",
+        "franchiseId": 1,
+        "active": true
+      }
+    },
+    "home": {
+      "leagueRecord": {
+        "wins": 11,
+        "losses": 7,
+        "ties": 0,
+        "type": "league"
+      },
+      "score": 0,
+      "team": {
+        "id": 57,
+        "name": "Toronto Arenas",
+        "link": "/api/v1/teams/57",
+        "abbreviation": "TAN",
+        "teamName": "Arenas",
+        "locationName": "Toronto",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "link": "/api/v1/divisions/null"
+        },
+        "conference": {
+          "link": "/api/v1/conferences/null"
+        },
+        "franchise": {
+          "franchiseId": 5,
+          "teamName": "Maple Leafs",
+          "link": "/api/v1/franchises/5"
+        },
+        "shortName": "Toronto",
+        "franchiseId": 5,
+        "active": false
+      }
+    }
+  },
+  "linescore": {
+    "currentPeriod": 3,
+    "currentPeriodOrdinal": "3rd",
+    "currentPeriodTimeRemaining": "Final",
+    "periods": [
+      {
+        "periodType": "REGULAR",
+        "num": 1,
+        "ordinalNum": "1st",
+        "home": {
+          "goals": 0,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 1,
+          "shotsOnGoal": 0
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 2,
+        "ordinalNum": "2nd",
+        "home": {
+          "goals": 0,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 6,
+          "shotsOnGoal": 0
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 3,
+        "ordinalNum": "3rd",
+        "home": {
+          "goals": 0,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 2,
+          "shotsOnGoal": 0
+        }
+      }
+    ],
+    "shootoutInfo": {
+      "away": {
+        "scores": 0,
+        "attempts": 0
+      },
+      "home": {
+        "scores": 0,
+        "attempts": 0
+      }
+    },
+    "teams": {
+      "home": {
+        "team": {
+          "id": 57,
+          "name": "Toronto Arenas",
+          "link": "/api/v1/teams/57"
+        },
+        "goals": 0,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      },
+      "away": {
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        },
+        "goals": 9,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      }
+    },
+    "powerPlayStrength": "Even",
+    "hasShootout": false,
+    "intermissionInfo": {
+      "intermissionTimeRemaining": 0,
+      "intermissionTimeElapsed": 0,
+      "inIntermission": false
+    }
+  },
+  "scoringPlays": [
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8448154,
+            "fullName": "Didier Pitre",
+            "link": "/api/v1/people/8448154"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 16
+        },
+        {
+          "player": {
+            "id": 8445571,
+            "fullName": "Bert Corbeau",
+            "link": "/api/v1/people/8445571"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 4
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN840",
+        "eventTypeId": "GOAL",
+        "description": "Didier Pitre (16) , assists: Bert Corbeau (4)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": true,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 0,
+        "eventId": 840,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "14:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 1,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447594,
+            "fullName": "Joe Malone",
+            "link": "/api/v1/people/8447594"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 40
+        },
+        {
+          "player": {
+            "id": 8447289,
+            "fullName": "Newsy Lalonde",
+            "link": "/api/v1/people/8447289"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 5
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN1440",
+        "eventTypeId": "GOAL",
+        "description": "Joe Malone (40) , assists: Newsy Lalonde (5)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 1,
+        "eventId": 1440,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "04:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 2,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8446669,
+            "fullName": "Joe Hall",
+            "link": "/api/v1/people/8446669"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 7
+        },
+        {
+          "player": {
+            "id": 8447594,
+            "fullName": "Joe Malone",
+            "link": "/api/v1/people/8447594"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 3
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN1500",
+        "eventTypeId": "GOAL",
+        "description": "Joe Hall (7) , assists: Joe Malone (3)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 2,
+        "eventId": 1500,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "05:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 3,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8448154,
+            "fullName": "Didier Pitre",
+            "link": "/api/v1/people/8448154"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 17
+        },
+        {
+          "player": {
+            "id": 8447289,
+            "fullName": "Newsy Lalonde",
+            "link": "/api/v1/people/8447289"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 6
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN1620",
+        "eventTypeId": "GOAL",
+        "description": "Didier Pitre (17) , assists: Newsy Lalonde (6)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 3,
+        "eventId": 1620,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "07:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 4,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447289,
+            "fullName": "Newsy Lalonde",
+            "link": "/api/v1/people/8447289"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 19
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN1920",
+        "eventTypeId": "GOAL",
+        "description": "Newsy Lalonde (19) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 4,
+        "eventId": 1920,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "12:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 5,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8446669,
+            "fullName": "Joe Hall",
+            "link": "/api/v1/people/8446669"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 8
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN2100",
+        "eventTypeId": "GOAL",
+        "description": "Joe Hall (8) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 5,
+        "eventId": 2100,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "15:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 6,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447348,
+            "fullName": "Jack Laviolette",
+            "link": "/api/v1/people/8447348"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8446669,
+            "fullName": "Joe Hall",
+            "link": "/api/v1/people/8446669"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 7
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN2280",
+        "eventTypeId": "GOAL",
+        "description": "Jack Laviolette (2) , assists: Joe Hall (7)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 6,
+        "eventId": 2280,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "18:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 7,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447594,
+            "fullName": "Joe Malone",
+            "link": "/api/v1/people/8447594"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 41
+        },
+        {
+          "player": {
+            "id": 8448154,
+            "fullName": "Didier Pitre",
+            "link": "/api/v1/people/8448154"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 7
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN3120",
+        "eventTypeId": "GOAL",
+        "description": "Joe Malone (41) , assists: Didier Pitre (7)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 7,
+        "eventId": 3120,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "12:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 8,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447289,
+            "fullName": "Newsy Lalonde",
+            "link": "/api/v1/people/8447289"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 20
+        },
+        {
+          "player": {
+            "id": 8449997,
+            "fullName": "Hap Holmes",
+            "link": "/api/v1/people/8449997"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "TAN3480",
+        "eventTypeId": "GOAL",
+        "description": "Newsy Lalonde (20) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 8,
+        "eventId": 3480,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "18:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1918-02-19T01:00:00Z",
+        "goals": {
+          "away": 9,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    }
+  ],
+  "venue": {
+    "name": "Mutual Street Arena",
+    "link": "/api/v1/venues/null"
+  },
+  "content": {
+    "link": "/api/v1/game/1917020028/content"
+  }
+}

@@ -1,0 +1,876 @@
+{
+  "gamePk": 1942030121,
+  "link": "/api/v1/game/1942030121/feed/live",
+  "gameType": "P",
+  "season": "19421943",
+  "gameDate": "1943-03-22T00:00:00Z",
+  "status": {
+    "abstractGameState": "Final",
+    "codedGameState": "7",
+    "detailedState": "Final",
+    "statusCode": "7",
+    "startTimeTBD": false
+  },
+  "teams": {
+    "away": {
+      "leagueRecord": {
+        "wins": 0,
+        "losses": 1,
+        "type": "league"
+      },
+      "score": 4,
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8",
+        "venue": {
+          "id": 5028,
+          "name": "Bell Centre",
+          "link": "/api/v1/venues/5028",
+          "city": "Montréal",
+          "timeZone": {
+            "id": "America/Montreal",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "MTL",
+        "teamName": "Canadiens",
+        "locationName": "Montréal",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "id": 17,
+          "name": "Atlantic",
+          "nameShort": "ATL",
+          "link": "/api/v1/divisions/17",
+          "abbreviation": "A"
+        },
+        "conference": {
+          "id": 6,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/6"
+        },
+        "franchise": {
+          "franchiseId": 1,
+          "teamName": "Canadiens",
+          "link": "/api/v1/franchises/1"
+        },
+        "shortName": "Montréal",
+        "officialSiteUrl": "http://www.canadiens.com/",
+        "franchiseId": 1,
+        "active": true
+      }
+    },
+    "home": {
+      "leagueRecord": {
+        "wins": 1,
+        "losses": 0,
+        "type": "league"
+      },
+      "score": 5,
+      "team": {
+        "id": 6,
+        "name": "Boston Bruins",
+        "link": "/api/v1/teams/6",
+        "venue": {
+          "id": 5085,
+          "name": "TD Garden",
+          "link": "/api/v1/venues/5085",
+          "city": "Boston",
+          "timeZone": {
+            "id": "America/New_York",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "BOS",
+        "teamName": "Bruins",
+        "locationName": "Boston",
+        "firstYearOfPlay": "1924",
+        "division": {
+          "id": 17,
+          "name": "Atlantic",
+          "nameShort": "ATL",
+          "link": "/api/v1/divisions/17",
+          "abbreviation": "A"
+        },
+        "conference": {
+          "id": 6,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/6"
+        },
+        "franchise": {
+          "franchiseId": 6,
+          "teamName": "Bruins",
+          "link": "/api/v1/franchises/6"
+        },
+        "shortName": "Boston",
+        "officialSiteUrl": "http://www.bostonbruins.com/",
+        "franchiseId": 6,
+        "active": true
+      }
+    }
+  },
+  "linescore": {
+    "currentPeriod": 4,
+    "currentPeriodOrdinal": "OT",
+    "currentPeriodTimeRemaining": "Final",
+    "periods": [
+      {
+        "periodType": "REGULAR",
+        "num": 1,
+        "ordinalNum": "1st",
+        "home": {
+          "goals": 0,
+          "shotsOnGoal": 0,
+          "rinkSide": "left"
+        },
+        "away": {
+          "goals": 1,
+          "shotsOnGoal": 0,
+          "rinkSide": "right"
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 2,
+        "ordinalNum": "2nd",
+        "home": {
+          "goals": 2,
+          "shotsOnGoal": 0,
+          "rinkSide": "right"
+        },
+        "away": {
+          "goals": 2,
+          "shotsOnGoal": 0,
+          "rinkSide": "left"
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 3,
+        "ordinalNum": "3rd",
+        "home": {
+          "goals": 2,
+          "shotsOnGoal": 0,
+          "rinkSide": "left"
+        },
+        "away": {
+          "goals": 1,
+          "shotsOnGoal": 0,
+          "rinkSide": "right"
+        }
+      },
+      {
+        "periodType": "OVERTIME",
+        "num": 4,
+        "ordinalNum": "OT",
+        "home": {
+          "goals": 1,
+          "shotsOnGoal": 0,
+          "rinkSide": "right"
+        },
+        "away": {
+          "goals": 0,
+          "shotsOnGoal": 0,
+          "rinkSide": "left"
+        }
+      }
+    ],
+    "shootoutInfo": {
+      "away": {
+        "scores": 0,
+        "attempts": 0
+      },
+      "home": {
+        "scores": 0,
+        "attempts": 0
+      }
+    },
+    "teams": {
+      "home": {
+        "team": {
+          "id": 6,
+          "name": "Boston Bruins",
+          "link": "/api/v1/teams/6"
+        },
+        "goals": 5,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      },
+      "away": {
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        },
+        "goals": 4,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      }
+    },
+    "powerPlayStrength": "Even",
+    "hasShootout": false,
+    "intermissionInfo": {
+      "intermissionTimeRemaining": 0,
+      "intermissionTimeElapsed": 0,
+      "inIntermission": false
+    }
+  },
+  "scoringPlays": [
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445098,
+            "fullName": "Toe Blake",
+            "link": "/api/v1/people/8445098"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8447271,
+            "fullName": "Elmer Lach",
+            "link": "/api/v1/people/8447271"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449836,
+            "fullName": "Frank Brimsek",
+            "link": "/api/v1/people/8449836"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS1099",
+        "eventTypeId": "GOAL",
+        "description": "Toe Blake (1) , assists: Elmer Lach (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 0,
+        "eventId": 1099,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "18:19",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 1,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8448042,
+            "fullName": "Buddy O'Connor",
+            "link": "/api/v1/people/8448042"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449836,
+            "fullName": "Frank Brimsek",
+            "link": "/api/v1/people/8449836"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS1242",
+        "eventTypeId": "GOAL",
+        "description": "Buddy O'Connor (1) , assists: none",
+        "strength": {
+          "code": "PPG",
+          "name": "Power Play"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 1,
+        "eventId": 1242,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "00:42",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 2,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445098,
+            "fullName": "Toe Blake",
+            "link": "/api/v1/people/8445098"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8445059,
+            "fullName": "Joe Benoit",
+            "link": "/api/v1/people/8445059"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8447271,
+            "fullName": "Elmer Lach",
+            "link": "/api/v1/people/8447271"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8449836,
+            "fullName": "Frank Brimsek",
+            "link": "/api/v1/people/8449836"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS1312",
+        "eventTypeId": "GOAL",
+        "description": "Toe Blake (2) , assists: Joe Benoit (1), Elmer Lach (2)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 2,
+        "eventId": 1312,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "01:52",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 3,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8446561,
+            "fullName": "Don Gallinger",
+            "link": "/api/v1/people/8446561"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449823,
+            "fullName": "Paul Bibeault",
+            "link": "/api/v1/people/8449823"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS1431",
+        "eventTypeId": "GOAL",
+        "description": "Don Gallinger (1) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 3,
+        "eventId": 1431,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "03:51",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 3,
+          "home": 1
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 6,
+        "name": "Boston Bruins",
+        "link": "/api/v1/teams/6"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447023,
+            "fullName": "Art Jackson",
+            "link": "/api/v1/people/8447023"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8446895,
+            "fullName": "Flash Hollett",
+            "link": "/api/v1/people/8446895"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449823,
+            "fullName": "Paul Bibeault",
+            "link": "/api/v1/people/8449823"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS1686",
+        "eventTypeId": "GOAL",
+        "description": "Art Jackson (1) , assists: Flash Hollett (1)",
+        "strength": {
+          "code": "PPG",
+          "name": "Power Play"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 4,
+        "eventId": 1686,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "08:06",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 3,
+          "home": 2
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 6,
+        "name": "Boston Bruins",
+        "link": "/api/v1/teams/6"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8446861,
+            "fullName": "Dutch Hiller",
+            "link": "/api/v1/people/8446861"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8448179,
+            "fullName": "Jack Portland",
+            "link": "/api/v1/people/8448179"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449836,
+            "fullName": "Frank Brimsek",
+            "link": "/api/v1/people/8449836"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS2860",
+        "eventTypeId": "GOAL",
+        "description": "Dutch Hiller (1) , assists: Jack Portland (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 5,
+        "eventId": 2860,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "07:40",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 4,
+          "home": 2
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8444986,
+            "fullName": "Ozzie Aubuchon",
+            "link": "/api/v1/people/8444986"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8447025,
+            "fullName": "Busher Jackson",
+            "link": "/api/v1/people/8447025"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449823,
+            "fullName": "Paul Bibeault",
+            "link": "/api/v1/people/8449823"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS2917",
+        "eventTypeId": "GOAL",
+        "description": "Ozzie Aubuchon (1) , assists: Busher Jackson (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 6,
+        "eventId": 2917,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "08:37",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 4,
+          "home": 3
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 6,
+        "name": "Boston Bruins",
+        "link": "/api/v1/teams/6"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445754,
+            "fullName": "Bill Cowley",
+            "link": "/api/v1/people/8445754"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8446895,
+            "fullName": "Flash Hollett",
+            "link": "/api/v1/people/8446895"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8447023,
+            "fullName": "Art Jackson",
+            "link": "/api/v1/people/8447023"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449823,
+            "fullName": "Paul Bibeault",
+            "link": "/api/v1/people/8449823"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS3353",
+        "eventTypeId": "GOAL",
+        "description": "Bill Cowley (1) , assists: Flash Hollett (2), Art Jackson (1)",
+        "strength": {
+          "code": "PPG",
+          "name": "Power Play"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 7,
+        "eventId": 3353,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "15:53",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 4,
+          "home": 4
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 6,
+        "name": "Boston Bruins",
+        "link": "/api/v1/teams/6"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8446561,
+            "fullName": "Don Gallinger",
+            "link": "/api/v1/people/8446561"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8446656,
+            "fullName": "Bep Guidolin",
+            "link": "/api/v1/people/8446656"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449823,
+            "fullName": "Paul Bibeault",
+            "link": "/api/v1/people/8449823"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "BOS4350",
+        "eventTypeId": "GOAL",
+        "description": "Don Gallinger (2) , assists: Bep Guidolin (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": true,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 8,
+        "eventId": 4350,
+        "period": 4,
+        "periodType": "OVERTIME",
+        "ordinalNum": "OT",
+        "periodTime": "12:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1943-03-22T00:00:00Z",
+        "goals": {
+          "away": 4,
+          "home": 5
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 6,
+        "name": "Boston Bruins",
+        "link": "/api/v1/teams/6"
+      }
+    }
+  ],
+  "venue": {
+    "name": "Boston Garden",
+    "link": "/api/v1/venues/null"
+  },
+  "content": {
+    "link": "/api/v1/game/1942030121/content"
+  },
+  "seriesSummary": {
+    "gamePk": 1942030121,
+    "gameNumber": 1,
+    "gameLabel": "Game 1",
+    "necessary": true,
+    "gameCode": 121,
+    "gameTime": "1943-03-22T00:00:00Z",
+    "seriesStatus": "Bruins lead 1-0",
+    "seriesStatusShort": "BOS leads 1-0",
+    "series": {
+      "seriesNumber": 2,
+      "seriesCode": "B",
+      "names": {
+        "matchupName": "Bruins (2) vs. Canadiens ()",
+        "matchupShortName": "BOS v MTL",
+        "teamAbbreviationA": "BOS",
+        "teamAbbreviationB": "MTL",
+        "seriesSlug": "bruins-vs-canadiens-series-b"
+      },
+      "currentGame": {
+        "seriesSummary": {
+          "gamePk": 1942030125,
+          "gameNumber": 5,
+          "gameLabel": "Game 5",
+          "necessary": true,
+          "gameCode": 125,
+          "gameTime": "1943-03-31T00:00:00Z",
+          "seriesStatus": "Bruins win 4-1",
+          "seriesStatusShort": "BOS wins 4-1"
+        }
+      },
+      "conference": {
+        "id": 6,
+        "name": "Eastern",
+        "link": "/api/v1/conferences/6"
+      },
+      "round": {
+        "number": 1,
+        "code": 1,
+        "names": {
+          "name": "Semifinals",
+          "shortName": "SF"
+        },
+        "format": {
+          "name": "BO7",
+          "description": "Best of 7",
+          "numberOfGames": 7,
+          "numberOfWins": 4
+        }
+      },
+      "matchupTeams": [
+        {
+          "team": {
+            "id": 6,
+            "name": "Boston Bruins",
+            "link": "/api/v1/teams/6"
+          },
+          "seed": {
+            "type": "2",
+            "rank": 2,
+            "isTop": true
+          },
+          "seriesRecord": {
+            "wins": 4,
+            "losses": 1
+          }
+        },
+        {
+          "team": {
+            "id": 8,
+            "name": "Montréal Canadiens",
+            "link": "/api/v1/teams/8"
+          },
+          "seed": {
+            "rank": 4,
+            "isTop": false
+          },
+          "seriesRecord": {
+            "wins": 1,
+            "losses": 4
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,851 @@
+{
+  "gamePk": 1917020001,
+  "link": "/api/v1/game/1917020001/feed/live",
+  "gameType": "R",
+  "season": "19171918",
+  "gameDate": "1917-12-20T01:00:00Z",
+  "status": {
+    "abstractGameState": "Final",
+    "codedGameState": "7",
+    "detailedState": "Final",
+    "statusCode": "7",
+    "startTimeTBD": false
+  },
+  "teams": {
+    "away": {
+      "leagueRecord": {
+        "wins": 1,
+        "losses": 0,
+        "ties": 0,
+        "type": "league"
+      },
+      "score": 7,
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8",
+        "venue": {
+          "id": 5028,
+          "name": "Bell Centre",
+          "link": "/api/v1/venues/5028",
+          "city": "Montréal",
+          "timeZone": {
+            "id": "America/Montreal",
+            "offset": -4,
+            "tz": "EDT"
+          }
+        },
+        "abbreviation": "MTL",
+        "teamName": "Canadiens",
+        "locationName": "Montréal",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "id": 17,
+          "name": "Atlantic",
+          "nameShort": "ATL",
+          "link": "/api/v1/divisions/17",
+          "abbreviation": "A"
+        },
+        "conference": {
+          "id": 6,
+          "name": "Eastern",
+          "link": "/api/v1/conferences/6"
+        },
+        "franchise": {
+          "franchiseId": 1,
+          "teamName": "Canadiens",
+          "link": "/api/v1/franchises/1"
+        },
+        "shortName": "Montréal",
+        "officialSiteUrl": "http://www.canadiens.com/",
+        "franchiseId": 1,
+        "active": true
+      }
+    },
+    "home": {
+      "leagueRecord": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "type": "league"
+      },
+      "score": 4,
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36",
+        "abbreviation": "SEN",
+        "teamName": "Senators",
+        "locationName": "Ottawa",
+        "firstYearOfPlay": "1917",
+        "division": {
+          "link": "/api/v1/divisions/null"
+        },
+        "conference": {
+          "link": "/api/v1/conferences/null"
+        },
+        "franchise": {
+          "franchiseId": 3,
+          "teamName": "Eagles",
+          "link": "/api/v1/franchises/3"
+        },
+        "shortName": "Ottawa",
+        "franchiseId": 3,
+        "active": false
+      }
+    }
+  },
+  "linescore": {
+    "currentPeriod": 3,
+    "currentPeriodOrdinal": "3rd",
+    "currentPeriodTimeRemaining": "Final",
+    "periods": [
+      {
+        "periodType": "REGULAR",
+        "num": 1,
+        "ordinalNum": "1st",
+        "home": {
+          "goals": 0,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 3,
+          "shotsOnGoal": 0
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 2,
+        "ordinalNum": "2nd",
+        "home": {
+          "goals": 3,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 2,
+          "shotsOnGoal": 0
+        }
+      },
+      {
+        "periodType": "REGULAR",
+        "num": 3,
+        "ordinalNum": "3rd",
+        "home": {
+          "goals": 1,
+          "shotsOnGoal": 0
+        },
+        "away": {
+          "goals": 2,
+          "shotsOnGoal": 0
+        }
+      }
+    ],
+    "shootoutInfo": {
+      "away": {
+        "scores": 0,
+        "attempts": 0
+      },
+      "home": {
+        "scores": 0,
+        "attempts": 0
+      }
+    },
+    "teams": {
+      "home": {
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        },
+        "goals": 4,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      },
+      "away": {
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        },
+        "goals": 7,
+        "shotsOnGoal": 0,
+        "goaliePulled": false,
+        "numSkaters": 0,
+        "powerPlay": false
+      }
+    },
+    "powerPlayStrength": "Even",
+    "hasShootout": false,
+    "intermissionInfo": {
+      "intermissionTimeRemaining": 0,
+      "intermissionTimeElapsed": 0,
+      "inIntermission": false
+    }
+  },
+  "scoringPlays": [
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447594,
+            "fullName": "Joe Malone",
+            "link": "/api/v1/people/8447594"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449817,
+            "fullName": "Clint Benedict",
+            "link": "/api/v1/people/8449817"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN390",
+        "eventTypeId": "GOAL",
+        "description": "Joe Malone (1) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 0,
+        "eventId": 390,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "06:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 1,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447289,
+            "fullName": "Newsy Lalonde",
+            "link": "/api/v1/people/8447289"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449817,
+            "fullName": "Clint Benedict",
+            "link": "/api/v1/people/8449817"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN600",
+        "eventTypeId": "GOAL",
+        "description": "Newsy Lalonde (1) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 1,
+        "eventId": 600,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "10:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 2,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447594,
+            "fullName": "Joe Malone",
+            "link": "/api/v1/people/8447594"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8448154,
+            "fullName": "Didier Pitre",
+            "link": "/api/v1/people/8448154"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449817,
+            "fullName": "Clint Benedict",
+            "link": "/api/v1/people/8449817"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN660",
+        "eventTypeId": "GOAL",
+        "description": "Joe Malone (2) , assists: Didier Pitre (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 2,
+        "eventId": 660,
+        "period": 1,
+        "periodType": "REGULAR",
+        "ordinalNum": "1st",
+        "periodTime": "11:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 3,
+          "home": 0
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8446581,
+            "fullName": "Eddie Gerard",
+            "link": "/api/v1/people/8446581"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8445874,
+            "fullName": "Cy Denneny",
+            "link": "/api/v1/people/8445874"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN1470",
+        "eventTypeId": "GOAL",
+        "description": "Eddie Gerard (1) , assists: Cy Denneny (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 3,
+        "eventId": 1470,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "04:30",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 3,
+          "home": 1
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447594,
+            "fullName": "Joe Malone",
+            "link": "/api/v1/people/8447594"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 3
+        },
+        {
+          "player": {
+            "id": 8446669,
+            "fullName": "Joe Hall",
+            "link": "/api/v1/people/8446669"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449817,
+            "fullName": "Clint Benedict",
+            "link": "/api/v1/people/8449817"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN1560",
+        "eventTypeId": "GOAL",
+        "description": "Joe Malone (3) , assists: Joe Hall (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 4,
+        "eventId": 1560,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "06:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 4,
+          "home": 1
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447594,
+            "fullName": "Joe Malone",
+            "link": "/api/v1/people/8447594"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 4
+        },
+        {
+          "player": {
+            "id": 8446669,
+            "fullName": "Joe Hall",
+            "link": "/api/v1/people/8446669"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8449817,
+            "fullName": "Clint Benedict",
+            "link": "/api/v1/people/8449817"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN1740",
+        "eventTypeId": "GOAL",
+        "description": "Joe Malone (4) , assists: Joe Hall (2)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": true,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 5,
+        "eventId": 1740,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "09:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 5,
+          "home": 1
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445874,
+            "fullName": "Cy Denneny",
+            "link": "/api/v1/people/8445874"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN1980",
+        "eventTypeId": "GOAL",
+        "description": "Cy Denneny (1) , assists: none",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 6,
+        "eventId": 1980,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "13:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 5,
+          "home": 2
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445874,
+            "fullName": "Cy Denneny",
+            "link": "/api/v1/people/8445874"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8449025,
+            "fullName": "Hamby Shore",
+            "link": "/api/v1/people/8449025"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN2280",
+        "eventTypeId": "GOAL",
+        "description": "Cy Denneny (2) , assists: Hamby Shore (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 7,
+        "eventId": 2280,
+        "period": 2,
+        "periodType": "REGULAR",
+        "ordinalNum": "2nd",
+        "periodTime": "18:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 5,
+          "home": 3
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8447594,
+            "fullName": "Joe Malone",
+            "link": "/api/v1/people/8447594"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 5
+        },
+        {
+          "player": {
+            "id": 8447289,
+            "fullName": "Newsy Lalonde",
+            "link": "/api/v1/people/8447289"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449817,
+            "fullName": "Clint Benedict",
+            "link": "/api/v1/people/8449817"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN2760",
+        "eventTypeId": "GOAL",
+        "description": "Joe Malone (5) , assists: Newsy Lalonde (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 8,
+        "eventId": 2760,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "06:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 6,
+          "home": 3
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8448154,
+            "fullName": "Didier Pitre",
+            "link": "/api/v1/people/8448154"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8447348,
+            "fullName": "Jack Laviolette",
+            "link": "/api/v1/people/8447348"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 1
+        },
+        {
+          "player": {
+            "id": 8449817,
+            "fullName": "Clint Benedict",
+            "link": "/api/v1/people/8449817"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN3420",
+        "eventTypeId": "GOAL",
+        "description": "Didier Pitre (1) , assists: Jack Laviolette (1)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 9,
+        "eventId": 3420,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "17:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 7,
+          "home": 3
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 8,
+        "name": "Montréal Canadiens",
+        "link": "/api/v1/teams/8"
+      }
+    },
+    {
+      "players": [
+        {
+          "player": {
+            "id": 8445874,
+            "fullName": "Cy Denneny",
+            "link": "/api/v1/people/8445874"
+          },
+          "playerType": "Scorer",
+          "seasonTotal": 3
+        },
+        {
+          "player": {
+            "id": 8449025,
+            "fullName": "Hamby Shore",
+            "link": "/api/v1/people/8449025"
+          },
+          "playerType": "Assist",
+          "seasonTotal": 2
+        },
+        {
+          "player": {
+            "id": 8450137,
+            "fullName": "Georges Vezina",
+            "link": "/api/v1/people/8450137"
+          },
+          "playerType": "Goalie"
+        }
+      ],
+      "result": {
+        "event": "Goal",
+        "eventCode": "SEN3480",
+        "eventTypeId": "GOAL",
+        "description": "Cy Denneny (3) , assists: Hamby Shore (2)",
+        "strength": {
+          "code": "EVEN",
+          "name": "Even"
+        },
+        "gameWinningGoal": false,
+        "emptyNet": false
+      },
+      "about": {
+        "eventIdx": 10,
+        "eventId": 3480,
+        "period": 3,
+        "periodType": "REGULAR",
+        "ordinalNum": "3rd",
+        "periodTime": "18:00",
+        "periodTimeRemaining": "",
+        "dateTime": "1917-12-20T01:00:00Z",
+        "goals": {
+          "away": 7,
+          "home": 4
+        }
+      },
+      "coordinates": {},
+      "team": {
+        "id": 36,
+        "name": "Ottawa Senators (1917)",
+        "link": "/api/v1/teams/36"
+      }
+    }
+  ],
+  "venue": {
+    "name": "Laurier Avenue Arena",
+    "link": "/api/v1/venues/null"
+  },
+  "content": {
+    "link": "/api/v1/game/1917020001/content"
+  }
+}
