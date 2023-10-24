@@ -1,8 +1,8 @@
 import {
   getStandingsValues, getStandingsData, extractStandingsData, getRecordString
 } from "../../src/api/standings";
-import division1917 from "../test_data/api/standings-data-1917-1918.json";
-import division2000 from "../test_data/api/standings-data-2000-2001.json";
+import division1917 from "../test_data/api/standings-data-1917.json";
+import division2000 from "../test_data/api/standings-data-2000.json";
 import record2022 from "../test_data/api/standings-record-data.json"
 
 test("getStandingsValues", async () => {

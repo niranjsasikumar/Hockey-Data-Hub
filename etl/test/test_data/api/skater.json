@@ -1,0 +1,46 @@
+{
+  "player": {
+    "person": {
+      "id": 8445044,
+      "fullName": "Billy Bell",
+      "link": "/api/v1/people/8445044",
+      "firstName": "Billy",
+      "lastName": "Bell",
+      "primaryNumber": "9",
+      "birthDate": "1891-06-10",
+      "birthCity": "Lachine",
+      "birthStateProvince": "QC",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 10\"",
+      "weight": 180,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "R",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "C",
+        "name": "Center",
+        "type": "Forward",
+        "abbreviation": "C"
+      }
+    },
+    "jerseyNumber": "9",
+    "position": {
+      "code": "C",
+      "name": "Center",
+      "type": "Forward",
+      "abbreviation": "C"
+    }
+  },
+  "stats": {
+    "assists": 0,
+    "goals": 1,
+    "pim": 6,
+    "games": 9,
+    "penaltyMinutes": "6",
+    "gameWinningGoals": 0,
+    "overTimeGoals": 0,
+    "points": 1
+  }
+}

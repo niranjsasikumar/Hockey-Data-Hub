@@ -1,0 +1,48 @@
+{
+  "player": {
+    "person": {
+      "id": 8450137,
+      "fullName": "Georges Vezina",
+      "link": "/api/v1/people/8450137",
+      "firstName": "Georges",
+      "lastName": "Vezina",
+      "primaryNumber": "1",
+      "birthDate": "1887-01-21",
+      "birthCity": "Chicoutimi",
+      "birthStateProvince": "QC",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 6\"",
+      "weight": 185,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "L",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "G",
+        "name": "Goalie",
+        "type": "Goalie",
+        "abbreviation": "G"
+      }
+    },
+    "jerseyNumber": "1",
+    "position": {
+      "code": "G",
+      "name": "Goalie",
+      "type": "Goalie",
+      "abbreviation": "G"
+    }
+  },
+  "stats": {
+    "timeOnIce": "1282:15",
+    "shutouts": 1,
+    "ties": 0,
+    "wins": 12,
+    "losses": 9,
+    "goalAgainstAverage": 3.930591,
+    "games": 21,
+    "gamesStarted": 21,
+    "goalsAgainst": 84,
+    "timeOnIcePerGame": "61:03"
+  }
+}

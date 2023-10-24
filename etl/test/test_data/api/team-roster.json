@@ -1,0 +1,409 @@
+[
+  {
+    "person": {
+      "id": 8445044,
+      "fullName": "Billy Bell",
+      "link": "/api/v1/people/8445044",
+      "firstName": "Billy",
+      "lastName": "Bell",
+      "primaryNumber": "9",
+      "birthDate": "1891-06-10",
+      "birthCity": "Lachine",
+      "birthStateProvince": "QC",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 10\"",
+      "weight": 180,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "R",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "C",
+        "name": "Center",
+        "type": "Forward",
+        "abbreviation": "C"
+      }
+    },
+    "jerseyNumber": "9",
+    "position": {
+      "code": "C",
+      "name": "Center",
+      "type": "Forward",
+      "abbreviation": "C"
+    }
+  },
+  {
+    "person": {
+      "id": 8445071,
+      "fullName": "Louis Berlinquette",
+      "link": "/api/v1/people/8445071",
+      "firstName": "Louis",
+      "lastName": "Berlinquette",
+      "primaryNumber": "6",
+      "birthDate": "1887-05-26",
+      "birthCity": "Papineau",
+      "birthStateProvince": "QC",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 11\"",
+      "weight": 175,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "L",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "L",
+        "name": "Left Wing",
+        "type": "Forward",
+        "abbreviation": "LW"
+      }
+    },
+    "jerseyNumber": "6",
+    "position": {
+      "code": "L",
+      "name": "Left Wing",
+      "type": "Forward",
+      "abbreviation": "LW"
+    }
+  },
+  {
+    "person": {
+      "id": 8445571,
+      "fullName": "Bert Corbeau",
+      "link": "/api/v1/people/8445571",
+      "firstName": "Bert",
+      "lastName": "Corbeau",
+      "primaryNumber": "2",
+      "birthDate": "1894-02-09",
+      "birthCity": "Penetanguishene",
+      "birthStateProvince": "ON",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 11\"",
+      "weight": 200,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "R",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "D",
+        "name": "Defenseman",
+        "type": "Defenseman",
+        "abbreviation": "D"
+      }
+    },
+    "jerseyNumber": "2",
+    "position": {
+      "code": "D",
+      "name": "Defenseman",
+      "type": "Defenseman",
+      "abbreviation": "D"
+    }
+  },
+  {
+    "person": {
+      "id": 8445744,
+      "fullName": "Billy Coutu",
+      "link": "/api/v1/people/8445744",
+      "firstName": "Billy",
+      "lastName": "Coutu",
+      "primaryNumber": "3",
+      "birthDate": "1892-03-01",
+      "birthCity": "North Bay",
+      "birthStateProvince": "ON",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 11\"",
+      "weight": 190,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "L",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "D",
+        "name": "Defenseman",
+        "type": "Defenseman",
+        "abbreviation": "D"
+      }
+    },
+    "jerseyNumber": "3",
+    "position": {
+      "code": "D",
+      "name": "Defenseman",
+      "type": "Defenseman",
+      "abbreviation": "D"
+    }
+  },
+  {
+    "person": {
+      "id": 8446669,
+      "fullName": "Joe Hall",
+      "link": "/api/v1/people/8446669",
+      "firstName": "Joe",
+      "lastName": "Hall",
+      "primaryNumber": "3",
+      "birthDate": "1882-05-03",
+      "birthCity": "Staffordshire",
+      "birthCountry": "GBR",
+      "nationality": "GBR",
+      "height": "5' 10\"",
+      "weight": 175,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "R",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "D",
+        "name": "Defenseman",
+        "type": "Defenseman",
+        "abbreviation": "D"
+      }
+    },
+    "jerseyNumber": "3",
+    "position": {
+      "code": "D",
+      "name": "Defenseman",
+      "type": "Defenseman",
+      "abbreviation": "D"
+    }
+  },
+  {
+    "person": {
+      "id": 8447289,
+      "fullName": "Newsy Lalonde",
+      "link": "/api/v1/people/8447289",
+      "firstName": "Newsy",
+      "lastName": "Lalonde",
+      "primaryNumber": "4",
+      "birthDate": "1888-10-31",
+      "birthCity": "Cornwall",
+      "birthStateProvince": "ON",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 9\"",
+      "weight": 168,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "R",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "C",
+        "name": "Center",
+        "type": "Forward",
+        "abbreviation": "C"
+      }
+    },
+    "jerseyNumber": "4",
+    "position": {
+      "code": "C",
+      "name": "Center",
+      "type": "Forward",
+      "abbreviation": "C"
+    }
+  },
+  {
+    "person": {
+      "id": 8447348,
+      "fullName": "Jack Laviolette",
+      "link": "/api/v1/people/8447348",
+      "firstName": "Jack",
+      "lastName": "Laviolette",
+      "primaryNumber": "6",
+      "birthDate": "1879-07-27",
+      "birthCity": "Belleville",
+      "birthStateProvince": "ON",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 11\"",
+      "weight": 170,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "R",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "D",
+        "name": "Defenseman",
+        "type": "Defenseman",
+        "abbreviation": "D"
+      }
+    },
+    "jerseyNumber": "6",
+    "position": {
+      "code": "D",
+      "name": "Defenseman",
+      "type": "Defenseman",
+      "abbreviation": "D"
+    }
+  },
+  {
+    "person": {
+      "id": 8447594,
+      "fullName": "Joe Malone",
+      "link": "/api/v1/people/8447594",
+      "firstName": "Joe",
+      "lastName": "Malone",
+      "primaryNumber": "11",
+      "birthDate": "1890-02-28",
+      "birthCity": "Quebec City",
+      "birthStateProvince": "QC",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 10\"",
+      "weight": 150,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "L",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "C",
+        "name": "Center",
+        "type": "Forward",
+        "abbreviation": "C"
+      }
+    },
+    "jerseyNumber": "11",
+    "position": {
+      "code": "C",
+      "name": "Center",
+      "type": "Forward",
+      "abbreviation": "C"
+    }
+  },
+  {
+    "person": {
+      "id": 8447761,
+      "fullName": "Jack McDonald",
+      "link": "/api/v1/people/8447761",
+      "firstName": "Jack",
+      "lastName": "McDonald",
+      "primaryNumber": "6",
+      "birthDate": "1887-02-28",
+      "birthCity": "Québec",
+      "birthStateProvince": "QC",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 10\"",
+      "weight": 154,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "R",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "L",
+        "name": "Left Wing",
+        "type": "Forward",
+        "abbreviation": "LW"
+      }
+    },
+    "jerseyNumber": "6",
+    "position": {
+      "code": "L",
+      "name": "Left Wing",
+      "type": "Forward",
+      "abbreviation": "LW"
+    }
+  },
+  {
+    "person": {
+      "id": 8448119,
+      "fullName": "Evariste Payer",
+      "link": "/api/v1/people/8448119",
+      "firstName": "Evariste",
+      "lastName": "Payer",
+      "primaryNumber": "12",
+      "birthDate": "1887-12-12",
+      "birthCity": "Rockland",
+      "birthStateProvince": "ON",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 6\"",
+      "weight": 150,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "L",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "C",
+        "name": "Center",
+        "type": "Forward",
+        "abbreviation": "C"
+      }
+    },
+    "jerseyNumber": "12",
+    "position": {
+      "code": "C",
+      "name": "Center",
+      "type": "Forward",
+      "abbreviation": "C"
+    }
+  },
+  {
+    "person": {
+      "id": 8448154,
+      "fullName": "Didier Pitre",
+      "link": "/api/v1/people/8448154",
+      "firstName": "Didier",
+      "lastName": "Pitre",
+      "primaryNumber": "5",
+      "birthDate": "1883-09-01",
+      "birthCity": "Valleyfield",
+      "birthStateProvince": "QC",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 11\"",
+      "weight": 185,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "R",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "R",
+        "name": "Right Wing",
+        "type": "Forward",
+        "abbreviation": "RW"
+      }
+    },
+    "jerseyNumber": "5",
+    "position": {
+      "code": "R",
+      "name": "Right Wing",
+      "type": "Forward",
+      "abbreviation": "RW"
+    }
+  },
+  {
+    "person": {
+      "id": 8450137,
+      "fullName": "Georges Vezina",
+      "link": "/api/v1/people/8450137",
+      "firstName": "Georges",
+      "lastName": "Vezina",
+      "primaryNumber": "1",
+      "birthDate": "1887-01-21",
+      "birthCity": "Chicoutimi",
+      "birthStateProvince": "QC",
+      "birthCountry": "CAN",
+      "nationality": "CAN",
+      "height": "5' 6\"",
+      "weight": 185,
+      "active": false,
+      "rookie": false,
+      "shootsCatches": "L",
+      "rosterStatus": "N",
+      "primaryPosition": {
+        "code": "G",
+        "name": "Goalie",
+        "type": "Goalie",
+        "abbreviation": "G"
+      }
+    },
+    "jerseyNumber": "1",
+    "position": {
+      "code": "G",
+      "name": "Goalie",
+      "type": "Goalie",
+      "abbreviation": "G"
+    }
+  }
+]
