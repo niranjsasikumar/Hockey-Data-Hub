@@ -1,5 +1,6 @@
 import pool from "../database/database.js";
-import { getTodaysDate, fetchDataFromNHLApi, getCurrentSeason } from "../utils/utils.js";
+import { getTodaysDate, getCurrentSeason } from "../utils/utils.js";
+import { fetchDataFromNHLApi } from "../utils/nhl-api.js";
 import { extractGames, queryColumns, gameTypes } from "../utils/game-utils.js";
 
 // Get schedule data from database or NHL API

@@ -1,6 +1,6 @@
-import { getCurrentSeason, getLogoUrl } from "../utils/utils.js";
+import { getCurrentSeason} from "../utils/utils.js";
 import axios from "axios";
-import { fetchDataFromNHLApi } from "../utils/utils.js";
+import { fetchDataFromNHLApi, getLogoUrl } from "../utils/nhl-api.js";
 import pool from "../database/database.js";
 
 export default async function getGoalieStats(season, sort) {

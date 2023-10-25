@@ -1,6 +1,7 @@
-import { getCurrentSeason, getLogoUrl } from "../utils/utils.js";
+import { getCurrentSeason } from "../utils/utils.js";
 import axios from "axios";
 import pool from "../database/database.js";
+import { getLogoUrl } from "../utils/nhl-api.js";
 
 export default async function getSkaterStats(season, sort) {
   if (season === "current") return await getCurrentSeasonStats(sort);

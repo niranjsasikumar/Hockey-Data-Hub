@@ -1,5 +1,5 @@
 import pool from "../database/database.js";
-import { fetchDataFromNHLApi } from "../utils/utils.js";
+import { fetchDataFromNHLApi } from "../utils/nhl-api.js";
 
 export default async function getPlayoffs(season) {
   if (season === "current") return await getCurrentSeasonPlayoffs();

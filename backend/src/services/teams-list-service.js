@@ -1,4 +1,4 @@
-import { fetchDataFromNHLApi } from "../utils/utils.js";
+import { fetchDataFromNHLApi } from "../utils/nhl-api.js";
 import pool from "../database/database.js";
 
 export default async function getTeamsList(season) {
