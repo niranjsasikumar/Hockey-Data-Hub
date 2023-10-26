@@ -3,14 +3,10 @@ import { fetchDataFromNHLApi } from "../utils/nhl-api.js";
 
 export default async function getSeasonInfo(season) {
   if (season === "current") return await getCurrentSeasonInfo();
-
-  return (await pool.query(
-    `SELECT ${queryColumns} FROM seasons
-    WHERE id = ${season}`
-  ))[0][0];
+  return await getSeasonInfoFromDatabase(season);
 }
 
-async function getCurrentSeasonInfo() {
+export async function getCurrentSeasonInfo() {
   const seasonInfo = (await fetchDataFromNHLApi("/seasons/current")).seasons[0];
   const { conferencesInUse, divisionsInUse, tiesInUse } = seasonInfo;
 
@@ -27,6 +23,13 @@ async function getCurrentSeasonInfo() {
     faceoffStatsTracked: true,
     saveStatsTracked: true
   };
+}
+
+export async function getSeasonInfoFromDatabase(season) {
+  return (await pool.query(
+    `SELECT ${queryColumns} FROM seasons
+    WHERE id = ${season}`
+  ))[0][0];
 }
 
 const queryColumns = [
