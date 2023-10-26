@@ -1,0 +1,12 @@
+{
+  "getCurrentSeason": {
+    "seasons": [
+      {
+        "seasonId": "19171918"
+      }
+    ]
+  },
+  "seasonHasPlayoffsData": {
+    "rounds": []
+  }
+}

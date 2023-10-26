@@ -1,39 +1,14 @@
 import { jest } from "@jest/globals";
+import mockReturns from "../test_data/services/season-info.json";
 import MockPool from "../mock/mock-pool";
 
-const mockFetchResult = {
-  seasons: [
-    {
-      conferencesInUse: true,
-      divisionsInUse: true,
-      tiesInUse: false
-    }
-  ]
-};
-
 jest.unstable_mockModule("../../src/utils/nhl-api", () => ({
-  fetchDataFromNHLApi: jest.fn().mockReturnValue(mockFetchResult)
+  fetchDataFromNHLApi: jest.fn().mockReturnValue(mockReturns.fetch)
 }));
-
-const mockQueryResult = [[
-  {
-    id: 20222023,
-    conferencesInUse: 1,
-    divisionsInUse: 1,
-    conferences: "Conferences",
-    divisions: "Divisions",
-    tiesInUse: 0,
-    overtimeLossPointInUse: 1,
-    powerPlayStatsTracked: 1,
-    shootingStatsTracked: 1,
-    faceoffStatsTracked: 1,
-    saveStatsTracked: 1
-  }
-]];
 
 jest.unstable_mockModule("mysql2/promise", () => ({
   createPool: jest.fn().mockReturnValue(
-    new MockPool([mockQueryResult, mockQueryResult])
+    new MockPool([mockReturns.query, mockReturns.query])
   )
 }));
 

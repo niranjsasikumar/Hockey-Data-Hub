@@ -1,0 +1,26 @@
+{
+  "fetch": {
+    "seasons": [
+      {
+        "conferencesInUse": true,
+        "divisionsInUse": true,
+        "tiesInUse": false
+      }
+    ]
+  },
+  "query": [[
+    {
+      "id": 20222023,
+      "conferencesInUse": 1,
+      "divisionsInUse": 1,
+      "conferences": "Conferences",
+      "divisions": "Divisions",
+      "tiesInUse": 0,
+      "overtimeLossPointInUse": 1,
+      "powerPlayStatsTracked": 1,
+      "shootingStatsTracked": 1,
+      "faceoffStatsTracked": 1,
+      "saveStatsTracked": 1
+    }
+  ]]
+}

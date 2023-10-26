@@ -1,22 +1,11 @@
 import { jest } from "@jest/globals";
-
-const mockReturn1 = {
-  seasons: [
-    {
-      seasonId: "19171918"
-    }
-  ]
-};
-
-const mockReturn2 = {
-  rounds: []
-};
+import mockReturns from "../test_data/utils/utils.json";
 
 jest.unstable_mockModule("../../src/utils/nhl-api", () => ({
   fetchDataFromNHLApi: jest.fn().mockReturnValueOnce(
-    mockReturn1
+    mockReturns.getCurrentSeason
   ).mockReturnValueOnce(
-    mockReturn2
+    mockReturns.seasonHasPlayoffsData
   )
 }));
 

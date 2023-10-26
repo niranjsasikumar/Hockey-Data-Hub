@@ -1,5 +1,6 @@
 import { jest } from "@jest/globals";
 import MockPool from "../mock/mock-pool";
+import mockQueryReturn from "../test_data/services/seasons-list.json";
 
 jest.unstable_mockModule("../../src/utils/utils", () => ({
   getCurrentSeason: jest.fn().mockReturnValueOnce(
@@ -10,20 +11,9 @@ jest.unstable_mockModule("../../src/utils/utils", () => ({
   seasonHasPlayoffsData: jest.fn().mockReturnValue(true)
 }));
 
-const mockQueryResult = [[
-  {
-    id: 20222023,
-    playoffRounds: "Playoff Rounds"
-  },
-  {
-    id: 20212022,
-    playoffRounds: "Playoff Rounds"
-  }
-]];
-
 jest.unstable_mockModule("mysql2/promise", () => ({
   createPool: jest.fn().mockReturnValue(
-    new MockPool([mockQueryResult, mockQueryResult])
+    new MockPool([mockQueryReturn, mockQueryReturn])
   )
 }));
 

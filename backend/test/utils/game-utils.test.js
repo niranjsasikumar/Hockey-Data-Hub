@@ -1,9 +1,9 @@
 import {
   extractGames, getGoalScorers, getGameStatus
 } from "../../src/utils/game-utils";
-import scheduleData from "../test_data/extractGames.json";
-import gamesGoalInfo from "../test_data/getGoalScorers.json";
-import gamesStatus from "../test_data/getGameStatus.json";
+import scheduleData from "../test_data/utils/extractGames.json";
+import gamesGoalInfo from "../test_data/utils/getGoalScorers.json";
+import gamesStatus from "../test_data/utils/getGameStatus.json";
 
 test("extractGames", () => {
   const games = extractGames(scheduleData);
