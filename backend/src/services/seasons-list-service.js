@@ -26,7 +26,7 @@ export default async function getSeasonsList() {
   return seasons;
 }
 
-function convertSeasonIdtoString(id) {
+export function convertSeasonIdtoString(id) {
   const idString = id.toString();
   return idString.slice(0, 4) + "-" + idString.slice(4);
 }
