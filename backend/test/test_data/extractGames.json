@@ -1,0 +1,1320 @@
+[
+  {
+    "games": [
+      {
+        "gamePk": 2022010034,
+        "link": "/api/v1/game/2022010034/feed/live",
+        "gameType": "PR",
+        "season": "20222023",
+        "gameDate": "2022-09-28T23:00:00Z",
+        "status": {
+          "abstractGameState": "Preview",
+          "codedGameState": "1",
+          "detailedState": "Scheduled",
+          "statusCode": "1",
+          "startTimeTBD": false
+        },
+        "teams": {
+          "away": {
+            "leagueRecord": {
+              "wins": 0,
+              "losses": 0,
+              "type": "league"
+            },
+            "score": 0,
+            "team": {
+              "id": 12,
+              "name": "Carolina Hurricanes",
+              "link": "/api/v1/teams/12",
+              "venue": {
+                "id": 5066,
+                "name": "PNC Arena",
+                "link": "/api/v1/venues/5066",
+                "city": "Raleigh",
+                "timeZone": {
+                  "id": "America/New_York",
+                  "offset": -4,
+                  "tz": "EDT"
+                }
+              },
+              "abbreviation": "CAR",
+              "teamName": "Hurricanes",
+              "locationName": "Carolina",
+              "firstYearOfPlay": "1997",
+              "division": {
+                "id": 18,
+                "name": "Metropolitan",
+                "nameShort": "Metro",
+                "link": "/api/v1/divisions/18",
+                "abbreviation": "M"
+              },
+              "conference": {
+                "id": 6,
+                "name": "Eastern",
+                "link": "/api/v1/conferences/6"
+              },
+              "franchise": {
+                "franchiseId": 26,
+                "teamName": "Hurricanes",
+                "link": "/api/v1/franchises/26"
+              },
+              "shortName": "Carolina",
+              "officialSiteUrl": "http://www.carolinahurricanes.com/",
+              "franchiseId": 26,
+              "active": true
+            }
+          },
+          "home": {
+            "leagueRecord": {
+              "wins": 0,
+              "losses": 0,
+              "type": "league"
+            },
+            "score": 0,
+            "team": {
+              "id": 14,
+              "name": "Tampa Bay Lightning",
+              "link": "/api/v1/teams/14",
+              "venue": {
+                "name": "AMALIE Arena",
+                "link": "/api/v1/venues/null",
+                "city": "Tampa",
+                "timeZone": {
+                  "id": "America/New_York",
+                  "offset": -4,
+                  "tz": "EDT"
+                }
+              },
+              "abbreviation": "TBL",
+              "teamName": "Lightning",
+              "locationName": "Tampa Bay",
+              "firstYearOfPlay": "1992",
+              "division": {
+                "id": 17,
+                "name": "Atlantic",
+                "nameShort": "ATL",
+                "link": "/api/v1/divisions/17",
+                "abbreviation": "A"
+              },
+              "conference": {
+                "id": 6,
+                "name": "Eastern",
+                "link": "/api/v1/conferences/6"
+              },
+              "franchise": {
+                "franchiseId": 31,
+                "teamName": "Lightning",
+                "link": "/api/v1/franchises/31"
+              },
+              "shortName": "Tampa Bay",
+              "officialSiteUrl": "http://www.tampabaylightning.com/",
+              "franchiseId": 31,
+              "active": true
+            }
+          }
+        },
+        "linescore": {
+          "currentPeriod": 0,
+          "periods": [],
+          "shootoutInfo": {
+            "away": {
+              "scores": 0,
+              "attempts": 0
+            },
+            "home": {
+              "scores": 0,
+              "attempts": 0
+            }
+          },
+          "teams": {
+            "home": {
+              "team": {
+                "id": 14,
+                "name": "Tampa Bay Lightning",
+                "link": "/api/v1/teams/14"
+              },
+              "goals": 0,
+              "shotsOnGoal": 0,
+              "goaliePulled": false,
+              "numSkaters": -1,
+              "powerPlay": false
+            },
+            "away": {
+              "team": {
+                "id": 12,
+                "name": "Carolina Hurricanes",
+                "link": "/api/v1/teams/12"
+              },
+              "goals": 0,
+              "shotsOnGoal": 0,
+              "goaliePulled": false,
+              "numSkaters": -1,
+              "powerPlay": false
+            }
+          },
+          "powerPlayStrength": "Even",
+          "hasShootout": false,
+          "intermissionInfo": {
+            "intermissionTimeRemaining": 0,
+            "intermissionTimeElapsed": 0,
+            "inIntermission": false
+          }
+        },
+        "scoringPlays": [],
+        "venue": {
+          "id": 5017,
+          "name": "Amalie Arena",
+          "link": "/api/v1/venues/5017"
+        },
+        "content": {
+          "link": "/api/v1/game/2022010034/content"
+        }
+      },
+      {
+        "gamePk": 2022030415,
+        "link": "/api/v1/game/2022030415/feed/live",
+        "gameType": "P",
+        "season": "20222023",
+        "gameDate": "2023-06-14T00:00:00Z",
+        "status": {
+          "abstractGameState": "Final",
+          "codedGameState": "7",
+          "detailedState": "Final",
+          "statusCode": "7",
+          "startTimeTBD": false
+        },
+        "teams": {
+          "away": {
+            "leagueRecord": {
+              "wins": 13,
+              "losses": 8,
+              "type": "league"
+            },
+            "score": 3,
+            "team": {
+              "id": 13,
+              "name": "Florida Panthers",
+              "link": "/api/v1/teams/13",
+              "venue": {
+                "name": "Amerant Bank Arena",
+                "link": "/api/v1/venues/null",
+                "city": "Sunrise",
+                "timeZone": {
+                  "id": "America/New_York",
+                  "offset": -4,
+                  "tz": "EDT"
+                }
+              },
+              "abbreviation": "FLA",
+              "teamName": "Panthers",
+              "locationName": "Florida",
+              "firstYearOfPlay": "1993",
+              "division": {
+                "id": 17,
+                "name": "Atlantic",
+                "nameShort": "ATL",
+                "link": "/api/v1/divisions/17",
+                "abbreviation": "A"
+              },
+              "conference": {
+                "id": 6,
+                "name": "Eastern",
+                "link": "/api/v1/conferences/6"
+              },
+              "franchise": {
+                "franchiseId": 33,
+                "teamName": "Panthers",
+                "link": "/api/v1/franchises/33"
+              },
+              "shortName": "Florida",
+              "officialSiteUrl": "http://www.floridapanthers.com/",
+              "franchiseId": 33,
+              "active": true
+            }
+          },
+          "home": {
+            "leagueRecord": {
+              "wins": 16,
+              "losses": 6,
+              "type": "league"
+            },
+            "score": 9,
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54",
+              "venue": {
+                "id": 5178,
+                "name": "T-Mobile Arena",
+                "link": "/api/v1/venues/5178",
+                "city": "Las Vegas",
+                "timeZone": {
+                  "id": "America/Los_Angeles",
+                  "offset": -7,
+                  "tz": "PDT"
+                }
+              },
+              "abbreviation": "VGK",
+              "teamName": "Golden Knights",
+              "locationName": "Vegas",
+              "firstYearOfPlay": "2017",
+              "division": {
+                "id": 15,
+                "name": "Pacific",
+                "nameShort": "PAC",
+                "link": "/api/v1/divisions/15",
+                "abbreviation": "P"
+              },
+              "conference": {
+                "id": 5,
+                "name": "Western",
+                "link": "/api/v1/conferences/5"
+              },
+              "franchise": {
+                "franchiseId": 38,
+                "teamName": "Golden Knights",
+                "link": "/api/v1/franchises/38"
+              },
+              "shortName": "Vegas",
+              "officialSiteUrl": "http://www.vegasgoldenknights.com/",
+              "franchiseId": 38,
+              "active": true
+            }
+          }
+        },
+        "linescore": {
+          "currentPeriod": 3,
+          "currentPeriodOrdinal": "3rd",
+          "currentPeriodTimeRemaining": "Final",
+          "periods": [
+            {
+              "periodType": "REGULAR",
+              "startTime": "2023-06-14T00:20:51Z",
+              "endTime": "2023-06-14T01:00:12Z",
+              "num": 1,
+              "ordinalNum": "1st",
+              "home": {
+                "goals": 2,
+                "shotsOnGoal": 11
+              },
+              "away": {
+                "goals": 0,
+                "shotsOnGoal": 8
+              }
+            },
+            {
+              "periodType": "REGULAR",
+              "startTime": "2023-06-14T01:19:13Z",
+              "endTime": "2023-06-14T01:55:26Z",
+              "num": 2,
+              "ordinalNum": "2nd",
+              "home": {
+                "goals": 4,
+                "shotsOnGoal": 14
+              },
+              "away": {
+                "goals": 1,
+                "shotsOnGoal": 6
+              }
+            },
+            {
+              "periodType": "REGULAR",
+              "startTime": "2023-06-14T02:14:20Z",
+              "endTime": "2023-06-14T02:55:22Z",
+              "num": 3,
+              "ordinalNum": "3rd",
+              "home": {
+                "goals": 3,
+                "shotsOnGoal": 7
+              },
+              "away": {
+                "goals": 2,
+                "shotsOnGoal": 21
+              }
+            }
+          ],
+          "shootoutInfo": {
+            "away": {
+              "scores": 0,
+              "attempts": 0
+            },
+            "home": {
+              "scores": 0,
+              "attempts": 0
+            }
+          },
+          "teams": {
+            "home": {
+              "team": {
+                "id": 54,
+                "name": "Vegas Golden Knights",
+                "link": "/api/v1/teams/54"
+              },
+              "goals": 9,
+              "shotsOnGoal": 32,
+              "goaliePulled": false,
+              "numSkaters": 5,
+              "powerPlay": false
+            },
+            "away": {
+              "team": {
+                "id": 13,
+                "name": "Florida Panthers",
+                "link": "/api/v1/teams/13"
+              },
+              "goals": 3,
+              "shotsOnGoal": 35,
+              "goaliePulled": false,
+              "numSkaters": 5,
+              "powerPlay": false
+            }
+          },
+          "powerPlayStrength": "Even",
+          "hasShootout": false,
+          "intermissionInfo": {
+            "intermissionTimeRemaining": 0,
+            "intermissionTimeElapsed": 0,
+            "inIntermission": false
+          },
+          "powerPlayInfo": {
+            "situationTimeRemaining": 0,
+            "situationTimeElapsed": 354,
+            "inSituation": false
+          }
+        },
+        "scoringPlays": [
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8475913,
+                  "fullName": "Mark Stone",
+                  "link": "/api/v1/people/8475913"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 9
+              },
+              {
+                "player": {
+                  "id": 8475683,
+                  "fullName": "Sergei Bobrovsky",
+                  "link": "/api/v1/people/8475683"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK93",
+              "eventTypeId": "GOAL",
+              "description": "Mark Stone (9) Wrist Shot, assists: none",
+              "secondaryType": "Wrist Shot",
+              "strength": {
+                "code": "SHG",
+                "name": "Short Handed"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 85,
+              "eventId": 93,
+              "period": 1,
+              "periodType": "REGULAR",
+              "ordinalNum": "1st",
+              "periodTime": "11:52",
+              "periodTimeRemaining": "08:08",
+              "dateTime": "2023-06-14T00:43:53Z",
+              "goals": {
+                "away": 0,
+                "home": 1
+              }
+            },
+            "coordinates": {
+              "x": -81,
+              "y": -3
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8479980,
+                  "fullName": "Nicolas Hague",
+                  "link": "/api/v1/people/8479980"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 2
+              },
+              {
+                "player": {
+                  "id": 8478403,
+                  "fullName": "Jack Eichel",
+                  "link": "/api/v1/people/8478403"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 18
+              },
+              {
+                "player": {
+                  "id": 8476539,
+                  "fullName": "Jonathan Marchessault",
+                  "link": "/api/v1/people/8476539"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 12
+              },
+              {
+                "player": {
+                  "id": 8475683,
+                  "fullName": "Sergei Bobrovsky",
+                  "link": "/api/v1/people/8475683"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK100",
+              "eventTypeId": "GOAL",
+              "description": "Nicolas Hague (2) Snap Shot, assists: Jack Eichel (18), Jonathan Marchessault (12)",
+              "secondaryType": "Snap Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 101,
+              "eventId": 100,
+              "period": 1,
+              "periodType": "REGULAR",
+              "ordinalNum": "1st",
+              "periodTime": "13:41",
+              "periodTimeRemaining": "06:19",
+              "dateTime": "2023-06-14T00:47:19Z",
+              "goals": {
+                "away": 0,
+                "home": 2
+              }
+            },
+            "coordinates": {
+              "x": -86,
+              "y": 0
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8477932,
+                  "fullName": "Aaron Ekblad",
+                  "link": "/api/v1/people/8477932"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 2
+              },
+              {
+                "player": {
+                  "id": 8476393,
+                  "fullName": "Nick Cousins",
+                  "link": "/api/v1/people/8476393"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 5
+              },
+              {
+                "player": {
+                  "id": 8478499,
+                  "fullName": "Adin Hill",
+                  "link": "/api/v1/people/8478499"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK323",
+              "eventTypeId": "GOAL",
+              "description": "Aaron Ekblad (2) Snap Shot, assists: Nick Cousins (5)",
+              "secondaryType": "Snap Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 158,
+              "eventId": 323,
+              "period": 2,
+              "periodType": "REGULAR",
+              "ordinalNum": "2nd",
+              "periodTime": "02:15",
+              "periodTimeRemaining": "17:45",
+              "dateTime": "2023-06-14T01:21:55Z",
+              "goals": {
+                "away": 1,
+                "home": 2
+              }
+            },
+            "coordinates": {
+              "x": -35,
+              "y": 7
+            },
+            "team": {
+              "id": 13,
+              "name": "Florida Panthers",
+              "link": "/api/v1/teams/13"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8474166,
+                  "fullName": "Alec Martinez",
+                  "link": "/api/v1/people/8474166"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 2
+              },
+              {
+                "player": {
+                  "id": 8478403,
+                  "fullName": "Jack Eichel",
+                  "link": "/api/v1/people/8478403"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 19
+              },
+              {
+                "player": {
+                  "id": 8474565,
+                  "fullName": "Alex Pietrangelo",
+                  "link": "/api/v1/people/8474565"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 9
+              },
+              {
+                "player": {
+                  "id": 8475683,
+                  "fullName": "Sergei Bobrovsky",
+                  "link": "/api/v1/people/8475683"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK343",
+              "eventTypeId": "GOAL",
+              "description": "Alec Martinez (2) Wrist Shot, assists: Jack Eichel (19), Alex Pietrangelo (9)",
+              "secondaryType": "Wrist Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 198,
+              "eventId": 343,
+              "period": 2,
+              "periodType": "REGULAR",
+              "ordinalNum": "2nd",
+              "periodTime": "10:28",
+              "periodTimeRemaining": "09:32",
+              "dateTime": "2023-06-14T01:34:42Z",
+              "goals": {
+                "away": 1,
+                "home": 3
+              }
+            },
+            "coordinates": {
+              "x": 65,
+              "y": -14
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8475191,
+                  "fullName": "Reilly Smith",
+                  "link": "/api/v1/people/8475191"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 4
+              },
+              {
+                "player": {
+                  "id": 8476448,
+                  "fullName": "William Karlsson",
+                  "link": "/api/v1/people/8476448"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 6
+              },
+              {
+                "player": {
+                  "id": 8477447,
+                  "fullName": "Shea Theodore",
+                  "link": "/api/v1/people/8477447"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 10
+              },
+              {
+                "player": {
+                  "id": 8475683,
+                  "fullName": "Sergei Bobrovsky",
+                  "link": "/api/v1/people/8475683"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK349",
+              "eventTypeId": "GOAL",
+              "description": "Reilly Smith (4) Snap Shot, assists: William Karlsson (6), Shea Theodore (10)",
+              "secondaryType": "Snap Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": true,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 210,
+              "eventId": 349,
+              "period": 2,
+              "periodType": "REGULAR",
+              "ordinalNum": "2nd",
+              "periodTime": "12:13",
+              "periodTimeRemaining": "07:47",
+              "dateTime": "2023-06-14T01:37:09Z",
+              "goals": {
+                "away": 1,
+                "home": 4
+              }
+            },
+            "coordinates": {
+              "x": 79,
+              "y": -11
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8475913,
+                  "fullName": "Mark Stone",
+                  "link": "/api/v1/people/8475913"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 10
+              },
+              {
+                "player": {
+                  "id": 8479353,
+                  "fullName": "Brett Howden",
+                  "link": "/api/v1/people/8479353"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 5
+              },
+              {
+                "player": {
+                  "id": 8476905,
+                  "fullName": "Chandler Stephenson",
+                  "link": "/api/v1/people/8476905"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 10
+              },
+              {
+                "player": {
+                  "id": 8475683,
+                  "fullName": "Sergei Bobrovsky",
+                  "link": "/api/v1/people/8475683"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK565",
+              "eventTypeId": "GOAL",
+              "description": "Mark Stone (10) Snap Shot, assists: Brett Howden (5), Chandler Stephenson (10)",
+              "secondaryType": "Snap Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 237,
+              "eventId": 565,
+              "period": 2,
+              "periodType": "REGULAR",
+              "ordinalNum": "2nd",
+              "periodTime": "17:15",
+              "periodTimeRemaining": "02:45",
+              "dateTime": "2023-06-14T01:47:02Z",
+              "goals": {
+                "away": 1,
+                "home": 5
+              }
+            },
+            "coordinates": {
+              "x": 68,
+              "y": 10
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8478020,
+                  "fullName": "Michael Amadio",
+                  "link": "/api/v1/people/8478020"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 5
+              },
+              {
+                "player": {
+                  "id": 8475191,
+                  "fullName": "Reilly Smith",
+                  "link": "/api/v1/people/8475191"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 10
+              },
+              {
+                "player": {
+                  "id": 8475683,
+                  "fullName": "Sergei Bobrovsky",
+                  "link": "/api/v1/people/8475683"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK573",
+              "eventTypeId": "GOAL",
+              "description": "Michael Amadio (5) Wrist Shot, assists: Reilly Smith (10)",
+              "secondaryType": "Wrist Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 255,
+              "eventId": 573,
+              "period": 2,
+              "periodType": "REGULAR",
+              "ordinalNum": "2nd",
+              "periodTime": "19:58",
+              "periodTimeRemaining": "00:02",
+              "dateTime": "2023-06-14T01:54:07Z",
+              "goals": {
+                "away": 1,
+                "home": 6
+              }
+            },
+            "coordinates": {
+              "x": 86,
+              "y": 0
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8477964,
+                  "fullName": "Ivan Barbashev",
+                  "link": "/api/v1/people/8477964"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 7
+              },
+              {
+                "player": {
+                  "id": 8478403,
+                  "fullName": "Jack Eichel",
+                  "link": "/api/v1/people/8478403"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 20
+              },
+              {
+                "player": {
+                  "id": 8477447,
+                  "fullName": "Shea Theodore",
+                  "link": "/api/v1/people/8477447"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 11
+              },
+              {
+                "player": {
+                  "id": 8475683,
+                  "fullName": "Sergei Bobrovsky",
+                  "link": "/api/v1/people/8475683"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK764",
+              "eventTypeId": "GOAL",
+              "description": "Ivan Barbashev (7) Wrist Shot, assists: Jack Eichel (20), Shea Theodore (11)",
+              "secondaryType": "Wrist Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 317,
+              "eventId": 764,
+              "period": 3,
+              "periodType": "REGULAR",
+              "ordinalNum": "3rd",
+              "periodTime": "08:22",
+              "periodTimeRemaining": "11:38",
+              "dateTime": "2023-06-14T02:29:16Z",
+              "goals": {
+                "away": 1,
+                "home": 7
+              }
+            },
+            "coordinates": {
+              "x": -82,
+              "y": 0
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8477933,
+                  "fullName": "Sam Reinhart",
+                  "link": "/api/v1/people/8477933"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 8
+              },
+              {
+                "player": {
+                  "id": 8477935,
+                  "fullName": "Sam Bennett",
+                  "link": "/api/v1/people/8477935"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 10
+              },
+              {
+                "player": {
+                  "id": 8477986,
+                  "fullName": "Brandon Montour",
+                  "link": "/api/v1/people/8477986"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 5
+              },
+              {
+                "player": {
+                  "id": 8478499,
+                  "fullName": "Adin Hill",
+                  "link": "/api/v1/people/8478499"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK766",
+              "eventTypeId": "GOAL",
+              "description": "Sam Reinhart (8) Slap Shot, assists: Sam Bennett (10), Brandon Montour (5)",
+              "secondaryType": "Slap Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 320,
+              "eventId": 766,
+              "period": 3,
+              "periodType": "REGULAR",
+              "ordinalNum": "3rd",
+              "periodTime": "08:47",
+              "periodTimeRemaining": "11:13",
+              "dateTime": "2023-06-14T02:30:24Z",
+              "goals": {
+                "away": 2,
+                "home": 7
+              }
+            },
+            "coordinates": {
+              "x": 51,
+              "y": -20
+            },
+            "team": {
+              "id": 13,
+              "name": "Florida Panthers",
+              "link": "/api/v1/teams/13"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8477935,
+                  "fullName": "Sam Bennett",
+                  "link": "/api/v1/people/8477935"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 5
+              },
+              {
+                "player": {
+                  "id": 8478055,
+                  "fullName": "Gustav Forsling",
+                  "link": "/api/v1/people/8478055"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 6
+              },
+              {
+                "player": {
+                  "id": 8477933,
+                  "fullName": "Sam Reinhart",
+                  "link": "/api/v1/people/8477933"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 5
+              },
+              {
+                "player": {
+                  "id": 8478499,
+                  "fullName": "Adin Hill",
+                  "link": "/api/v1/people/8478499"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK772",
+              "eventTypeId": "GOAL",
+              "description": "Sam Bennett (5) Slap Shot, assists: Gustav Forsling (6), Sam Reinhart (5)",
+              "secondaryType": "Slap Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 331,
+              "eventId": 772,
+              "period": 3,
+              "periodType": "REGULAR",
+              "ordinalNum": "3rd",
+              "periodTime": "11:39",
+              "periodTimeRemaining": "08:21",
+              "dateTime": "2023-06-14T02:36:15Z",
+              "goals": {
+                "away": 3,
+                "home": 7
+              }
+            },
+            "coordinates": {
+              "x": 35,
+              "y": -5
+            },
+            "team": {
+              "id": 13,
+              "name": "Florida Panthers",
+              "link": "/api/v1/teams/13"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8475913,
+                  "fullName": "Mark Stone",
+                  "link": "/api/v1/people/8475913"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 11
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK782",
+              "eventTypeId": "GOAL",
+              "description": "Mark Stone (11) Wrist Shot, assists: none",
+              "secondaryType": "Wrist Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": true
+            },
+            "about": {
+              "eventIdx": 350,
+              "eventId": 782,
+              "period": 3,
+              "periodType": "REGULAR",
+              "ordinalNum": "3rd",
+              "periodTime": "14:06",
+              "periodTimeRemaining": "05:54",
+              "dateTime": "2023-06-14T02:41:00Z",
+              "goals": {
+                "away": 3,
+                "home": 8
+              }
+            },
+            "coordinates": {
+              "x": 60,
+              "y": 1
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          },
+          {
+            "players": [
+              {
+                "player": {
+                  "id": 8478462,
+                  "fullName": "Nicolas Roy",
+                  "link": "/api/v1/people/8478462"
+                },
+                "playerType": "Scorer",
+                "seasonTotal": 3
+              },
+              {
+                "player": {
+                  "id": 8477447,
+                  "fullName": "Shea Theodore",
+                  "link": "/api/v1/people/8477447"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 12
+              },
+              {
+                "player": {
+                  "id": 8475188,
+                  "fullName": "Brayden McNabb",
+                  "link": "/api/v1/people/8475188"
+                },
+                "playerType": "Assist",
+                "seasonTotal": 4
+              },
+              {
+                "player": {
+                  "id": 8475683,
+                  "fullName": "Sergei Bobrovsky",
+                  "link": "/api/v1/people/8475683"
+                },
+                "playerType": "Goalie"
+              }
+            ],
+            "result": {
+              "event": "Goal",
+              "eventCode": "VGK1002",
+              "eventTypeId": "GOAL",
+              "description": "Nicolas Roy (3) Wrist Shot, assists: Shea Theodore (12), Brayden McNabb (4)",
+              "secondaryType": "Wrist Shot",
+              "strength": {
+                "code": "EVEN",
+                "name": "Even"
+              },
+              "gameWinningGoal": false,
+              "emptyNet": false
+            },
+            "about": {
+              "eventIdx": 382,
+              "eventId": 1002,
+              "period": 3,
+              "periodType": "REGULAR",
+              "ordinalNum": "3rd",
+              "periodTime": "18:58",
+              "periodTimeRemaining": "01:02",
+              "dateTime": "2023-06-14T02:53:43Z",
+              "goals": {
+                "away": 3,
+                "home": 9
+              }
+            },
+            "coordinates": {
+              "x": -86,
+              "y": 5
+            },
+            "team": {
+              "id": 54,
+              "name": "Vegas Golden Knights",
+              "link": "/api/v1/teams/54"
+            }
+          }
+        ],
+        "venue": {
+          "id": 5178,
+          "name": "T-Mobile Arena",
+          "link": "/api/v1/venues/5178"
+        },
+        "content": {
+          "link": "/api/v1/game/2022030415/content"
+        },
+        "seriesSummary": {
+          "gamePk": 2022030415,
+          "gameNumber": 5,
+          "gameLabel": "Game 5",
+          "necessary": true,
+          "gameCode": 415,
+          "gameTime": "2023-06-14T00:00:00Z",
+          "seriesStatus": "Golden Knights win 4-1",
+          "seriesStatusShort": "VGK wins 4-1",
+          "series": {
+            "seriesNumber": 1,
+            "seriesCode": "O",
+            "names": {
+              "matchupName": "Golden Knights (1) vs. Panthers (WC2)",
+              "matchupShortName": "VGK v FLA",
+              "teamAbbreviationA": "VGK",
+              "teamAbbreviationB": "FLA",
+              "seriesSlug": "golden-knights-vs-panthers-series-o"
+            },
+            "currentGame": {
+              "seriesSummary": {
+                "gamePk": 2022030415,
+                "gameNumber": 5,
+                "gameLabel": "Game 5",
+                "necessary": true,
+                "gameCode": 415,
+                "gameTime": "2023-06-14T00:00:00Z",
+                "seriesStatus": "Golden Knights win 4-1",
+                "seriesStatusShort": "VGK wins 4-1"
+              }
+            },
+            "conference": {
+              "link": "/api/v1/conferences/null"
+            },
+            "round": {
+              "number": 4,
+              "code": 4,
+              "names": {
+                "name": "Stanley Cup Final",
+                "shortName": "SCF"
+              },
+              "format": {
+                "name": "BO7",
+                "description": "Best of 7",
+                "numberOfGames": 7,
+                "numberOfWins": 4
+              }
+            },
+            "matchupTeams": [
+              {
+                "team": {
+                  "id": 54,
+                  "name": "Vegas Golden Knights",
+                  "link": "/api/v1/teams/54"
+                },
+                "seed": {
+                  "type": "1",
+                  "rank": 1,
+                  "isTop": true
+                },
+                "seriesRecord": {
+                  "wins": 4,
+                  "losses": 1
+                }
+              },
+              {
+                "team": {
+                  "id": 13,
+                  "name": "Florida Panthers",
+                  "link": "/api/v1/teams/13"
+                },
+                "seed": {
+                  "type": "WC2",
+                  "rank": 4,
+                  "isTop": false
+                },
+                "seriesRecord": {
+                  "wins": 1,
+                  "losses": 4
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,1283 @@
+{
+  "noAwayGoals": {
+    "teams": {
+      "away": {
+        "leagueRecord": {
+          "wins": 13,
+          "losses": 7,
+          "ties": 0,
+          "type": "league"
+        },
+        "score": 0,
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8",
+          "venue": {
+            "id": 5028,
+            "name": "Bell Centre",
+            "link": "/api/v1/venues/5028",
+            "city": "Montréal",
+            "timeZone": {
+              "id": "America/Montreal",
+              "offset": -4,
+              "tz": "EDT"
+            }
+          },
+          "abbreviation": "MTL",
+          "teamName": "Canadiens",
+          "locationName": "Montréal",
+          "firstYearOfPlay": "1917",
+          "division": {
+            "id": 17,
+            "name": "Atlantic",
+            "nameShort": "ATL",
+            "link": "/api/v1/divisions/17",
+            "abbreviation": "A"
+          },
+          "conference": {
+            "id": 6,
+            "name": "Eastern",
+            "link": "/api/v1/conferences/6"
+          },
+          "franchise": {
+            "franchiseId": 1,
+            "teamName": "Canadiens",
+            "link": "/api/v1/franchises/1"
+          },
+          "shortName": "Montréal",
+          "officialSiteUrl": "http://www.canadiens.com/",
+          "franchiseId": 1,
+          "active": true
+        }
+      },
+      "home": {
+        "leagueRecord": {
+          "wins": 7,
+          "losses": 13,
+          "ties": 0,
+          "type": "league"
+        },
+        "score": 8,
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36",
+          "abbreviation": "SEN",
+          "teamName": "Senators",
+          "locationName": "Ottawa",
+          "firstYearOfPlay": "1917",
+          "division": {
+            "link": "/api/v1/divisions/null"
+          },
+          "conference": {
+            "link": "/api/v1/conferences/null"
+          },
+          "franchise": {
+            "franchiseId": 3,
+            "teamName": "Eagles",
+            "link": "/api/v1/franchises/3"
+          },
+          "shortName": "Ottawa",
+          "franchiseId": 3,
+          "active": false
+        }
+      }
+    },
+    "scoringPlays": [
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8445135,
+              "fullName": "George Boucher",
+              "link": "/api/v1/people/8445135"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 7
+          },
+          {
+            "player": {
+              "id": 8448011,
+              "fullName": "Frank Nighbor",
+              "link": "/api/v1/people/8448011"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 4
+          },
+          {
+            "player": {
+              "id": 8450137,
+              "fullName": "Georges Vezina",
+              "link": "/api/v1/people/8450137"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "SEN10",
+          "eventTypeId": "GOAL",
+          "description": "Georges Boucher (7) , assists: Frank Nighbor (4)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": true,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 0,
+          "eventId": 10,
+          "period": 1,
+          "periodType": "REGULAR",
+          "ordinalNum": "1st",
+          "periodTime": "00:10",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-26T01:00:00Z",
+          "goals": {
+            "away": 0,
+            "home": 1
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8445874,
+              "fullName": "Cy Denneny",
+              "link": "/api/v1/people/8445874"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 31
+          },
+          {
+            "player": {
+              "id": 8448011,
+              "fullName": "Frank Nighbor",
+              "link": "/api/v1/people/8448011"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 5
+          },
+          {
+            "player": {
+              "id": 8450137,
+              "fullName": "Georges Vezina",
+              "link": "/api/v1/people/8450137"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "SEN630",
+          "eventTypeId": "GOAL",
+          "description": "Cy Denneny (31) , assists: Frank Nighbor (5)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 1,
+          "eventId": 630,
+          "period": 1,
+          "periodType": "REGULAR",
+          "ordinalNum": "1st",
+          "periodTime": "10:30",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-26T01:00:00Z",
+          "goals": {
+            "away": 0,
+            "home": 2
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8448011,
+              "fullName": "Frank Nighbor",
+              "link": "/api/v1/people/8448011"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 5
+          },
+          {
+            "player": {
+              "id": 8445135,
+              "fullName": "George Boucher",
+              "link": "/api/v1/people/8445135"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 6
+          },
+          {
+            "player": {
+              "id": 8450137,
+              "fullName": "Georges Vezina",
+              "link": "/api/v1/people/8450137"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "SEN930",
+          "eventTypeId": "GOAL",
+          "description": "Frank Nighbor (5) , assists: Georges Boucher (6)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 2,
+          "eventId": 930,
+          "period": 1,
+          "periodType": "REGULAR",
+          "ordinalNum": "1st",
+          "periodTime": "15:30",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-26T01:00:00Z",
+          "goals": {
+            "away": 0,
+            "home": 3
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8445135,
+              "fullName": "George Boucher",
+              "link": "/api/v1/people/8445135"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 8
+          },
+          {
+            "player": {
+              "id": 8450137,
+              "fullName": "Georges Vezina",
+              "link": "/api/v1/people/8450137"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "SEN1170",
+          "eventTypeId": "GOAL",
+          "description": "Georges Boucher (8) , assists: none",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 3,
+          "eventId": 1170,
+          "period": 1,
+          "periodType": "REGULAR",
+          "ordinalNum": "1st",
+          "periodTime": "19:30",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-26T01:00:00Z",
+          "goals": {
+            "away": 0,
+            "home": 4
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8445844,
+              "fullName": "Jack Darragh",
+              "link": "/api/v1/people/8445844"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 13
+          },
+          {
+            "player": {
+              "id": 8448011,
+              "fullName": "Frank Nighbor",
+              "link": "/api/v1/people/8448011"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 6
+          },
+          {
+            "player": {
+              "id": 8450137,
+              "fullName": "Georges Vezina",
+              "link": "/api/v1/people/8450137"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "SEN2430",
+          "eventTypeId": "GOAL",
+          "description": "Jack Darragh (13) , assists: Frank Nighbor (6)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 4,
+          "eventId": 2430,
+          "period": 3,
+          "periodType": "REGULAR",
+          "ordinalNum": "3rd",
+          "periodTime": "00:30",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-26T01:00:00Z",
+          "goals": {
+            "away": 0,
+            "home": 5
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8445844,
+              "fullName": "Jack Darragh",
+              "link": "/api/v1/people/8445844"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 14
+          },
+          {
+            "player": {
+              "id": 8450137,
+              "fullName": "Georges Vezina",
+              "link": "/api/v1/people/8450137"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "SEN2490",
+          "eventTypeId": "GOAL",
+          "description": "Jack Darragh (14) , assists: none",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 5,
+          "eventId": 2490,
+          "period": 3,
+          "periodType": "REGULAR",
+          "ordinalNum": "3rd",
+          "periodTime": "01:30",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-26T01:00:00Z",
+          "goals": {
+            "away": 0,
+            "home": 6
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8445874,
+              "fullName": "Cy Denneny",
+              "link": "/api/v1/people/8445874"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 32
+          },
+          {
+            "player": {
+              "id": 8450137,
+              "fullName": "Georges Vezina",
+              "link": "/api/v1/people/8450137"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "SEN3030",
+          "eventTypeId": "GOAL",
+          "description": "Cy Denneny (32) , assists: none",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 6,
+          "eventId": 3030,
+          "period": 3,
+          "periodType": "REGULAR",
+          "ordinalNum": "3rd",
+          "periodTime": "10:30",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-26T01:00:00Z",
+          "goals": {
+            "away": 0,
+            "home": 7
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8445874,
+              "fullName": "Cy Denneny",
+              "link": "/api/v1/people/8445874"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 33
+          },
+          {
+            "player": {
+              "id": 8448011,
+              "fullName": "Frank Nighbor",
+              "link": "/api/v1/people/8448011"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 7
+          },
+          {
+            "player": {
+              "id": 8450137,
+              "fullName": "Georges Vezina",
+              "link": "/api/v1/people/8450137"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "SEN3450",
+          "eventTypeId": "GOAL",
+          "description": "Cy Denneny (33) , assists: Frank Nighbor (7)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 7,
+          "eventId": 3450,
+          "period": 3,
+          "periodType": "REGULAR",
+          "ordinalNum": "3rd",
+          "periodTime": "17:30",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-26T01:00:00Z",
+          "goals": {
+            "away": 0,
+            "home": 8
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 36,
+          "name": "Ottawa Senators (1917)",
+          "link": "/api/v1/teams/36"
+        }
+      }
+    ]
+  },
+  "noHomeGoals": {
+    "teams": {
+      "away": {
+        "leagueRecord": {
+          "wins": 12,
+          "losses": 6,
+          "ties": 0,
+          "type": "league"
+        },
+        "score": 9,
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8",
+          "venue": {
+            "id": 5028,
+            "name": "Bell Centre",
+            "link": "/api/v1/venues/5028",
+            "city": "Montréal",
+            "timeZone": {
+              "id": "America/Montreal",
+              "offset": -4,
+              "tz": "EDT"
+            }
+          },
+          "abbreviation": "MTL",
+          "teamName": "Canadiens",
+          "locationName": "Montréal",
+          "firstYearOfPlay": "1917",
+          "division": {
+            "id": 17,
+            "name": "Atlantic",
+            "nameShort": "ATL",
+            "link": "/api/v1/divisions/17",
+            "abbreviation": "A"
+          },
+          "conference": {
+            "id": 6,
+            "name": "Eastern",
+            "link": "/api/v1/conferences/6"
+          },
+          "franchise": {
+            "franchiseId": 1,
+            "teamName": "Canadiens",
+            "link": "/api/v1/franchises/1"
+          },
+          "shortName": "Montréal",
+          "officialSiteUrl": "http://www.canadiens.com/",
+          "franchiseId": 1,
+          "active": true
+        }
+      },
+      "home": {
+        "leagueRecord": {
+          "wins": 11,
+          "losses": 7,
+          "ties": 0,
+          "type": "league"
+        },
+        "score": 0,
+        "team": {
+          "id": 57,
+          "name": "Toronto Arenas",
+          "link": "/api/v1/teams/57",
+          "abbreviation": "TAN",
+          "teamName": "Arenas",
+          "locationName": "Toronto",
+          "firstYearOfPlay": "1917",
+          "division": {
+            "link": "/api/v1/divisions/null"
+          },
+          "conference": {
+            "link": "/api/v1/conferences/null"
+          },
+          "franchise": {
+            "franchiseId": 5,
+            "teamName": "Maple Leafs",
+            "link": "/api/v1/franchises/5"
+          },
+          "shortName": "Toronto",
+          "franchiseId": 5,
+          "active": false
+        }
+      }
+    },
+    "scoringPlays": [
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8448154,
+              "fullName": "Didier Pitre",
+              "link": "/api/v1/people/8448154"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 16
+          },
+          {
+            "player": {
+              "id": 8445571,
+              "fullName": "Bert Corbeau",
+              "link": "/api/v1/people/8445571"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 4
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN840",
+          "eventTypeId": "GOAL",
+          "description": "Didier Pitre (16) , assists: Bert Corbeau (4)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": true,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 0,
+          "eventId": 840,
+          "period": 1,
+          "periodType": "REGULAR",
+          "ordinalNum": "1st",
+          "periodTime": "14:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 1,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8447594,
+              "fullName": "Joe Malone",
+              "link": "/api/v1/people/8447594"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 40
+          },
+          {
+            "player": {
+              "id": 8447289,
+              "fullName": "Newsy Lalonde",
+              "link": "/api/v1/people/8447289"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 5
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN1440",
+          "eventTypeId": "GOAL",
+          "description": "Joe Malone (40) , assists: Newsy Lalonde (5)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 1,
+          "eventId": 1440,
+          "period": 2,
+          "periodType": "REGULAR",
+          "ordinalNum": "2nd",
+          "periodTime": "04:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 2,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8446669,
+              "fullName": "Joe Hall",
+              "link": "/api/v1/people/8446669"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 7
+          },
+          {
+            "player": {
+              "id": 8447594,
+              "fullName": "Joe Malone",
+              "link": "/api/v1/people/8447594"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 3
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN1500",
+          "eventTypeId": "GOAL",
+          "description": "Joe Hall (7) , assists: Joe Malone (3)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 2,
+          "eventId": 1500,
+          "period": 2,
+          "periodType": "REGULAR",
+          "ordinalNum": "2nd",
+          "periodTime": "05:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 3,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8448154,
+              "fullName": "Didier Pitre",
+              "link": "/api/v1/people/8448154"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 17
+          },
+          {
+            "player": {
+              "id": 8447289,
+              "fullName": "Newsy Lalonde",
+              "link": "/api/v1/people/8447289"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 6
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN1620",
+          "eventTypeId": "GOAL",
+          "description": "Didier Pitre (17) , assists: Newsy Lalonde (6)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 3,
+          "eventId": 1620,
+          "period": 2,
+          "periodType": "REGULAR",
+          "ordinalNum": "2nd",
+          "periodTime": "07:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 4,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8447289,
+              "fullName": "Newsy Lalonde",
+              "link": "/api/v1/people/8447289"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 19
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN1920",
+          "eventTypeId": "GOAL",
+          "description": "Newsy Lalonde (19) , assists: none",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 4,
+          "eventId": 1920,
+          "period": 2,
+          "periodType": "REGULAR",
+          "ordinalNum": "2nd",
+          "periodTime": "12:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 5,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8446669,
+              "fullName": "Joe Hall",
+              "link": "/api/v1/people/8446669"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 8
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN2100",
+          "eventTypeId": "GOAL",
+          "description": "Joe Hall (8) , assists: none",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 5,
+          "eventId": 2100,
+          "period": 2,
+          "periodType": "REGULAR",
+          "ordinalNum": "2nd",
+          "periodTime": "15:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 6,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8447348,
+              "fullName": "Jack Laviolette",
+              "link": "/api/v1/people/8447348"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 2
+          },
+          {
+            "player": {
+              "id": 8446669,
+              "fullName": "Joe Hall",
+              "link": "/api/v1/people/8446669"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 7
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN2280",
+          "eventTypeId": "GOAL",
+          "description": "Jack Laviolette (2) , assists: Joe Hall (7)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 6,
+          "eventId": 2280,
+          "period": 2,
+          "periodType": "REGULAR",
+          "ordinalNum": "2nd",
+          "periodTime": "18:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 7,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8447594,
+              "fullName": "Joe Malone",
+              "link": "/api/v1/people/8447594"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 41
+          },
+          {
+            "player": {
+              "id": 8448154,
+              "fullName": "Didier Pitre",
+              "link": "/api/v1/people/8448154"
+            },
+            "playerType": "Assist",
+            "seasonTotal": 7
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN3120",
+          "eventTypeId": "GOAL",
+          "description": "Joe Malone (41) , assists: Didier Pitre (7)",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 7,
+          "eventId": 3120,
+          "period": 3,
+          "periodType": "REGULAR",
+          "ordinalNum": "3rd",
+          "periodTime": "12:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 8,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      },
+      {
+        "players": [
+          {
+            "player": {
+              "id": 8447289,
+              "fullName": "Newsy Lalonde",
+              "link": "/api/v1/people/8447289"
+            },
+            "playerType": "Scorer",
+            "seasonTotal": 20
+          },
+          {
+            "player": {
+              "id": 8449997,
+              "fullName": "Hap Holmes",
+              "link": "/api/v1/people/8449997"
+            },
+            "playerType": "Goalie"
+          }
+        ],
+        "result": {
+          "event": "Goal",
+          "eventCode": "TAN3480",
+          "eventTypeId": "GOAL",
+          "description": "Newsy Lalonde (20) , assists: none",
+          "strength": {
+            "code": "EVEN",
+            "name": "Even"
+          },
+          "gameWinningGoal": false,
+          "emptyNet": false
+        },
+        "about": {
+          "eventIdx": 8,
+          "eventId": 3480,
+          "period": 3,
+          "periodType": "REGULAR",
+          "ordinalNum": "3rd",
+          "periodTime": "18:00",
+          "periodTimeRemaining": "",
+          "dateTime": "1918-02-19T01:00:00Z",
+          "goals": {
+            "away": 9,
+            "home": 0
+          }
+        },
+        "coordinates": {},
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8"
+        }
+      }
+    ]
+  },
+  "noGoalScorerInfo": {
+    "teams": {
+      "away": {
+        "leagueRecord": {
+          "wins": 1,
+          "losses": 3,
+          "ties": 0,
+          "type": "league"
+        },
+        "score": 4,
+        "team": {
+          "id": 3,
+          "name": "New York Rangers",
+          "link": "/api/v1/teams/3",
+          "venue": {
+            "id": 5054,
+            "name": "Madison Square Garden",
+            "link": "/api/v1/venues/5054",
+            "city": "New York",
+            "timeZone": {
+              "id": "America/New_York",
+              "offset": -4,
+              "tz": "EDT"
+            }
+          },
+          "abbreviation": "NYR",
+          "teamName": "Rangers",
+          "locationName": "New York",
+          "firstYearOfPlay": "1926",
+          "division": {
+            "id": 18,
+            "name": "Metropolitan",
+            "nameShort": "Metro",
+            "link": "/api/v1/divisions/18",
+            "abbreviation": "M"
+          },
+          "conference": {
+            "id": 6,
+            "name": "Eastern",
+            "link": "/api/v1/conferences/6"
+          },
+          "franchise": {
+            "franchiseId": 10,
+            "teamName": "Rangers",
+            "link": "/api/v1/franchises/10"
+          },
+          "shortName": "NY Rangers",
+          "officialSiteUrl": "http://www.newyorkrangers.com/",
+          "franchiseId": 10,
+          "active": true
+        }
+      },
+      "home": {
+        "leagueRecord": {
+          "wins": 2,
+          "losses": 1,
+          "ties": 0,
+          "type": "league"
+        },
+        "score": 10,
+        "team": {
+          "id": 8,
+          "name": "Montréal Canadiens",
+          "link": "/api/v1/teams/8",
+          "venue": {
+            "id": 5028,
+            "name": "Bell Centre",
+            "link": "/api/v1/venues/5028",
+            "city": "Montréal",
+            "timeZone": {
+              "id": "America/Montreal",
+              "offset": -4,
+              "tz": "EDT"
+            }
+          },
+          "abbreviation": "MTL",
+          "teamName": "Canadiens",
+          "locationName": "Montréal",
+          "firstYearOfPlay": "1917",
+          "division": {
+            "id": 17,
+            "name": "Atlantic",
+            "nameShort": "ATL",
+            "link": "/api/v1/divisions/17",
+            "abbreviation": "A"
+          },
+          "conference": {
+            "id": 6,
+            "name": "Eastern",
+            "link": "/api/v1/conferences/6"
+          },
+          "franchise": {
+            "franchiseId": 1,
+            "teamName": "Canadiens",
+            "link": "/api/v1/franchises/1"
+          },
+          "shortName": "Montréal",
+          "officialSiteUrl": "http://www.canadiens.com/",
+          "franchiseId": 1,
+          "active": true
+        }
+      }
+    },
+    "scoringPlays": []
+  }
+}

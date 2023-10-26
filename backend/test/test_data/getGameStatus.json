@@ -1,0 +1,83 @@
+[
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "",
+      "currentPeriodTimeRemaining": ""
+    },
+    "status": {
+      "statusCode": "1"
+    }
+  },
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "",
+      "currentPeriodTimeRemaining": ""
+    },
+    "status": {
+      "statusCode": "2"
+    }
+  },
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "2nd",
+      "currentPeriodTimeRemaining": "10:00"
+    },
+    "status": {
+      "statusCode": "3"
+    }
+  },
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "3rd",
+      "currentPeriodTimeRemaining": "1:00"
+    },
+    "status": {
+      "statusCode": "4"
+    }
+  },
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "2nd",
+      "currentPeriodTimeRemaining": ""
+    },
+    "status": {
+      "statusCode": "5"
+    }
+  },
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "3rd",
+      "currentPeriodTimeRemaining": ""
+    },
+    "status": {
+      "statusCode": "6"
+    }
+  },
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "OT",
+      "currentPeriodTimeRemaining": ""
+    },
+    "status": {
+      "statusCode": "7"
+    }
+  },
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "",
+      "currentPeriodTimeRemaining": ""
+    },
+    "status": {
+      "statusCode": "8"
+    }
+  },
+  {
+    "linescore": {
+      "currentPeriodOrdinal": "",
+      "currentPeriodTimeRemaining": ""
+    },
+    "status": {
+      "statusCode": "9"
+    }
+  }
+]
