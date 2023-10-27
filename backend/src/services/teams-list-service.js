@@ -6,13 +6,13 @@ export default async function getTeamsList(season) {
   return await getTeams(season);
 }
 
-async function getCurrentTeams() {
+export async function getCurrentTeams() {
   const teamsData = (await fetchDataFromNHLApi("/teams")).teams;
   const teams = teamsData.map(({ id, name }) => ({ id, name }));
   return teams.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-async function getTeams(season) {
+export async function getTeams(season) {
   return (await pool.query(
     `SELECT teamId AS id, team AS name FROM standings
     WHERE season = ${season}
