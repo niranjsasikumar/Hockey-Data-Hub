@@ -1,0 +1,92 @@
+{
+  "fetch": {
+    "rounds": [
+      {
+        "number": 1,
+        "names": {
+          "name": "Playoff Round"
+        },
+        "series": [
+          {
+            "seriesNumber": 1,
+            "matchupTeams": [
+              {
+                "team": {
+                  "id": 1,
+                  "abbreviation": "ABB"
+                }
+              },
+              {
+                "team": {
+                  "id": 2,
+                  "abbreviation": "ABB"
+                }
+              }
+            ],
+            "currentGame": {
+              "seriesSummary": {
+                "seriesStatusShort": "Series Status"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "number": 1,
+        "names": {
+          "name": "Playoff Round"
+        },
+        "series": [
+          {
+            "seriesNumber": 1,
+            "matchupTeams": [
+              {
+                "team": {
+                  "id": 1,
+                  "abbreviation": "ABB"
+                }
+              },
+              {
+                "team": {
+                  "id": 2,
+                  "abbreviation": "ABB"
+                }
+              }
+            ],
+            "currentGame": {
+              "seriesSummary": {
+                "seriesStatusShort": "Series Status"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "queries": [
+    [
+      [
+        {
+          "playoffRounds": null
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "playoffRounds": "Round 1,Round 2"
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        }
+      ]
+    ]
+  ]
+}
