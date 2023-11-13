@@ -1,9 +1,11 @@
 import axios from "axios";
 
-const apiBaseURL = "https://statsapi.web.nhl.com/api/v1";
+const apiBaseURL = "https://api-web.nhle.com/v1";
+const apiStatsBaseURL = "https://api.nhle.com/stats/rest/en";
 
-export async function fetchDataFromNHLApi(endpoint) {
-  const response = await axios.get(apiBaseURL + endpoint);
+export async function fetchDataFromNHLApi(endpoint, stats = false) {
+  const baseURL = stats ? apiStatsBaseURL : apiBaseURL;
+  const response = await axios.get(baseURL + endpoint);
   return response.data;
 };
 

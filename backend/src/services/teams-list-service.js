@@ -1,3 +1,4 @@
+import { getCurrentSeason } from "../utils/utils.js";
 import { fetchDataFromNHLApi } from "../utils/nhl-api.js";
 import pool from "../database/database.js";
 
@@ -7,9 +8,15 @@ export default async function getTeamsList(season) {
 }
 
 export async function getCurrentTeams() {
-  const teamsData = (await fetchDataFromNHLApi("/teams")).teams;
-  const teams = teamsData.map(({ id, name }) => ({ id, name }));
-  return teams.sort((a, b) => a.name.localeCompare(b.name));
+  const season = await getCurrentSeason();
+  const teamsData = (await fetchDataFromNHLApi(
+    `/team/summary?factCayenneExp=seasonId=${season}&sort=teamFullName`, true
+  )).data;
+
+  const teams = teamsData.map(({ teamId, teamFullName }) => (
+    { id: teamId, name: teamFullName }
+  ));
+  return teams;
 }
 
 export async function getTeams(season) {

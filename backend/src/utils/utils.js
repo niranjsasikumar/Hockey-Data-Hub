@@ -1,4 +1,4 @@
-import { fetchDataFromNHLApi } from "./nhl-api";
+import { fetchDataFromNHLApi } from "./nhl-api.js";
 
 export function getTodaysDate(offset) {
   let today = new Date();
@@ -12,13 +12,16 @@ export function getTodaysDate(offset) {
 }
 
 export async function getCurrentSeason() {
-  const response = await fetchDataFromNHLApi("/seasons/current");
-  return Number(response.seasons[0].seasonId);
+  const response = await fetchDataFromNHLApi("/componentSeason", true);
+  return Number(response.data[0].seasonId);
 }
 
 export async function seasonHasPlayoffsData(season) {
-  const playoffsData = await fetchDataFromNHLApi(
-    `/tournaments/playoffs?season=${season}`
+  const today = new Date()
+  const seasonData = await fetchDataFromNHLApi(
+    `/season?cayenneExp=id=${season}`, true
   );
-  return "rounds" in playoffsData;
+  if (!("regularSeasonEndDate" in seasonData.data[0])) return false;
+  const regularSeasonEndDate = seasonData.data[0].regularSeasonEndDate;
+  return today.toISOString() > regularSeasonEndDate;
 }

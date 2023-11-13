@@ -1,7 +1,7 @@
 import pool from "../database/database.js";
 import { getTodaysDate, getCurrentSeason } from "../utils/utils.js";
 import { fetchDataFromNHLApi } from "../utils/nhl-api.js";
-import { extractGames, queryColumns, gameTypes } from "../utils/game-utils.js";
+import { extractGameData, queryColumns, gameTypes } from "../utils/game-utils.js";
 
 // Get schedule data from database or NHL API
 export default async function getSchedule(team, date, offset) {
@@ -30,31 +30,62 @@ export default async function getSchedule(team, date, offset) {
 // Fetch schedule data from NHL API
 async function fetchScheduleData(team, dateString, days) {
   const dateTimeRanges = getDateTimeRanges(dateString, days);
-  const startDate = dateTimeRanges[0].startString.substring(0, 10);
-  const endDate = dateTimeRanges[dateTimeRanges.length - 1].endString.substring(0, 10);
+  const games = [];
+  const date = new Date(dateTimeRanges[0].startString);
+  const endDate = new Date(dateTimeRanges[dateTimeRanges.length - 1].endString);
 
-  const scheduleData = await fetchDataFromNHLApi(
-    `/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series,series.round${team !== "all" && `&teamId=${team}`}&startDate=${startDate}&endDate=${endDate}`
-  );
+  while (getDateString(date) <= getDateString(endDate)) {
+    const gamesToAdd = (
+      await fetchDataFromNHLApi(`/score/${getDateString(date)}`)
+    ).games;
+    gamesToAdd.filter(game => gameOfTeam(game, team)).forEach(game => games.push(game));
+    date.setDate(date.getDate() + 1);
+  }
   
-  return extractScheduleFromData(scheduleData.dates, dateTimeRanges);
+  return extractScheduleFromData(games, dateTimeRanges);
+}
+
+export function getDateString(date) {
+  return date.toISOString().substring(0, 10);
+}
+
+function gameOfTeam(game, team) {
+  if (team === "all") return true;
+  const { awayTeam, homeTeam } = game;
+  const teamId = parseInt(team);
+  if (awayTeam.id === teamId || homeTeam.id === teamId) return true;
+  return false;
 }
 
 // Fetch the schedule of the next season from NHL API
 async function fetchNextSeasonSchedule(team, offset) {
   const nextSeason = (await getCurrentSeason()) + 10001;
-  const scheduleData = (await fetchDataFromNHLApi(
-    `/schedule?expand=schedule.teams,schedule.scoringplays,schedule.linescore,schedule.game.seriesSummary,seriesSummary.series,series.round${team !== "all" && `&teamId=${team}`}&season=${nextSeason}`
-  )).dates;
-  if (scheduleData.length === 0) return [];
+  let preSeasonStartDate;
 
-  let seasonStartDate = new Date(scheduleData[0].date);
-  seasonStartDate.setMinutes(seasonStartDate.getMinutes() - 1440 + Number(offset));
-  seasonStartDate = seasonStartDate.toISOString();
+  try {
+    preSeasonStartDate = (await fetchDataFromNHLApi(`/season?cayenneExp=id=${nextSeason}`, true)).data[0].preseasonStartdate;
+  } catch {
+    return [];
+  }
+
+  preSeasonStartDate = new Date(preSeasonStartDate);
+  preSeasonStartDate.setMinutes(preSeasonStartDate.getMinutes() - 1440 + Number(offset));
+  preSeasonStartDate = preSeasonStartDate.toISOString();
   
-  const dateTimeRanges = getDateTimeRanges(seasonStartDate, 8);
+  const dateTimeRanges = getDateTimeRanges(preSeasonStartDate, 8);
+  const games = [];
+  const date = new Date(dateTimeRanges[0].startString);
+  const endDate = new Date(dateTimeRanges[dateTimeRanges.length - 1].endString);
+
+  while (getDateString(date) <= getDateString(endDate)) {
+    const gamesToAdd = (
+      await fetchDataFromNHLApi(`/score/${getDateString(date)}`)
+    ).games;
+    gamesToAdd.filter(game => gameOfTeam(game, team)).forEach(game => games.push(game));
+    date.setDate(date.getDate() + 1);
+  }
   
-  return extractScheduleFromData(scheduleData.slice(0, 9), dateTimeRanges);
+  return extractScheduleFromData(games, dateTimeRanges);
 }
 
 // Get the start times and end times of the dates leading up to the provided date
@@ -73,12 +104,14 @@ function getDateTimeRanges(dateTimeString, days) {
   return ranges;
 }
 
-function extractScheduleFromData(scheduleData, dateTimeRanges) {
-  const games = extractGames(scheduleData);
+function extractScheduleFromData(games, dateTimeRanges) {
+  const gamesData = games.map(game => extractGameData(game));
   const schedule = [];
 
   for (const range of dateTimeRanges) {
-    const gamesInRange = games.filter((game) => game.dateTime >= range.startString && game.dateTime < range.endString);
+    const gamesInRange = gamesData.filter(game => (
+      game.dateTime >= range.startString && game.dateTime < range.endString
+    ));
     if (gamesInRange.length === 0) continue;
     schedule.push({
       date: range.date,

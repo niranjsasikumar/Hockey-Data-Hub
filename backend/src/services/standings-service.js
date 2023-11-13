@@ -18,78 +18,141 @@ export default async function getStandings(season) {
 }
 
 async function getCurrentSeasonStandings(conferencesInUse, divisionsInUse) {
-  const standingsData = (await fetchDataFromNHLApi("/standings?expand=standings.record,standings.team")).records;
-  let standings = [];
+  const standingsData = (await fetchDataFromNHLApi("/standings/now")).standings;
+  let standings;
 
-  for (const division of standingsData) {
-    if ("conference" in division) {
-      let confIndex = standings.findIndex(
-        (conference) => conference.conference === division.conference.name
-      );
-      if (confIndex === -1) {
-        standings.push({
-          conference: division.conference.name,
-          divisions: []
-        })
-        confIndex = standings.length - 1;
-      }
-      standings[confIndex].divisions.push({
-        name: division.division.name,
-        standings: getDivisionRecords(division.teamRecords)
-      });
-    } else if ("division" in division) {
-      standings.push({
-        division: division.division.name,
-        standings: getDivisionRecords(division.teamRecords)
-      });
-    } else {
-      standings = getDivisionRecords(division.teamRecords);
-    }
+  if (conferencesInUse) standings = await getCurrentStandingsConference(standingsData);
+  else if (divisionsInUse) standings = await getCurrentStandingsDivision(standingsData);
+  else standings = await getCurrentStandingsLeague(standingsData);
+
+  return standings;
+}
+
+async function getCurrentStandingsConference(standingsData) {
+  const standings = [];
+
+  for (const team of standingsData) {
+    const { conferenceName, divisionName } = team;
+    const conferenceIndex = getConferenceIndex(standings, conferenceName);
+    const divisionIndex = getDivisionIndex(standings[conferenceIndex].divisions, divisionName, true);
+    standings[conferenceIndex].divisions[divisionIndex].standings.push(await extractTeamRecord(team));
   }
 
   return standings;
 }
 
-function getDivisionRecords(records) {
-  const divisionRecords = [];
+async function getCurrentStandingsDivision(standingsData) {
+  const standings = [];
 
-  for (const team of records) {
-    const { id, teamName, abbreviation, conference, division } = team.team;
-    const { clinchIndicator, divisionRank, leagueRank, points, gamesPlayed, goalsScored, goalsAgainst, streak } = team;
-    const { wins, losses, ties, ot } = team.leagueRecord;
-    const [homeRecord, awayRecord, , last10] = team.records.overallRecords
-
-    divisionRecords.push({
-      teamId: id,
-      teamShortName: teamName,
-      teamAbbreviation: abbreviation,
-      logoURL: `https://assets.nhle.com/logos/nhl/svg/${abbreviation}_light.svg`,
-      conference: conference ? conference.name : null,
-      division: division ? division.name : null,
-      clinchIndicator: clinchIndicator ? clinchIndicator : null,
-      divisionRank: divisionRank ? Number(divisionRank) : null,
-      leagueRank: Number(leagueRank),
-      points: points,
-      gamesPlayed: gamesPlayed,
-      wins: wins,
-      losses: losses,
-      ties: ties !== undefined ? ties : null,
-      overtimeLosses: ot !== undefined ? ot : null,
-      goalsFor: goalsScored,
-      goalsAgainst: goalsAgainst,
-      difference: goalsScored - goalsAgainst,
-      homeRecord: getRecordString(homeRecord),
-      awayRecord: getRecordString(awayRecord),
-      last10: getRecordString(last10),
-      streak: streak ? streak.streakCode : "-"
-    });
+  for (const team of standingsData) {
+    const divisionIndex = getDivisionIndex(standings, team.divisionName, false);
+    standings[divisionIndex].standings.push(await extractTeamRecord(team));
   }
 
-  return divisionRecords;
+  return standings;
 }
 
-function getRecordString(record) {
-  return record.wins + "-" + record.losses + ("ties" in record ? "-" + record.ties : "") + ("ot" in record ? "-" + record.ot : "");
+async function getCurrentStandingsLeague(standingsData) {
+  return standingsData.map(async (team) => await extractTeamRecord(team));
+}
+
+function getConferenceIndex(standings, conferenceName) {
+  let conferenceIndex = standings.findIndex(
+    conference => conference.conference === conferenceName
+  );
+
+  if (conferenceIndex === -1) {
+    standings.push({
+      conference: conferenceName,
+      divisions: []
+    })
+    conferenceIndex = standings.length - 1;
+  }
+
+  return conferenceIndex;
+}
+
+function getDivisionIndex(standings, divisionName, conferencesInUse) {
+  let divisionIndex = standings.findIndex(
+    division => (
+      conferencesInUse ? division.name : division.division
+    ) === divisionName
+  );
+
+  if (divisionIndex === -1) {
+    standings.push(
+      conferencesInUse
+      ? { name: divisionName, standings: [] }
+      : { division: divisionName, standings: [] }
+    )
+    divisionIndex = standings.length - 1;
+  }
+
+  return divisionIndex;
+}
+
+async function extractTeamRecord(team) {
+  const {
+    placeName: { default: placeName },
+    teamName: { default: teamName },
+    teamAbbrev: { default: teamAbbreviation },
+    teamLogo,
+    conferenceName,
+    divisionName,
+    clinchIndicator,
+    divisionSequence,
+    leagueSequence,
+    points,
+    gamesPlayed,
+    wins,
+    losses,
+    otLosses,
+    goalFor,
+    goalAgainst,
+    goalDifferential,
+    homeWins,
+    homeLosses,
+    homeOtLosses,
+    roadWins,
+    roadLosses,
+    roadOtLosses,
+    l10Wins,
+    l10Losses,
+    l10OtLosses,
+    streakCode,
+    streakCount
+  } = team;
+
+  return {
+    teamId: await getTeamId(teamAbbreviation),
+    teamShortName: teamName.slice(placeName.length + 1),
+    teamAbbreviation,
+    logoURL: teamLogo,
+    conference: conferenceName ? conferenceName : null,
+    division: divisionName ? divisionName : null,
+    clinchIndicator: clinchIndicator ? clinchIndicator : null,
+    divisionRank: divisionSequence ? divisionSequence : null,
+    leagueRank: leagueSequence,
+    points,
+    gamesPlayed,
+    wins,
+    losses,
+    ties: null,
+    overtimeLosses: otLosses,
+    goalsFor: goalFor,
+    goalsAgainst: goalAgainst,
+    difference: goalDifferential,
+    homeRecord: `${homeWins}-${homeLosses}-${homeOtLosses}`,
+    awayRecord: `${roadWins}-${roadLosses}-${roadOtLosses}`,
+    last10: `${l10Wins}-${l10Losses}-${l10OtLosses}`,
+    streak: streakCode ? streakCode + streakCount : "-"
+  };
+}
+
+async function getTeamId(abbreviation) {
+  const teamsData = (await fetchDataFromNHLApi(`/team`, true)).data;
+  const team = teamsData.find(teamObj => teamObj.triCode === abbreviation);
+  return team.id;
 }
 
 async function getStandingsConference(season, conferences, divisions) {

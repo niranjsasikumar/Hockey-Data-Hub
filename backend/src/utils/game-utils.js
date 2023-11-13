@@ -1,99 +1,123 @@
-// Extract the required game data from the response received from the NHL API
-export function extractGames(scheduleData) {
-  const games = [];
+export function extractGameData(game) {
+  const {
+    id,
+    gameType,
+    startTimeUTC,
+    gameState,
+    awayTeam,
+    homeTeam,
+  } = game;
 
-  for (const date of scheduleData) {
-    for (const game of date.games) {
-      const { gamePk, gameType, gameDate, status: { statusCode } } = game;
-      const round = game.seriesSummary?.series?.round?.names?.name;
-      const gameLabel = game.seriesSummary?.gameLabel;
-      const { away, home } = game.teams;
-      const {
-        teamName: awayShortName, abbreviation: awayAbbreviation
-      } = away.team;
-      const {
-        teamName: homeShortName, abbreviation: homeAbbreviation
-      } = home.team;
+  const playoffsInfo = getPlayoffsInfo(id);
+  const [awayGoalScorers, homeGoalScorers] = getGoalScorers(game);
 
-      const playoffRound = round ? round : null;
-      const playoffGameNumber = gameLabel ? gameLabel : null;
-      const awayLogoURL = (
-        `https://assets.nhle.com/logos/nhl/svg/${awayAbbreviation}_light.svg`
-      );
-      const homeLogoURL = (
-        `https://assets.nhle.com/logos/nhl/svg/${homeAbbreviation}_light.svg`
-      );
-      const awayGoals = ["3", "4", "5", "6", "7"].includes(statusCode)
-        ? away.score
-        : null;
-      const homeGoals = ["3", "4", "5", "6", "7"].includes(statusCode)
-        ? home.score
-        : null;
-      const [awayGoalScorers, homeGoalScorers] = getGoalScorers(game);
-
-      games.push({
-        id: gamePk,
-        type: gameTypes[gameType],
-        dateTime: gameDate,
-        status: getGameStatus(game),
-        playoffRound,
-        playoffGameNumber,
-        awayShortName,
-        awayAbbreviation,
-        awayLogoURL,
-        awayGoals,
-        awayGoalScorers,
-        homeShortName,
-        homeAbbreviation,
-        homeLogoURL,
-        homeGoals,
-        homeGoalScorers
-      });
-    }
-  }
-
-  return games;
+  return {
+    id,
+    type: currentGameTypes[gameType - 1],
+    dateTime: startTimeUTC,
+    status: getGameStatus(game),
+    playoffRound: playoffsInfo.round,
+    playoffGameNumber: playoffsInfo.gameLabel,
+    awayShortName: awayTeam.name.default,
+    awayAbbreviation: awayTeam.abbrev,
+    awayLogoURL: awayTeam.logo,
+    awayGoals: gameState === "FUT" ? null : awayTeam.score,
+    awayGoalScorers,
+    homeShortName: homeTeam.name.default,
+    homeAbbreviation: homeTeam.abbrev,
+    homeLogoURL: homeTeam.logo,
+    homeGoals: gameState === "FUT" ? null : homeTeam.score,
+    homeGoalScorers
+  };
 }
 
-export function getGoalScorers(game) {
-  let awayId = game.teams?.away?.team?.id;
+function getPlayoffsInfo(gameId) {
+  const idString = gameId.toString();
+  if (idString[5] !== "3") return { round: null, gameLabel: null };
+  const roundNumber = parseInt(idString[7]);
+  return {
+    round: playoffRounds[roundNumber - 1],
+    gameLabel: `Game ${idString[9]}`
+  };
+}
+
+const playoffRounds = [
+  "First Round", "Second Round", "Conference Finals", "Stanley Cup Final"
+];
+
+function getGoalScorers(game) {
+  if (!("goals" in game)) return [
+    "Goal scorer information not available",
+    "Goal scorer information not available"
+  ];
+
+  const { awayTeam, homeTeam, goals } = game;
+
+  let awayAbbrev = awayTeam.abbrev;
   let awayGoalScorers = "";
   let homeGoalScorers = "";
 
-  for (const goal of game.scoringPlays) {
-    for (const player of goal.players) {
-      if (player.playerType === "Scorer") {
-        const playerName = player.player?.fullName;
-        if (goal.team?.id === awayId) {
-          awayGoalScorers += (awayGoalScorers ? " | " : "") + playerName;
-        } else {
-          homeGoalScorers += (homeGoalScorers ? " | " : "") + playerName;
-        }
-        break;
-      }
-    }
+  for (const goal of goals) {
+    const { name, periodDescriptor, timeInPeriod, teamAbbrev } = goal;
+    const playerName = name.default;
+    const goalInfo = ` (${getPeriod(periodDescriptor)}, ${timeInPeriod})`;
 
-    const goalInfo = " (" + goal.about?.ordinalNum + ", "
-      + goal.about?.periodTime + ")";
-    
-    if (goal.team?.id === awayId) awayGoalScorers += goalInfo;
-    else homeGoalScorers += goalInfo;
+    if (teamAbbrev === awayAbbrev) {
+      awayGoalScorers += (awayGoalScorers ? " | " : "") + playerName;
+      awayGoalScorers += goalInfo;
+    } else {
+      homeGoalScorers += (homeGoalScorers ? " | " : "") + playerName;
+      homeGoalScorers += goalInfo;
+    }
   }
 
   if (awayGoalScorers === "") {
-    awayGoalScorers = game.teams?.away?.score > 0
+    awayGoalScorers = awayTeam.score > 0
       ? "Goal scorer information not available"
       : "No goals";
   }
 
   if (homeGoalScorers === "") {
-    homeGoalScorers = game.teams?.home?.score > 0
+    homeGoalScorers = homeTeam.score > 0
       ? "Goal scorer information not available"
       : "No goals";
   }
 
   return [awayGoalScorers, homeGoalScorers];
 }
+
+function getPeriod(periodDescriptor) {
+  const { number, periodType, otPeriods } = periodDescriptor;
+  if (periodType === "SO" ) return "SO";
+  if (periodType === "OT") return `${otPeriods > 1 ? otPeriods : ""}OT`;
+  return regularPeriods[number - 1];
+}
+
+const currentGameTypes = [
+  "Pre-Season", "Regular Season", "Playoffs", "All-Star Game"
+];
+
+function getGameStatus(game) {
+  if ("gameOutcome" in game) {
+    const { lastPeriodType, otPeriods } = game.gameOutcome;
+    if (lastPeriodType === "SO" ) return "Final/SO";
+    if (lastPeriodType === "OT")
+      return `Final/${otPeriods > 1 ? otPeriods : ""}OT`;
+    return "Final";
+  }
+  else if ("clock" in game) {
+    const { timeRemaining, inIntermission } = game.clock;
+    const { periodType, number } = game.periodDescriptor;
+    if (inIntermission) return `Intermission, ${timeRemaining}`;
+    if (periodType === "SO") return "Shootout";
+    if (periodType === "OT")
+      return `${otPeriods > 1 ? otPeriods : ""}OT, ${timeRemaining}`;
+    return `${regularPeriods[number - 1]}, ${timeRemaining}`;
+  }
+  return "Scheduled";
+}
+
+const regularPeriods = ["1st", "2nd", "3rd"];
 
 export const gameTypes = {
   PR: "Pre-Season",
@@ -102,33 +126,6 @@ export const gameTypes = {
   A: "All-Star Game",
   WA: "Women's All-Star Game"
 };
-
-export function getGameStatus(game) {
-  const {
-    currentPeriodOrdinal: currentPeriod,
-    currentPeriodTimeRemaining
-  } = game.linescore;
-
-  switch (game.status.statusCode) {
-    case "1":
-    case "2":
-      return "Scheduled";
-    case "3":
-    case "4":
-      return `${currentPeriod}, ${currentPeriodTimeRemaining}`;
-    case "5":
-    case "6":
-    case "7":
-      let status;
-      if (currentPeriod === "3rd" || currentPeriod === "2nd") status = "Final";
-      else status = "Final/" + currentPeriod
-      return status;
-    case "8":
-      return "Time TBD";
-    case "9":
-      return "Postponed";
-  }
-}
 
 export const queryColumns = [
   "id",

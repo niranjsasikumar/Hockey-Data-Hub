@@ -1,4 +1,5 @@
 import pool from "../database/database.js";
+import { getCurrentSeason } from "../utils/utils.js";
 import { fetchDataFromNHLApi } from "../utils/nhl-api.js";
 
 export default async function getSeasonInfo(season) {
@@ -7,8 +8,14 @@ export default async function getSeasonInfo(season) {
 }
 
 export async function getCurrentSeasonInfo() {
-  const seasonInfo = (await fetchDataFromNHLApi("/seasons/current")).seasons[0];
-  const { conferencesInUse, divisionsInUse, tiesInUse } = seasonInfo;
+  const season = await getCurrentSeason();
+  const seasonInfo = (await fetchDataFromNHLApi(
+    `/season?cayenneExp=id=${season}`, true
+  )).data[0];
+
+  const {
+    conferencesInUse, divisionsInUse, tiesInUse, pointForOTLossInUse
+  } = seasonInfo;
 
   return {
     id: "current",
@@ -17,7 +24,7 @@ export async function getCurrentSeasonInfo() {
     conferences: null,
     divisions: null,
     tiesInUse: tiesInUse,
-    overtimeLossPointInUse: true,
+    overtimeLossPointInUse: pointForOTLossInUse,
     powerPlayStatsTracked: true,
     shootingStatsTracked: true,
     faceoffStatsTracked: true,

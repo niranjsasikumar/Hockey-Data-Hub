@@ -101,19 +101,9 @@ function getSortArray(sort) {
 
 // Get the minimum number of games a goalie should have played in the current season to be included in the stats
 async function getCurrentMinGamesPlayed() {
-  const standings = (await fetchDataFromNHLApi("/standings")).records;
-  let numberOfGames = 0;
-
-  for (const division of standings) {
-    for (const team of division.teamRecords) {
-      if (team.gamesPlayed > numberOfGames) {
-        numberOfGames = team.gamesPlayed;
-      }
-    }
-  }
-
-  if (numberOfGames === 1) return 1;
-  return Math.round(0.3 * numberOfGames);
+  const seasonsInfo = (await fetchDataFromNHLApi("/season", true));
+  const seasonIndex = seasonsInfo.total - 1;
+  return seasonsInfo.data[seasonIndex].minimumRegularGamesForGoalieStatsLeaders;
 }
 
 function extractPlayerData(player) {
