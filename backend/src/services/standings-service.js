@@ -93,8 +93,7 @@ function getDivisionIndex(standings, divisionName, conferencesInUse) {
 
 async function extractTeamRecord(team) {
   const {
-    placeName: { default: placeName },
-    teamName: { default: teamName },
+    teamCommonName: { default: teamShortName },
     teamAbbrev: { default: teamAbbreviation },
     teamLogo,
     conferenceName,
@@ -125,7 +124,7 @@ async function extractTeamRecord(team) {
 
   return {
     teamId: await getTeamId(teamAbbreviation),
-    teamShortName: teamName.slice(placeName.length + 1),
+    teamShortName,
     teamAbbreviation,
     logoURL: teamLogo,
     conference: conferenceName ? conferenceName : null,
