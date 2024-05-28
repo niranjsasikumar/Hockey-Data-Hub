@@ -7,46 +7,66 @@ export default async function getPlayoffs(season) {
 }
 
 export async function getCurrentSeasonPlayoffs() {
-  const playoffsData = (await fetchDataFromNHLApi(
-    "/tournaments/playoffs"
-    + "?expand=round.series,schedule.game.seriesSummary,series.matchup.team"
-  )).rounds;
+  const year = new Date().getFullYear();
+  const seriesData = (await fetchDataFromNHLApi(`/playoff-bracket/${year}`)).series;
+  
   const playoffs = [];
-
-  for (const round of playoffsData) {
-    const { number, names: { name } } = round;
-    const seriesList = [];
-
-    for (const series of round.series) {
-      const { seriesNumber, matchupTeams, currentGame } = series;
-      const team1 = matchupTeams[0].team;
-      const team2 = matchupTeams[1].team;
-      const team1LogoURL = (
-        `https://assets.nhle.com/logos/nhl/svg/${team1.abbreviation}_light.svg`
-      );
-      const team2LogoURL = (
-        `https://assets.nhle.com/logos/nhl/svg/${team2.abbreviation}_light.svg`
-      );
-
-      seriesList.push({
-        id: number.toString() + seriesNumber,
-        team1Id: team1.id,
-        team1Abbreviation: team1.abbreviation,
-        team1LogoURL,
-        team2Id: team2.id,
-        team2Abbreviation: team2.abbreviation,
-        team2LogoURL,
-        statusShort: currentGame.seriesSummary?.seriesStatusShort
+  
+  for (const series of seriesData) {
+    if ("topSeedTeam" in series && "bottomSeedTeam" in series) {
+      const { playoffRound, seriesLetter, topSeedTeam, bottomSeedTeam } = series;
+      if (playoffs.length != playoffRound) {
+        const roundName = getPlayoffRoundName(playoffRound);
+        playoffs.push({ round: roundName, series: [] });
+      }
+      const seriesStatus = getSeriesStatus(series);
+      playoffs[playoffRound-1].series.push({
+        id: seriesLetter,
+        team1Id: topSeedTeam.id,
+        team1Abbreviation: topSeedTeam.abbrev,
+        team1LogoURL: topSeedTeam.logo.replace("dark", "light"),
+        team2Id: bottomSeedTeam.id,
+        team2Abbreviation: bottomSeedTeam.abbrev,
+        team2LogoURL: bottomSeedTeam.logo.replace("dark", "light"),
+        statusShort: seriesStatus
       });
     }
-
-    playoffs.push({
-      round: name,
-      series: seriesList
-    });
   }
 
   return playoffs;
+}
+
+function getPlayoffRoundName(roundNumber) {
+  switch (roundNumber) {
+    case 1:
+      return "First Round";
+    case 2:
+      return "Second Round";
+    case 3:
+      return "Conference Finals";
+    case 4:
+      return "Stanley Cup Final";
+    default:
+      return "";
+  }
+}
+
+function getSeriesStatus(series) {
+  const { topSeedWins, bottomSeedWins, topSeedTeam, bottomSeedTeam } = series;
+
+  if (topSeedWins > bottomSeedWins) {
+    if (topSeedWins == 4) {
+      return `${topSeedTeam.abbrev} wins ${topSeedWins} - ${bottomSeedWins}`;
+    }
+    return `${topSeedTeam.abbrev} leads ${topSeedWins} - ${bottomSeedWins}`;
+  } else if (bottomSeedWins > topSeedWins) {
+    if (bottomSeedWins == 4) {
+      return `${bottomSeedTeam.abbrev} wins ${bottomSeedWins} - ${topSeedWins}`;
+    }
+    return `${bottomSeedTeam.abbrev} leads ${bottomSeedWins} - ${topSeedWins}`;
+  }
+
+  return `Series tied ${topSeedWins} - ${bottomSeedWins}`;
 }
 
 export async function getPlayoffsData(season) {
